@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
+import GroupMembers from './GroupMembers';
 
 const SideBar = () => {
   return (
     <ul className="menu">
+      <li>ダッシュボード</li>
+      <li>マイアカウント</li>
       <li>
-        ダッシュボード
-      </li>
-      <li>
-        マイアカウント
+        <a href="/users/sign_out" data-method="delete">サインアウト</a>
       </li>
       <li className="post">投稿する</li>
       <div className="group-list">
@@ -29,7 +29,7 @@ function App() {
       <header className='header'>Mates</header>
       <div className='main'>
         <SideBar />
-        <div>group member list</div>
+        <GroupMembers />
       </div>
       <footer className='footer'></footer>
     </>
