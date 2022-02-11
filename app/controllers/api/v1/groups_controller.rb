@@ -1,4 +1,13 @@
 class Api::V1::GroupsController < ApplicationController
+
+  def index
+    groups = current_user.groups
+    # render json: groups
+    respond_to do |format|
+      format.json {render json: groups.to_json(:include => [:users])}
+    end
+  end
+
   def create
     group = Group.new(group_params)
     if group.save
