@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import axios from "axios";
+import { Container } from "@material-ui/core";
 import './App.css';
 import GroupMembers from './GroupMembers';
+import User from './User';
 
 const SideBar = (props) => {
   return (
     <ul className="menu">
-      <li>ダッシュボード</li>
-      <li>マイアカウント</li>
+      <Link to="/">
+        <li>ダッシュボード</li>
+      </Link>
+        <li>マイアカウント</li>
       <li>
-        <a href="/users/sign_out" data-method="delete">サインアウト</a>
+        <a href="/users/sign_out" data-method="delete">
+          サインアウト
+        </a>
       </li>
       <li className="post">投稿する</li>
       <div className="group-list">
         グループ一覧
         <ul>
           {props.groups.map((group, key) => {
-            return(
-              <li key={key}>{group.name}</li>
-            );
+            return <li key={key}>{group.name}</li>;
           })}
-          <li>crazy living</li>
-          <li>techcamp梅田校</li>
-          <li>三中写真部</li>
         </ul>
       </div>
     </ul>
@@ -52,15 +54,21 @@ function App() {
       // グループ切り替え表示
     }
 
-  return(
-    <>
-      <header className='header'>Mates</header>
-      <div className='main'>
+  return (
+    <BrowserRouter>
+      <header className="header">Mates</header>
+      <div className="main">
         <SideBar groups={groups} />
-        <GroupMembers selectedGroup={selectedGroup}/>
+        <Container maxWidth="lg">
+          <Switch>
+            <Route exact path="/">
+              <GroupMembers selectedGroup={selectedGroup} />
+            </Route>
+          </Switch>
+        </Container>
       </div>
-      <footer className='footer'></footer>
-    </>
+      <footer className="footer"></footer>
+    </BrowserRouter>
   );
 }
 
