@@ -8,6 +8,12 @@ class Api::V1::GroupsController < ApplicationController
     end
   end
 
+  def show
+    group = Group.find(params[:id])
+    members = group.users
+    render json: members
+  end
+
   def create
     group = Group.new(group_params)
     if group.save

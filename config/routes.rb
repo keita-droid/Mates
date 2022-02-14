@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :groups, only: %i[index create]
+      # get 'groups/members', to: 'groups#show'
+      resources :groups, only: %i[index show create]
     end
   end
 end

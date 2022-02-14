@@ -1,31 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+import GroupMember from './GroupMember';
+import { Container, Grid } from "@material-ui/core";
 
-function GroupMembers() {
-  const [groups, setGroups] = useState([]);
+function GroupMembers(props) {
+  // const [members, setMembers] = useState([]);
+  // const num = String(props.selectedGroup.id)
 
-  useEffect(() => {
-    axios.get('/api/v1/groups.json')
-    .then (resp => {
-      console.log(resp.data)
-      setGroups(resp.data);
-    })
-    .catch (e => {
-      console.log(e);
-    })
-  }, [])
+  // useEffect(() => {
+  //   axios.get(`/api/v1/groups/${num}.json`)
+  //     .then((resp) => {
+  //       console.log(resp.data);
+  //       setMembers(resp.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, []);
 
-  return(
-    <>
-      {groups.length > 0 ? (
+  return (
+    <Container maxWidth="lg">
+      {Object.keys(props.selectedGroup).length > 0 ? (
         <div>
-          <h1>{groups[0].name}</h1>
-          <div>{groups[0].users.map((user, key) => {
-            return(<div key={key}>{user.name}</div>)})}
-          </div>
+          <h1 className="group-header">{props.selectedGroup.name}</h1>
+          <Grid container spacing={5}>
+            {props.selectedGroup.users.map((user, key) => {
+              return <GroupMember key={key} user={user} />;
+            })}
+          </Grid>
         </div>
-        ) : (<div>create new group</div>)}
-    </>
+      ) : (
+        <div>create new group</div>
+      )}
+    </Container>
   );
 }
 
