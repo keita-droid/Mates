@@ -1,0 +1,29 @@
+<div class="contents">
+  <%= render partial: 'layouts/sidebar' %>
+  <div class="main-contents">
+    <div class="user-header">
+      <div class="profile">
+        <div class="name"><%= @user.name %></div>
+        <div class="status"><%# @user.status %></div>
+      </div>
+      <%= @user.description %>
+    </div>
+    <div class="wrapper">
+      <% if current_user == @user || current_user.same_group?(@user) %>
+        <div class="favorites">test test test</div>
+        <div class="favorites">test test test</div>
+        <div class="favorites">test test test</div>
+      <% else %>
+        <div>※グループメンバーのみ閲覧できます※</div>
+      <% end %>
+    </div>
+    <div class="groups">
+      <div>参加中のグループ</div>
+      <ul>
+        <% @user.groups.each do |group| %>
+          <li><%= link_to group.name, group_path(group) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

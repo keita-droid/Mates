@@ -1,0 +1,40 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.user-header {
+  padding-top: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+  // background-color: rgb(255, 199, 255);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+  .profile{
+    .name {
+      font-size: 23px;
+      font-weight: bold;
+    }
+    .status {
+      font-size: small;
+      color: darkslategray;
+    }
+  }
+}
+
+.wrapper {
+  padding: 10px;
+  display: flex;
+  background-color: rgb(113, 156, 113);
+
+  .favorites {
+    padding: 10px;
+    margin: 10px;
+    border: solid 1px #f6f6f4;
+    border-radius: 3px;
+  }
+}
+
+.groups {
+  background-color: rgb(253, 255, 149);
+  margin-top: 10px;
+}

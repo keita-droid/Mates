@@ -1,6 +1,7 @@
   <div class="side-bar">
-    <ul class="list">
-    <li><%= link_to 'ダッシュボード', groups_path %></li>
-    <li><%= link_to 'マイアカウント', "#" %></li>
+    <ul class="nav">
+      <li><%= link_to 'ダッシュボード', groups_path %></li>
+      <li><%= link_to 'マイアカウント', user_path(current_user) %></li>
+      <li><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></li>
     </ul>
   </div>

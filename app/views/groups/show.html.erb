@@ -6,14 +6,18 @@
       <div class="description"><%= @group.description %></div>
     </div>
     <div class="wrapper">
-      <% @members.each do |member| %>
-        <div class="member-card">
-          <div class="member-header">
-            <div class="name"><%= member.name %></div>
-            <div class="status"><%= member.description %></div>
-          </div>
-          <div class="favorites"></div>
-        </div>
+      <% if current_user.in_this_group?(@group) || @group.public %>
+        <% @members.each do |member| %>
+          <%= link_to user_path(member), class: "member-card" do %>
+            <div class="member-header">
+              <div class="name"><%= member.name %></div>
+              <div class="status"><%= member.description %></div>
+            </div>
+            <div class="favorites">test test</div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <div>※グループメンバーのみ閲覧できます※</div>
       <% end %>
     </div>
   </div>

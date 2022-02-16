@@ -21,6 +21,15 @@
    font-family: "Sawarabi Gothic", sans-serif;
  }
 
+ ul {
+   list-style: none;
+ }
+
+ a {
+   text-decoration: none;
+   color: #000;
+ }
+
  header {
   font-size: 20px;
   padding-left: 15px;
@@ -31,7 +40,7 @@
 
 footer {
   height: 85px;
-  margin-top: 20px;
+  padding-top: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   text-align: center;
   line-height: 85px;
