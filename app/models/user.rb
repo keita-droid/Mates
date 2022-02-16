@@ -26,7 +26,7 @@ class User < ApplicationRecord
   def same_group?(user)
     group_ids1 = self.groups.map{|g| g.id}
     group_ids2 = user.groups.map{|g| g.id}
-    if (group_ids1 & group_ids2).nil?
+    unless (group_ids1 & group_ids2).empty?
       return true
     else
       return false
