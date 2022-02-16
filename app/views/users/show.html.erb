@@ -8,15 +8,21 @@
       </div>
       <%= @user.description %>
     </div>
-    <div class="wrapper">
-      <% if current_user == @user || current_user.same_group?(@user) %>
+    <% if current_user == @user || current_user.same_group?(@user) %>
+      <div class="wrapper">
         <div class="favorites">test test test</div>
         <div class="favorites">test test test</div>
         <div class="favorites">test test test</div>
-      <% else %>
-        <div>※グループメンバーのみ閲覧できます※</div>
-      <% end %>
-    </div>
+      </div>
+    <% else %>
+      <div>※グループメンバーのみ閲覧できます※</div>
+      <div class="invite">
+        <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
+          <%= f.hidden_field :id, value: @user.id %>
+          <%= f.submit "自分のグループに招待する"%>
+        <% end %>
+      </div>
+    <% end %>
     <div class="groups">
       <div>参加中のグループ</div>
       <ul>

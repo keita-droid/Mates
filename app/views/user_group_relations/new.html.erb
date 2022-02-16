@@ -1,0 +1,20 @@
+<div class="contents">
+  <%= render partial: 'layouts/sidebar' %>
+  <div class="main-contents">
+    <h1>グループに追加する</h1>
+    <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+      <%= f.label :group_id, "グループ" %>
+      <div class="form">
+        <%= f.collection_select :group_id, @groups, :id, :name, {prompt: "グループを選択してください"} %>
+      </div>
+      <%= f.label :user_id, "新メンバー" %>
+      <div class="form">
+        <%= f.hidden_field :user_id, value: @user.id %>
+        <%= @user.name %>
+      </div>
+      <div class="form">
+        <%= f.submit "追加する" %>
+      </div>
+    <% end %>
+  </div>
+</div>
