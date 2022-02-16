@@ -6,6 +6,6 @@ class Group < ApplicationRecord
 
   private
   def create_user_group_relation
-    self.users << current_user
+    self.users << User.current
   end
 end

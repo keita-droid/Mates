@@ -1,0 +1,18 @@
+<div class="contents">
+  <%= render partial: 'layouts/sidebar' %>
+  <div class="main-contents">
+    <%= form_with model: @group, url:{ controller: 'groups', action: 'create'}, local: true do |f| %>
+      <%= f.label :name, "グループ名（必須）" %>
+      <div class="form">
+        <%= f.text_field :name %>
+      </div>
+      <%= f.label :description, "説明（任意）" %>
+      <div class="form">
+        <%= f.text_area :description, size: "25x3" %>
+      </div>
+      <div class="form">
+        <%= f.submit "作成" %>
+      </div>
+    <% end %>
+  </div>
+</div>

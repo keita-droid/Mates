@@ -1,0 +1,20 @@
+<div class="contents">
+  <%= render partial: 'layouts/sidebar' %>
+  <div class="main-contents">
+    <div class="group-header">
+      <h1 class="name"><%= @group.name %></h1>
+      <div class="description"><%= @group.description %></div>
+    </div>
+    <div class="wrapper">
+      <% @members.each do |member| %>
+        <div class="member-card">
+          <div class="member-header">
+            <div class="name"><%= member.name %></div>
+            <div class="status"><%= member.description %></div>
+          </div>
+          <div class="favorites"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

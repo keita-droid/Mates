@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Sawarabi Gothic", sans-serif;
+ }
+
+ header {
+  font-size: 20px;
+  padding-left: 15px;
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+footer {
+  height: 85px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  text-align: center;
+  line-height: 85px;
+}
+
+.contents {
+  display: flex;
+}
+
+.side-bar {
+  width: 15%;
+  background-color: #f6f6f4;
+}
