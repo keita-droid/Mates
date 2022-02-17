@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :user_group_relations, dependent: :destroy
   has_many :groups, through: :user_group_relations
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   def self.current
     Thread.current[:user]
@@ -32,5 +32,9 @@ class User < ApplicationRecord
     else
       return false
     end
+  end
+
+  def taken_posts
+    self.posts.take(3)
   end
 end

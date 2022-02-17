@@ -1,0 +1,20 @@
+<div class="contents">
+  <%= render partial: 'layouts/sidebar' %>
+  <div class="main-contents">
+    <h1>新規投稿</h1>
+    <%= form_with model: @post, local: true do |f| %>
+      <%= f.label :genre_id, "ジャンル" %>
+      <div class="form">
+        <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "未選択"} %>
+      </div>
+      <%= f.label :text, "わたしの好きなもの" %>
+      <div class="form">
+        <%= f.text_area :text, size: "25x2,", placeholder: "（例）ガツンゴールド最強！！" %>
+      </div>
+      <div class="form">
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "作成" %>
+      </div>
+    <% end %>
+  </div>
+</div>

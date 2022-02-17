@@ -13,7 +13,16 @@
               <div class="name"><%= member.name %></div>
               <div class="status"><%= member.status %></div>
             </div>
-            <div class="favorites">test test</div>
+            <% member.taken_posts.each do |post| %>
+              <div class="favorites">
+                <div class="genre"><%= post.genre.name %></div>
+                <div class="text"><%= post.text %></div>
+              </div>
+            <% end %>
+            <div class="favorites">
+              <div class="genre">genre</div>
+              <div class="text">text text text</div>
+            </div>
           <% end %>
         <% end %>
       <% else %>

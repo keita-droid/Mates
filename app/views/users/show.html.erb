@@ -10,9 +10,16 @@
     </div>
     <% if current_user == @user || current_user.same_group?(@user) %>
       <div class="wrapper">
-        <div class="favorites">test test test</div>
-        <div class="favorites">test test test</div>
-        <div class="favorites">test test test</div>
+        <% @user.posts.each do |post| %>
+          <div class="favorites">
+            <div class="genre"><%= post.genre.name %></div>
+            <div class="text"><%= post.text %></div>
+          </div>
+        <% end %>
+        <div class="favorites">
+          <div class="genre">genre</div>
+          <div class="text">text text text</div>
+        </div>
       </div>
     <% else %>
       <div>※グループメンバーのみ閲覧できます※</div>
