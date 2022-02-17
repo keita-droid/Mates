@@ -1,0 +1,93 @@
+.side-bar {
+  padding: 10px;
+
+  .nav {
+    li {
+      margin: 25px 0;
+
+      a {
+        padding: 10px 20px 10px 5px;
+        
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+  }
+}
+
+$breakpoint: (
+  xs: "only screen and (min-width: 0px)",
+  sp: "only screen and (min-width: 280px)",
+  xs-sp: "screen and (min-width:0px) and ( max-width:479px)",
+  md: "only screen and (min-width: 480px)",
+  lg: "only screen and (min-width: 787px)",
+  xl: "only screen and (min-width: 1147px)"
+);
+
+@mixin media ($device) {
+  @media #{map-get($breakpoint, $device)} {
+    @content;
+  }
+}
+
+//------------ グリッド ---------------
+.col-xs-12{
+  width: 100%;
+  margin: 0 0 30px;
+}
+
+@include media("xs-sp"){
+  .order1{
+    order: 1;
+  }
+  .order2{
+    order: 2;
+  }
+  .order3{
+    order: 3;
+  }
+  .order4{
+    order: 4;
+  }
+  .order5{
+    order: 5;
+  }
+  .order6{
+    order: 6;
+  }
+}
+@include media('md'){
+  .col-md{
+    width: calc(100% / 3 - 10px);
+  }
+
+}
+@include media('lg'){
+  .col-lg{
+    width: calc(100% / 3 - 20px);
+  }
+}
+//------------ flexBox ---------------
+.flexBox{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+  // justify-content: space-between;
+}
+//------------ card ---------------
+.card__contents{
+	width: 100%;
+	margin: 0 auto;
+	@include media('xl'){
+    .col-xl{
+      width: calc(100% / 4 - 20px);
+      max-width: 1146px;
+	  }
+  }
+}
+.card__block{
+	padding: 10px;
+  margin: 10px;
+	border-radius: 4px;
+}
