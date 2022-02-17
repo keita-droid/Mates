@@ -37,26 +37,6 @@ $breakpoint: (
   margin: 0 0 30px;
 }
 
-@include media("xs-sp"){
-  .order1{
-    order: 1;
-  }
-  .order2{
-    order: 2;
-  }
-  .order3{
-    order: 3;
-  }
-  .order4{
-    order: 4;
-  }
-  .order5{
-    order: 5;
-  }
-  .order6{
-    order: 6;
-  }
-}
 @include media('md'){
   .col-md{
     width: calc(100% / 3 - 10px);

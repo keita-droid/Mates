@@ -9,15 +9,15 @@
       <%= @user.description %>
     </div>
     <% if current_user == @user || current_user.same_group?(@user) %>
-      <div class="wrapper">
+      <div class="wrapper card__contents flexBox">
         <% @user.posts.each do |post| %>
-          <div class="favorites">
-            <div class="genre"><%= post.genre.name %></div>
+          <div class="favorites card__block col-xs-12 col-md col-lg col-xl">
+            <div class="genre"><span><%= post.genre.name %></span></div>
             <div class="text"><%= post.text %></div>
           </div>
         <% end %>
-        <div class="favorites">
-          <div class="genre">genre</div>
+        <div class="favorites card__block col-xs-12 col-md col-lg col-xl">
+          <div class="genre"><span>genre</span></div>
           <div class="text">text text text</div>
         </div>
       </div>
