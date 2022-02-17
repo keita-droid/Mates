@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :groups, only: %i[index new create show]
   resources :users, only: %i[show]
   resources :user_group_relations, only: %i[new create]
+  resources :posts, only: %i[new create]
   # namespace :api do
   #   namespace :v1 do
   #     resources :groups, only: %i[index show create]
