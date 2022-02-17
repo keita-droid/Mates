@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @members = @group.users.includes(:posts)
+    @members = @group.users.includes(posts: :genre)
   end
 
   def new
