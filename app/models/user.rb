@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :user_group_relations, dependent: :destroy
   has_many :groups, through: :user_group_relations
+  has_many :posts
 
   def self.current
     Thread.current[:user]
