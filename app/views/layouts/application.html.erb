@@ -14,7 +14,14 @@
 
   <body>
     <header>Mates</header>
-    <%= yield %>
+    <% if current_user %>
+      <div class="contents">
+        <%= render partial: 'layouts/sidebar' %>
+        <div class="main-contents"><%= yield %></div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <footer></footer>
   </body>
 </html>

@@ -1,85 +1,82 @@
-<div class="contents">
-  <%= render partial: 'layouts/sidebar' %>
-  <div class="main-contents">
-    <div class="group-header">
-      <h1 class="name"><%= @group.name %></h1>
-      <div class="description"><%= @group.description %></div>
-    </div>
-    <div class="wrapper card__contents flexBox">
-      <% if current_user.in_this_group?(@group) || @group.public %>
-        <% @members.each do |member| %>
-          <%= link_to user_path(member), class: "member-card card__block col-xs-12 col-md col-lg col-xl" do %>
-            <div class="member-header">
-              <div class="name"><%= member.name %></div>
-              <div class="status"><%= member.status %></div>
-            </div>
-            <% member.taken_posts.each do |post| %>
-              <div class="favorites">
-                <div class="genre"><span><%= post.genre.name %></span></div>
-                <div class="text"><%= simple_format(post.text) %></div>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-        <%# ダミーカラムここから %>
-        <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
-          <div class="member-header">
-            <div class="name">name</div>
-            <div class="status">status</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-        </div>
-        <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
-          <div class="member-header">
-            <div class="name">name</div>
-            <div class="status">status</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-        </div>
-        <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
-          <div class="member-header">
-            <div class="name">name</div>
-            <div class="status">status</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-          <div class="favorites">
-            <div class="genre"><span>genre</span></div>
-            <div class="text">text text text</div>
-          </div>
-        </div>
-        <%# ダミーカラムここまで %>
-      <% else %>
-        <div>※グループメンバーのみ閲覧できます※</div>
-      <% end %>
-    </div>
+<div class="group-header">
+  <div class="profile">
+    <h1 class="name"><%= @group.name %></h1>
+    <div class="description"><%= @group.description %></div>
   </div>
+</div>
+<div class="wrapper card__contents flexBox">
+  <% if current_user.in_this_group?(@group) || @group.public %>
+    <% @members.each do |member| %>
+      <%= link_to user_path(member), class: "member-card card__block col-xs-12 col-md col-lg col-xl" do %>
+        <div class="member-header">
+          <div class="name"><%= member.name %></div>
+          <div class="status"><%= member.status %></div>
+        </div>
+        <% member.taken_posts.each do |post| %>
+          <div class="favorites">
+            <div class="genre"><span><%= post.genre.name %></span></div>
+            <div class="text"><%= simple_format(post.text) %></div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%# ダミーカラムここから %>
+    <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
+      <div class="member-header">
+        <div class="name">name</div>
+        <div class="status">status</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+    </div>
+    <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
+      <div class="member-header">
+        <div class="name">name</div>
+        <div class="status">status</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+    </div>
+    <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
+      <div class="member-header">
+        <div class="name">name</div>
+        <div class="status">status</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+      <div class="favorites">
+        <div class="genre"><span>genre</span></div>
+        <div class="text">text text text</div>
+      </div>
+    </div>
+    <%# ダミーカラムここまで %>
+  <% else %>
+    <div>※グループメンバーのみ閲覧できます※</div>
+  <% end %>
 </div>

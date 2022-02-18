@@ -1,17 +1,12 @@
-<div class="contents">
-  <%= render partial: 'layouts/sidebar' %>
-  <div class="main-contents">
-    <div class="group-memu">
-      <%= link_to 'グループをつくる', new_group_path, class: "button" %>
-      <div>グループをさがす</div>
-      <div>ともだちをさがす</div>
-    </div>
-    <% if @groups %>参加中のグループ
-      <ul class="group-list">
-        <% @groups.each do |group| %>
-          <li><%= link_to group.name, group_path(group) %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+<div class="group-memu">
+  <%= link_to 'グループをつくる', new_group_path, class: "button" %>
+  <div>グループをさがす</div>
+  <div>ともだちをさがす</div>
 </div>
+<% if @groups %>参加中のグループ
+  <ul class="group-list">
+    <% @groups.each do |group| %>
+      <li><%= link_to group.name, group_path(group) %></li>
+    <% end %>
+  </ul>
+<% end %>
