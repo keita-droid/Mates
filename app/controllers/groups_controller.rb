@@ -23,6 +23,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def search
+    @groups = Group.search(params[:keyword])
+  end
+
   private
   
   def group_params

@@ -1,6 +1,6 @@
 <div class="group-menu">
   <%= link_to 'グループをつくる', new_group_path, class: "button" %>
-  <div>グループをさがす</div>
+  <%= link_to 'グループをさがす',  search_groups_path, class: "button" %>
   <%= link_to '仲間を見つける',  search_users_path, class: "button" %>
 </div>
 <% if @groups %>

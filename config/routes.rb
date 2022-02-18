@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   # root to: 'site#index'
   root to: 'groups#index'
 
-  resources :groups, only: %i[index new create show]
+  resources :groups, only: %i[index new create show] do
+    collection do
+      get 'search'
+    end
+  end
   resources :users, only: %i[show] do
     collection do
       get 'search'

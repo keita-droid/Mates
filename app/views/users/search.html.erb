@@ -8,7 +8,7 @@
 <% @users.each do |user| %>
   <%= link_to user_path(user), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
     <div class="member-header">
-      <div class="name"><%= user.name %><span>( <%= user.account_name %> )</div>
+      <div class="name"><%= user.name %><span>( <%= user.account_name %> )</span></div>
       <div class="status"><%= user.status %></div>
     </div>
   <% end %>
