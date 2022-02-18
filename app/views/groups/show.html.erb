@@ -77,6 +77,13 @@
     </div>
     <%# ダミーカラムここまで %>
   <% else %>
-    <div>※グループメンバーのみ閲覧できます※</div>
+    <% @members.each do |member| %>
+      <%= link_to user_path(member), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
+        <div class="member-header">
+          <div class="name"><%= member.name %></div>
+          <div class="status"><%= member.status %></div>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
