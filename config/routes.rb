@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root to: 'groups#index'
 
   resources :groups, only: %i[index new create show]
-  resources :users, only: %i[show]
+  resources :users, only: %i[show] do
+    collection do
+      get 'search'
+    end
+  end
   resources :user_group_relations, only: %i[new create]
   resources :posts, only: %i[new create]
   # namespace :api do

@@ -15,6 +15,11 @@ class User < ApplicationRecord
     Thread.current[:user] = user
   end
 
+  def self.search(search)
+    return User.order("updated_at DESC").limit(20) unless search
+    User.where('account_name LIKE(?)', "%#{search}%")
+  end
+
   def in_this_group?(group)
     resp = UserGroupRelation.find_by(user_id: self.id, group_id: group.id)
     if resp

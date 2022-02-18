@@ -1,0 +1,16 @@
+<%= form_with url: search_users_path, method: :get, local: true do |f| %>
+  <%= f.label :keyword, "アカウントID検索" %><br/>
+  <%= f.text_field :keyword, placeholder: "yamada_taro" %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<div class="wrapper card__contents flexBox">
+<% @users.each do |user| %>
+  <%= link_to user_path(user), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
+    <div class="member-header">
+      <div class="name"><%= user.name %><span>( <%= user.account_name %> )</div>
+      <div class="status"><%= user.status %></div>
+    </div>
+  <% end %>
+<% end %>
+</div>

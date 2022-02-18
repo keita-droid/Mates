@@ -50,16 +50,22 @@
       &:hover {
         box-shadow: 0 0 3px darkslategray;
       }
-
+      
       .member-header {
         margin: 10px 0;
         border-top: solid 1px darkslategray;
-
+        
         .name {
           text-decoration: none;
           color: #000;
           font-size: 17px;
+          span {
+            margin: 0 10px;
+            font-size: small;
+            font-weight: lighter;
+          }
         }
+
         .status{
           text-decoration: none;
           color: darkslategray;
@@ -67,7 +73,11 @@
         }
       }
     }
-
+    .search {
+      min-height: 50px;
+    }
+    
+    
     .favorites{
       background-color: rgba(0, 0, 0, 0.03);
       padding: 2px 2px 20px 2px;
