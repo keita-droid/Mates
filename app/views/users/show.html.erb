@@ -22,7 +22,7 @@
   </div>
 <% else %>
   <div class="invite">
-    <div>※グループメンバーのみ閲覧できます※</div>
+    <div>※同じグループのメンバーのみ閲覧できます※</div>
     <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
       <%= f.hidden_field :id, value: @user.id %>
       <%= f.submit "自分のグループに招待する", class: "invite-btn"%>
