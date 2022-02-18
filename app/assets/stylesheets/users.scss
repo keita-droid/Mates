@@ -13,6 +13,11 @@
     .name {
       font-size: 23px;
       font-weight: bold;
+      span {
+        margin: 0 10px;
+        font-size: small;
+        font-weight: lighter;
+      }
     }
     .status {
       font-size: small;

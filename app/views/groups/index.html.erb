@@ -3,10 +3,13 @@
   <div>グループをさがす</div>
   <div>ともだちをさがす</div>
 </div>
-<% if @groups %>参加中のグループ
-  <ul class="group-list">
-    <% @groups.each do |group| %>
-      <li><%= link_to group.name, group_path(group) %></li>
-    <% end %>
-  </ul>
+<% if @groups %>
+  <div class="groups">
+    <div class="title">参加中のグループ</div>
+    <ul>
+      <% @groups.each do |group| %>
+        <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
