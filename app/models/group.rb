@@ -5,8 +5,8 @@ class Group < ApplicationRecord
   after_create :create_user_group_relation
 
   def self.search(search)
-    return Group.order("updated_at DESC").limit(20) unless search
-    Group.where('name LIKE(?)', "%#{search}%")
+    return Group.where(public: true).order("updated_at DESC").limit(20) unless search
+    Group.where('public = true AND name LIKE(?)', "%#{search}%")
   end
 
   private
