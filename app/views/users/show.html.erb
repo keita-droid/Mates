@@ -35,8 +35,37 @@
 <div class="groups">
   <div class="title">参加中のグループ</div>
   <ul>
-    <% @user.groups.each do |group| %>
-      <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+    <% if current_user.id == @user.id %>
+      <% unless @user.public_groups.empty? %>
+        <div class="filter">公開グループ</div>
+        <% @user.public_groups.each do |group| %>
+          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+        <% end %>
+      <% end %>
+      <% unless @user.private_groups.empty? %>
+        <div class="filter">非公開グループ</div>
+        <% @user.private_groups.each do |group| %>
+          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+        <% end %>
+      <% end %>
+    <% elsif current_user.same_group?(@user) %>
+      <% unless @user.public_groups.empty? %>
+        <div class="filter">公開グループ</div>
+        <% @user.public_groups.each do |group| %>
+          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+        <% end %>
+      <% end %>
+      <div class="filter">同じメンバーのグループ</div>
+      <% @user.same_groups(current_user).each do |group| %>
+        <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+      <% end %>
+    <% else %>
+      <% unless @user.public_groups.empty? %>
+        <div class="filter">公開グループ</div>
+        <% @user.public_groups.each do |group| %>
+          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+        <% end %>
+      <% end %>
     <% end %>
   </ul>
 </div>

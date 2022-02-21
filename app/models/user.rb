@@ -38,6 +38,21 @@ class User < ApplicationRecord
       return false
     end
   end
+  
+  def same_groups(user)
+    group_ids1 = self.groups.map{|g| g.id}
+    group_ids2 = user.groups.map{|g| g.id}
+    ids = group_ids1 & group_ids2
+    Group.where(id: ids)
+  end
+
+  def public_groups
+    self.groups.where(public: true)
+  end
+
+  def private_groups
+    self.groups.where(public: false)
+  end
 
   def taken_posts
     self.posts.take(3)
