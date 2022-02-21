@@ -10,11 +10,11 @@
   </div>
   <%= f.label :status, "ステータス" %>
   <div class="form">
-    <%= f.text_field :status, value: @user.status %>
+    <%= f.text_field :status, value: @user.status, placeholder: "所属・役職・性格など" %>
   </div>
   <%= f.label :description, "自己紹介" %>
   <div class="form">
-    <%= f.text_area :description, size: "25x5,", value: @user.description %>
+    <%= f.text_area :description, size: "25x5,", value: @user.description, placeholder: "ここは自由に自己紹介文を書くエリアです。" %>
   </div>
   <div class="form">
     <%= f.submit "変更を保存" %>
