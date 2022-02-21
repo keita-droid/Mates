@@ -1,7 +1,14 @@
 <div class="user-header">
-  <div class="profile">
-    <div class="name"><%= @user.name %><span>( <%= @user.account_name %> )</span></div>
-    <div class="status"><%= @user.status %></div>
+  <div class="flex">
+    <div class="profile">
+      <div class="name"><%= @user.name %><span>( <%= @user.account_name %> )</span></div>
+      <div class="status"><%= @user.status %></div>
+    </div>
+    <% if @user.id == current_user.id %>
+      <div class="edit">
+        <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
+      </div>
+    <% end %>
   </div>
   <div class="description">
     <%= simple_format(@user.description) %>

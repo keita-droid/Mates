@@ -27,6 +27,24 @@
   .description {
     margin-top: 10px;
   }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+
+    .edit {
+      margin: 15px;
+      a {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #666;
+        border-radius: 5px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+          transition: 0.3s;
+        }
+      }
+    }
+  }
 }
 
 .wrapper {

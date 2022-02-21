@@ -1,0 +1,22 @@
+<h1>アカウント情報</h1>
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.label :name, "表示名" %>
+  <div class="form">
+    <%= f.text_field :name, value: @user.name %>
+  </div>
+  <%= f.label :account_name, "アカウントID" %>
+  <div class="form">
+    <%= f.text_field :account_name, value: @user.account_name %>
+  </div>
+  <%= f.label :status, "ステータス" %>
+  <div class="form">
+    <%= f.text_field :status, value: @user.status %>
+  </div>
+  <%= f.label :description, "自己紹介" %>
+  <div class="form">
+    <%= f.text_area :text, size: "25x5,", value: @user.description %>
+  </div>
+  <div class="form">
+    <%= f.submit "変更を保存" %>
+  </div>
+<% end %>
