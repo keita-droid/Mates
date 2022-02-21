@@ -6,10 +6,15 @@
 <% if @groups %>
   <div class="groups">
     <div class="title">参加中のグループ</div>
-    <ul>
-      <% @groups.each do |group| %>
-        <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+  </div>
+  <div class="wrapper card__contents flexBox">
+    <% @groups.each do |group| %>
+      <%= link_to group_path(group), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
+        <div class="member-header">
+          <div class="name"><%= group.name %></div>
+          <div class="status"><%= group.description %></div>
+        </div>
       <% end %>
-    </ul>
+    <% end %>
   </div>
 <% end %>

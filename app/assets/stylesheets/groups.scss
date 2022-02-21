@@ -43,6 +43,7 @@
       padding: 20px 10px;
       &:hover {
         box-shadow: 0 0 3px darkslategray;
+        transition: 0.2s;
       }
       
       .member-header {
