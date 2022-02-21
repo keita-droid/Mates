@@ -23,6 +23,17 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    group = Group.find(params[:id])
+    group.update(group_params) if current_user.in_this_group?(group)
+
+    redirect_to group_path(group)
+  end
+
   def search
     @groups = Group.search(params[:keyword])
   end

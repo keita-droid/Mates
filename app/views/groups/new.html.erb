@@ -1,11 +1,21 @@
+<h1>新規作成</h1>
 <%= form_with model: @group, url:{ controller: 'groups', action: 'create'}, local: true do |f| %>
   <%= f.label :name, "グループ名（必須）" %>
   <div class="form">
     <%= f.text_field :name %>
   </div>
-  <%= f.label :description, "説明（任意）" %>
+  <%= f.label :description, "概要説明（任意）" %>
   <div class="form">
     <%= f.text_area :description, size: "25x3" %>
+  </div>
+  <%= f.label :public, "グループ検索" %>
+  <div class="form">
+      <div class="radio">
+        <%= f.radio_button :public, true %>表示
+      </div>
+      <div class="radio">
+        <%= f.radio_button :public, false, checked: true %>非表示
+      </div>
   </div>
   <div class="form">
     <%= f.submit "作成" %>

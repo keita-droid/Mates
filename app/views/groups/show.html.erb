@@ -1,7 +1,14 @@
 <div class="group-header">
-  <div class="profile">
-    <h1 class="name"><%= @group.name %></h1>
-    <div class="description"><%= @group.description %></div>
+  <div class="flex">
+    <div class="profile">
+      <h1 class="name"><%= @group.name %></h1>
+      <div class="description"><%= @group.description %></div>
+    </div>
+    <% if current_user.in_this_group?(@group) %>
+      <div class="edit">
+        <%= link_to 'グループ情報を編集', edit_group_path(@group) %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="wrapper card__contents flexBox">
