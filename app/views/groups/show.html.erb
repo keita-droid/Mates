@@ -30,7 +30,11 @@
         </div>
         <% member.taken_posts.each do |post| %>
           <div class="favorites">
-            <div class="genre"><span><%= post.genre.name %></span></div>
+            <% if post.genre.nil? %>
+              <div class="genre"><span>未分類</span></div>
+            <% else %>
+              <div class="genre"><span><%= post.genre.name %></span></div>
+            <% end %>
             <div class="text"><%= simple_format(post.text) %></div>
           </div>
         <% end %>

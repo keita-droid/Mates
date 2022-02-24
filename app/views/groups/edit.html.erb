@@ -1,23 +1,25 @@
-<h1>グループ情報</h1>
-<%= form_with model: @group, local: true do |f| %>
-  <%= f.label :name, "グループ名" %>
-  <div class="form">
-    <%= f.text_field :name, value: @group.name %>
-  </div>
-  <%= f.label :description, "概要説明" %>
-  <div class="form">
-    <%= f.text_area :description, size: "25x3,", value: @group.description %>
-  </div>
-  <%= f.label :public, "グループ検索" %>
-  <div class="form">
+<div class="inputBox">
+  <h2>グループ情報</h2>
+  <%= form_with model: @group, local: true do |f| %>
+    <div class="field">
+      <%= f.label :name, "グループ名" %><br/>
+      <%= f.text_field :name, value: @group.name, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label :description, "概要説明" %><br/>
+      <%= f.text_area :description, size: "35x3,", value: @group.description %>
+    </div>
+    <div class="field">
+      <%= f.label :public, "グループ検索" %><br/>
       <div class="radio">
         <%= f.radio_button :public, true %>表示
       </div>
       <div class="radio">
         <%= f.radio_button :public, false %>非表示
       </div>
-  </div>
-  <div class="form">
-    <%= f.submit "変更を保存" %>
-  </div>
-<% end %>
+    </div>
+    <div class="actions">
+      <%= f.submit "変更を保存" %>
+    </div>
+  <% end %>
+</div>

@@ -1,15 +1,17 @@
-<h1>グループに追加する</h1>
-<%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
-  <%= f.label :group_id, "グループ" %>
-  <div class="form">
-    <%= f.collection_select :group_id, @groups, :id, :name, {prompt: "グループを選択してください"} %>
-  </div>
-  <%= f.label :user_id, "新メンバー" %>
-  <div class="form">
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= @user.name %>
-  </div>
-  <div class="form">
-    <%= f.submit "追加する" %>
-  </div>
-<% end %>
+<div class="inputBox">
+  <h2>グループに追加する</h2>
+  <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+    <div class="field">
+      <%= f.label :group_id, "⚫︎ グループ" %><br/>
+      <%= f.collection_select :group_id, @groups, :id, :name, {prompt: "グループを選択してください"}, class: "select" %>
+    </div>
+    <div class="field">
+      <%= f.label :user_id, "⚫︎ 新メンバー" %><br/>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <div class="name"><%= @user.name %></div>
+    </div>
+    <div class="actions">
+      <%= f.submit "追加" %>
+    </div>
+  <% end %>
+</div>

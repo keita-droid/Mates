@@ -76,15 +76,10 @@ $breakpoint: (
 
 
 
-//------------ devise form ---------------
+//------------ form ---------------
 
-.loginBox {
-  margin: 20px auto;
-  padding: 50px 80px;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  min-width: 400px;
-
+.inputBox {
+  
   h2 {
     margin: 10px 0 25px;
     font-weight: bold;
@@ -92,6 +87,19 @@ $breakpoint: (
   .field {
     font-weight: bold;
     margin: 10px 0;
+
+    .radio {
+      margin-bottom: 5px;
+    }
+    .select {
+      font-size: 15px;
+      margin: 5px 20px;
+    }
+    .name {
+      font-size: 18px;
+      font-weight: normal;
+      padding: 10px 20px;
+    }
   }
   .actions {
     margin: 20px 0;
@@ -108,12 +116,40 @@ $breakpoint: (
       }
     }
   }
-
+  
   a {
     margin: 10px 0;
     color: #16b;
     &:hover {
       border-bottom: solid 1px #16b;
+    }
+  }
+}
+
+.forSignIn {
+  margin: 20px auto;
+  padding: 50px 80px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  min-width: 400px;
+}
+
+.search-form {
+  margin: 20px;
+  .form {
+    font-size: 17px;
+    padding: 2px 5px;
+  }
+  .btn {
+    padding: 3px 20px;
+    font-size: 17px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: solid 1px #666;
+    cursor: pointer;
+    border-radius: 5px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+      transition: 0.2s;
     }
   }
 }
