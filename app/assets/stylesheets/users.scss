@@ -71,10 +71,17 @@
   // background-color: rgb(113, 156, 113);
 
   .favorites {
-    padding: 10px;
-    margin: 10px;
-    border: solid 1px #f6f6f4;
-    border-radius: 3px;
+    .btns {
+      font-size: small;
+      display: flex;
+      justify-content: flex-end;
+      a {
+        padding: 3px;
+        margin: 5px;
+        border: solid 1px #666;
+        border-radius: 3px;
+      }
+    }
   }
 }
 

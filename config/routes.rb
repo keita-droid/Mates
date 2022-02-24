@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :user_group_relations, only: %i[new create]
-  resources :posts, only: %i[new create]
+  resources :posts, only: %i[new create edit update destroy]
   # namespace :api do
   #   namespace :v1 do
   #     resources :groups, only: %i[index show create]

@@ -35,7 +35,6 @@
         margin: 5px 0;
       }
       .description {
-        font-size: small;
         color: gray;
         margin-left: 8px;
       }
@@ -97,7 +96,10 @@
     
     .favorites{
       background-color: rgba(0, 0, 0, 0.03);
-      padding: 2px 2px 20px 2px;
+      padding: 2px 2px 2px 2px;
+      margin: 10px;
+      border: solid 1px #f6f6f4;
+      border-radius: 3px;
       .genre{
         span{
           color: rgb(93, 93, 211);
@@ -110,6 +112,7 @@
       }
       .text{
         font-size: 15px;
+        padding-bottom: 15px;
       }
     }
   }
