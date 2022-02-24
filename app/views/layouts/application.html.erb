@@ -20,7 +20,9 @@
         <div class="main-contents"><%= yield %></div>
       </div>
     <% else %>
-      <%= yield %>
+      <div class="contents">
+        <%= yield %>
+      </div>
     <% end %>
     <footer></footer>
   </body>

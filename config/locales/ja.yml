@@ -2,8 +2,9 @@ ja:
   attributes:
     email: メールアドレス
     password: パスワード
-    group_id: グループ名
-    user: ユーザー
+    password_confirmation: 確認用パスワード
+    remember_me: 次回から自動的にログイン
+    account_name: アカウントID
   date:
     abbr_day_names:
     - 日
