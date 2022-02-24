@@ -48,13 +48,26 @@
       padding: 20px 10px;
       &:hover {
         box-shadow: 0 0 3px darkslategray;
-        transition: 0.2s;
+        transition: 0.3s;
+        transform: scale(1.02, 1.02)
       }
       
       .member-header {
         margin: 10px 0;
-        // border-top: solid 1px darkslategray;
+        display: flex;
         
+        .image {
+          margin-right: 10px;
+          div {
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            border-radius: 25px;
+          }
+          .no-image {
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+        }
         .name {
           text-decoration: none;
           color: #000;

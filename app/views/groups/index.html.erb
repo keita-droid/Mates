@@ -11,8 +11,10 @@
     <% @groups.each do |group| %>
       <%= link_to group_path(group), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
         <div class="member-header">
-          <div class="name"><%= group.name %></div>
-          <div class="status"><%= group.description %></div>
+          <div class="profile">
+            <div class="name"><%= group.name %></div>
+            <div class="status"><%= group.description %></div>
+          </div>
         </div>
       <% end %>
     <% end %>

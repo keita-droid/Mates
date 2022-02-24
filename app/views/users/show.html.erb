@@ -1,8 +1,17 @@
 <div class="user-header">
   <div class="flex">
-    <div class="profile">
-      <div class="name"><%= @user.name %><span>( <%= @user.account_name %> )</span></div>
-      <div class="status"><%= @user.status %></div>
+    <div class="flex-left">
+      <div class="image">
+        <% if @user.image.attached? %>
+          <div style="background-image:url(<%= rails_blob_path(@user.image) %>)"></div>
+        <% else %>
+          <div class="no-image"></div>
+        <% end %>
+      </div>
+      <div class="profile">
+        <div class="name"><%= @user.name %><span>( <%= @user.account_name %> )</span></div>
+        <div class="status"><%= @user.status %></div>
+      </div>
     </div>
     <% if @user.id == current_user.id %>
       <div class="edit">
@@ -25,10 +34,9 @@
   </div>
 <% else %>
   <div class="invite">
-    <div>※同じグループのメンバーのみ閲覧できます※</div>
     <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
       <%= f.hidden_field :id, value: @user.id %>
-      <%= f.submit "自分のグループに招待する", class: "invite-btn"%>
+      <%= f.submit "グループに招待", class: "invite-btn"%>
     <% end %>
   </div>
 <% end %>

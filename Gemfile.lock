@@ -103,6 +103,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.7.1)
     minitest (5.15.0)
@@ -229,6 +230,7 @@ DEPENDENCIES
   i18n
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  mini_magick
   mysql2 (>= 0.4.4)
   pry-rails
   puma (~> 4.1)

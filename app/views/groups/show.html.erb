@@ -16,8 +16,17 @@
     <% @members.each do |member| %>
       <%= link_to user_path(member), class: "member-card card__block col-xs-12 col-md col-lg col-xl" do %>
         <div class="member-header">
-          <div class="name"><%= member.name %></div>
-          <div class="status"><%= member.status %></div>
+          <div class="image">
+            <% if member.image.attached? %>
+              <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
+            <% else %>
+              <div class="no-image"></div>
+            <% end %>
+          </div>
+          <div class="profile">
+            <div class="name"><%= member.name %></div>
+            <div class="status"><%= member.status %></div>
+          </div>
         </div>
         <% member.taken_posts.each do |post| %>
           <div class="favorites">
@@ -30,8 +39,11 @@
     <%# ダミーカラムここから %>
     <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
       <div class="member-header">
-        <div class="name">name</div>
-        <div class="status">status</div>
+        <div class="image"><div class="no-image"></div></div>
+        <div class="profile">
+          <div class="name">name</div>
+          <div class="status">status</div>
+        </div>
       </div>
       <div class="favorites">
         <div class="genre"><span>genre</span></div>
@@ -48,8 +60,11 @@
     </div>
     <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
       <div class="member-header">
-        <div class="name">name</div>
-        <div class="status">status</div>
+        <div class="image"><div class="no-image"></div></div>
+        <div class="profile">
+          <div class="name">name</div>
+          <div class="status">status</div>
+        </div>
       </div>
       <div class="favorites">
         <div class="genre"><span>genre</span></div>
@@ -66,8 +81,11 @@
     </div>
     <div class="member-card card__block col-xs-12 col-md col-lg col-xl">
       <div class="member-header">
-        <div class="name">name</div>
-        <div class="status">status</div>
+        <div class="image"><div class="no-image"></div></div>
+        <div class="profile">
+          <div class="name">name</div>
+          <div class="status">status</div>
+        </div>
       </div>
       <div class="favorites">
         <div class="genre"><span>genre</span></div>
@@ -87,8 +105,17 @@
     <% @members.each do |member| %>
       <%= link_to user_path(member), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
         <div class="member-header">
-          <div class="name"><%= member.name %></div>
-          <div class="status"><%= member.status %></div>
+          <div class="image">
+            <% if member.image.attached? %>
+              <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
+            <% else %>
+              <div class="no-image"></div>
+            <% end %>
+          </div>
+          <div class="profile">
+            <div class="name"><%= member.name %></div>
+            <div class="status"><%= member.status %></div>
+          </div>
         </div>
       <% end %>
     <% end %>
