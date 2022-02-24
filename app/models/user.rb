@@ -56,6 +56,6 @@ class User < ApplicationRecord
   end
 
   def taken_posts
-    self.posts.take(3)
+    self.posts.order("updated_at DESC").take(3)
   end
 end

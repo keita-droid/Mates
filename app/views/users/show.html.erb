@@ -25,7 +25,7 @@
 </div>
 <% if current_user == @user || current_user.same_group?(@user) %>
   <div class="wrapper card__contents flexBox">
-    <% @user.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <div class="favorites card__block col-xs-12 col-md col-lg col-xl">
         <div class="genre"><span><%= post.genre.name %></span></div>
         <div class="text"><%= post.text %></div>
