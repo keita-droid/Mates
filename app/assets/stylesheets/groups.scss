@@ -52,7 +52,7 @@
       &:hover {
         box-shadow: 0 0 3px darkslategray;
         transition: 0.3s;
-        transform: scale(1.02, 1.02)
+        transform: scale(1.04, 1.04)
       }
       
       .member-header {
@@ -85,7 +85,7 @@
         .status{
           text-decoration: none;
           color: darkslategray;
-          font-size: 13px;
+          font-size: 12px;
         }
       }
     }
@@ -111,8 +111,9 @@
         }
       }
       .text{
-        font-size: 15px;
-        padding-bottom: 15px;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 5px 0 15px;
       }
     }
   }
