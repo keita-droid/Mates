@@ -98,14 +98,16 @@
     }
 
     .btns {
-      font-size: small;
       display: flex;
       justify-content: flex-end;
       a {
-        padding: 3px;
+        font-size: 18px;
+        color: #666;
         margin: 5px;
-        border: solid 1px #666;
-        border-radius: 3px;
+        &:hover {
+          color: #000;
+          transition: 0.1s;
+        }
       }
     }
   }

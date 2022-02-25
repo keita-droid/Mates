@@ -85,6 +85,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.10.0)
     ffi (1.15.5)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.9.1)
@@ -227,6 +229,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
+  font-awesome-rails
   i18n
   jbuilder (~> 2.7)
   listen (~> 3.2)
