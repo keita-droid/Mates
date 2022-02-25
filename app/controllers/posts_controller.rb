@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(post_params) if current_user == post.user
+    post.update(post_params) if current_user.id == post.user_id
     redirect_to user_path(post.user)
   end
   
@@ -33,6 +33,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:text, :user_id, :genre_id)
+    params.require(:post).permit(:text, :user_id, :genre_id, :updated_at)
   end
 end

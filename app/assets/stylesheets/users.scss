@@ -71,6 +71,32 @@
   // background-color: rgb(113, 156, 113);
 
   .favorites {
+    .box {
+      display: flex;
+      justify-content: space-between;
+    }
+    .postTag {
+      height: 15px;
+      width: 15px;
+      border-top: 15px solid rgba(0, 0, 0, 0.18);
+      border-right: 15px solid rgba(0, 0, 0, 0.18);
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid transparent;
+    }
+    .postTag.input {
+      background-color: transparent;
+      cursor: pointer;
+      &:hover {
+        border-top: 15px solid rgb(182, 182, 252);
+        border-right: 15px solid rgb(182, 182, 252);
+        transition: 0.2s;
+      }
+    }
+    .top {
+      border-top: 15px solid rgb(182, 182, 252);
+      border-right: 15px solid rgb(182, 182, 252);
+    }
+
     .btns {
       font-size: small;
       display: flex;

@@ -25,10 +25,37 @@
 </div>
 <% if current_user == @user || current_user.same_group?(@user) %>
   <div class="wrapper card__contents flexBox">
-    <% @posts.each do |post| %>
+    <% @posts.each.with_index do |post, i| %>
       <div class="favorites card__block col-xs-12 col-md col-lg col-xl">
-        <div class="genre"><span><%= post.genre.name %></span></div>
-        <div class="text"><%= post.text %></div>
+        <div class="box">
+          <div class="innerBox">
+            <div class="genre"><span><%= post.genre.name %></span></div>
+            <div class="text"><%= post.text %></div>
+          </div>
+          <% if i < 3 %>
+            <% if current_user == @user %>
+              <%= form_with model: post, local: true do |f| %>
+                <%= f.hidden_field :text, value: post.text %>
+                <%= f.hidden_field :genre_id, value: post.genre_id %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :updated_at, value: Time.current %>
+                <%= f.submit "", class: "postTag top input" %>
+              <% end %>
+            <% else %>
+              <div class="postTag top"></div>
+            <% end %>
+          <% else %>
+            <% if current_user == @user %>
+              <%= form_with model: post, local: true do |f| %>
+                <%= f.hidden_field :text, value: post.text %>
+                <%= f.hidden_field :genre_id, value: post.genre_id %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :updated_at, value: Time.current %>
+                <%= f.submit "", class: "postTag input" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
         <% if @user.id == current_user.id %>
           <div class="btns">
             <%= link_to '編集', edit_post_path(post) %>
