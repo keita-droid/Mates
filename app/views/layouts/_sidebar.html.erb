@@ -1,8 +1,8 @@
   <div class="side-bar">
     <ul class="nav">
-      <li><%= link_to 'ダッシュボード', groups_path %></li>
-      <li><%= link_to 'マイアカウント', user_path(current_user) %></li>
-      <li><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to '投稿する', new_post_path %></li>
+      <li><%= link_to groups_path do %><%= fa_icon "home" %> ダッシュボード<% end %></li>
+      <li><%= link_to  user_path(current_user) do %><%= fa_icon "user-circle-o" %> マイアカウント<% end %></li>
+      <li><%= link_to destroy_user_session_path, method: :delete do %><%= fa_icon "sign-out" %> サインアウト<% end %></li>
+      <li><%= link_to new_post_path, class: "post" do %>投稿する<% end %></li>
     </ul>
   </div>

@@ -50,8 +50,3 @@ footer {
 .contents {
   display: flex;
 }
-
-.side-bar {
-  width: 15%;
-  background-color: #f6f6f4;
-}
