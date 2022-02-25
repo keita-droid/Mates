@@ -27,7 +27,7 @@
     .requested-group {
       margin: 10px 20px;
       font-size: 17px;
-      a {
+      .link {
         &:hover {
           border-bottom: 1px solid #000;
         }
@@ -36,10 +36,20 @@
         padding: 3px 10px;
         color: #16b;
         border: 1px solid #16b;
-        margin: 0 5px;
+        margin-left: 5px;
         font-size: small;
         border-radius: 10px;
         cursor: pointer;
+      }
+      .reject {
+        color: rgb(252, 96, 122);
+        border: 1.5px solid pink;
+      }
+      .admit {
+        display: inline;
+        input {
+          background-color: transparent;
+        }
       }
     }
   }
@@ -59,6 +69,15 @@
         color: gray;
         margin-left: 8px;
       }
+    }
+  }
+
+
+  .requests {
+    margin-left: 20px;
+    color: #16b;
+    &:hover {
+      border-bottom: 1px solid #16b;
     }
   }
 

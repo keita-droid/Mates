@@ -1,0 +1,31 @@
+<div class="group-header">
+  <div class="flex">
+    <div class="profile">
+      <h1 class="name"><%= @group.name %></h1>
+      <div class="description"><%= @group.description %></div>
+    </div>
+    <% if current_user.in_this_group?(@group) %>
+      <div class="edit">
+        <%= link_to 'グループ情報を編集', edit_group_path(@group) %><br/>
+      </div> 
+    <% end %>
+  </div>
+</div>
+<div class="groups">
+  <div class="title">参加リクエスト</div>
+  <ul>
+    <% @requests.each do |request| %>
+      <li class="requested-group">
+        <%= link_to user_path(request.user), class: "link" do %>
+          <%= fa_icon "user" %> <%= request.user.name %>
+        <% end %>
+        <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true, class: "admit" do |f| %>
+          <%= f.hidden_field :user_id, value: request.user_id %>
+          <%= f.hidden_field :group_id, value: request.group_id %>
+          <%= f.submit "承認", class: "delete" %>
+        <% end %>
+        <%= link_to '拒否', group_request_path(request.group.id, request.id), class: "delete reject", method: :delete, data: { confirm: '【確認】リクエストを拒否します' } %>
+      </li>
+    <% end %>
+  </ul>
+</div>

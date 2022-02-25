@@ -8,10 +8,12 @@ class UserGroupRelationsController < ApplicationController
   def create
     group = Group.find(create_params[:group_id])
     user = User.find(create_params[:user_id])
+    request = Request.find_by(create_params)
     if current_user.in_this_group?(group)
       group.users << user
-      redirect_to group_path(group)
+      request.destroy unless request.nil?
     end
+    redirect_to group_path(group)
   end
 
   private

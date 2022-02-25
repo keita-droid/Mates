@@ -1,4 +1,10 @@
 class RequestsController < ApplicationController
+
+  def index
+    @group = Group.find(params[:group_id])
+    @requests = @group.requests.includes(:user)
+  end
+
   def new
     @group = Group.find(params[:group_id])
     @request = Request.new

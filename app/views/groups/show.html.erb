@@ -6,7 +6,7 @@
     </div>
     <% if current_user.in_this_group?(@group) %>
       <div class="edit">
-        <%= link_to 'グループ情報を編集', edit_group_path(@group) %>
+        <%= link_to 'グループ情報を編集', edit_group_path(@group) %><br/>
       </div>
     <% elsif @group.public && !(current_user.requested?(@group)) %>
       <div class="edit">
@@ -17,6 +17,9 @@
     <% end %>
   </div>
 </div>
+<% if current_user.in_this_group?(@group) && @group.requests.exists? %>
+  <div><%= link_to '＼参加リクエストが届いています！／', group_requests_path(@group), class: "requests" %></div>
+<% end %>
 <div class="wrapper card__contents flexBox">
   <% if current_user.in_this_group?(@group) %>
     <% @members.each do |member| %>
