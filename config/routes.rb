@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :requests, only: %i[new create]
+    resources :requests, only: %i[new create destroy]
   end
   resources :users, only: %i[show edit update] do
     collection do

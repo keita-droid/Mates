@@ -23,6 +23,27 @@
     }
   }
 
+  .groups {
+    li {
+      margin: 10px 20px;
+      font-size: 17px;
+      a {
+        &:hover {
+          border-bottom: 1px solid #000;
+        }
+      }
+      .delete {
+        padding: 3px 10px;
+        color: #16b;
+        border: 1px solid #16b;
+        margin: 0 5px;
+        font-size: small;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
   
 
   .group-header {

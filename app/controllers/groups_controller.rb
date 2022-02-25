@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = current_user.groups
-    @requests = current_user.requested_groups
+    @requests = current_user.requests.includes(:group)
   end
 
   def show

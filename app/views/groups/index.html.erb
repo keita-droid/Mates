@@ -3,7 +3,7 @@
   <%= link_to 'グループをさがす',  search_groups_path, class: "button" %>
   <%= link_to '仲間を見つける',  search_users_path, class: "button" %>
 </div>
-<% if @groups %>
+<% if @groups.exists? %>
   <div class="groups">
     <div class="title">参加中のグループ</div>
   </div>
@@ -20,12 +20,15 @@
     <% end %>
   </div>
 <% end %>
-<% if @requests %>
+<% if @requests.exists? %>
   <div class="groups">
     <div class="title">リクエスト中のグループ</div>
     <ul>
-      <% @requests.each do |group| %>
-        <li><%= link_to group.name, group_path(group) %></li>
+      <% @requests.each do |request| %>
+        <li>
+          <%= link_to request.group.name, group_path(request.group) %>
+          <%= link_to '取消', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
+        </li>
       <% end %>
     </ul>
   </div>
