@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   has_one_attached :image
   has_many :user_group_relations, dependent: :destroy
+  has_many :requests, dependent: :destroy
   has_many :groups, through: :user_group_relations
   has_many :posts, dependent: :destroy
 
@@ -57,5 +58,14 @@ class User < ApplicationRecord
 
   def taken_posts
     self.posts.order("updated_at DESC").take(3)
+  end
+
+  def requested?(group)
+    request = self.requests.find_by(group_id: group.id)
+    unless request.nil?
+      return true
+    else
+      return false
+    end
   end
 end

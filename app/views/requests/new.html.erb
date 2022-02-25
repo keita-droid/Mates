@@ -1,0 +1,12 @@
+<div class="inputBox">
+  <h2>グループへの参加リクエスト</h2>
+  <%= form_with model: [@group, @request], local: true do |f| %>
+    <div class="field">
+      <%= f.label :group_id, "⚫︎ グループ名" %><br/>
+      <div class="name"><%= @group.name %></div>
+    </div>
+    <div class="actions">
+      <%= f.submit "送信" %>
+    </div>
+  <% end %>
+</div>
