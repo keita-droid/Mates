@@ -136,6 +136,51 @@ $breakpoint: (
       border-bottom: solid 1px #16b;
     }
   }
+
+  .new-post-card {
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.03);
+    margin: 25px 10px;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+
+    .box {
+      display: flex;
+      justify-content: space-between;
+      .flag {
+        height: 15px;
+        width: 15px;
+        // background-color: rgb(182, 182, 252);
+        border-top: 15px solid rgb(182, 182, 252);
+        border-right: 15px solid rgb(182, 182, 252);
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid transparent;
+      }
+    }
+    .post {
+      padding: 5px 10px;
+    }
+    .genre {
+      color: rgb(93, 93, 211);
+      border: 1px solid rgb(93, 93, 211);
+      border-radius: 10px;
+      padding: 0 8px;
+      margin: 2px;
+      font-size: 13px;
+    }
+    select {
+      border: none;
+      background-color: transparent;
+    }
+    .text {
+      font-size: 17px;
+      line-height: 22px;
+      padding: 5px 0 15px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      background-color: transparent;
+    }
+  }
 }
 
 .forSignIn {
