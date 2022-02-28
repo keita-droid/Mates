@@ -179,14 +179,14 @@
   box-shadow: 1px 1px 5px #666;
 }
 
-#form-box-edit {
+.form-box-edit {
   background-color: #fff;
   border: solid 1px rgba(0, 0, 0, 0.1);
   z-index: 200;
   position: fixed;
   top: 30%;
   left: 30%;
-  box-shadow: 1px 1px 1px #666;
+  box-shadow: 1px 1px 5px #666;
 }
 
 .hidden {
@@ -194,6 +194,15 @@
 }
 
 #transparent {
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+#transparent-edit {
   height: 100%;
   width: 100%;
   z-index: 100;

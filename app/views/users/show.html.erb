@@ -59,19 +59,17 @@
         </div>
         <% if @user.id == current_user.id %>
           <div class="btns">
-            <!-- button class="edit-btn" onClick="editPost(<%= i %>)" -->
-              <%# fa_icon "pencil-square-o" %>
-            <!--/button-->
-            <%= link_to edit_post_path(post) do %>
+            <button class="edit-btn" >
               <%= fa_icon "pencil-square-o" %>
-            <% end %>
-            <div id="form-box-edit-<%= i %>" class="hidden">
-              <%= render partial: "posts/form", locals: {post: post, genres: @genres} %>
-            </div>
+            </button>
             <%= link_to post_path(post), method: :delete, data: { confirm: '投稿を削除しますか？' } do %>
               <%= fa_icon "trash-o" %>
             <% end %>
           </div>
+          <div id="form-box-edit-<%= i %>" class="form-box-edit hidden">
+            <%= render partial: "posts/form", locals: {post: post, genres: @genres} %>
+          </div>
+          <div id="transparent-edit" class="hidden"></div>
         <% end %>
       </div>
     <% end %>

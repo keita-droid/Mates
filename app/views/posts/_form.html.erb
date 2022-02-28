@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="field post">
-        <%= f.text_area :text, size: "40x3,", placeholder: "例：お寿司を食べてる時間が一番幸せです！", class: "text", value: post.text %>
+        <%= f.text_area :text, size: "40x3,", value: post.text, placeholder: "例：お寿司を食べてる時間が一番幸せです！", class: "text-area" %>
       </div>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <div class="actions post">
