@@ -68,6 +68,11 @@
         <% end %>
       </div>
     <% end %>
+    <% if current_user == @user %>
+      <%= link_to new_post_path, class: "favorites plus card__block col-xs-12 col-md col-lg col-xl" do %>
+        <div class="new-post"><%= fa_icon "plus-square-o 3x" %><br/>好きなものを追加</div>
+      <% end %>
+    <% end %>
   </div>
 <% else %>
   <div class="invite">

@@ -156,6 +156,18 @@
         line-height: 20px;
         padding: 5px 0 15px;
       }
+      .new-post {
+        color: rgba(0, 0, 0, 0.3);
+        text-align: center;
+        margin: 15px 0;
+      }
+    }
+    .plus {
+      &:hover {
+        .new-post {
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
     }
 
     .more {
