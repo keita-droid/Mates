@@ -1,3 +1,4 @@
+<%# javascript_pack_tag 'users/show' %>
 <div class="user-header">
   <div class="flex">
     <div class="flex-left">
@@ -58,9 +59,15 @@
         </div>
         <% if @user.id == current_user.id %>
           <div class="btns">
+            <!-- button class="edit-btn" onClick="editPost(<%= i %>)" -->
+              <%# fa_icon "pencil-square-o" %>
+            <!--/button-->
             <%= link_to edit_post_path(post) do %>
               <%= fa_icon "pencil-square-o" %>
             <% end %>
+            <div id="form-box-edit-<%= i %>" class="hidden">
+              <%= render partial: "posts/form", locals: {post: post, genres: @genres} %>
+            </div>
             <%= link_to post_path(post), method: :delete, data: { confirm: '投稿を削除しますか？' } do %>
               <%= fa_icon "trash-o" %>
             <% end %>
@@ -69,9 +76,9 @@
       </div>
     <% end %>
     <% if current_user == @user %>
-      <%= link_to new_post_path, class: "favorites plus card__block col-xs-12 col-md col-lg col-xl" do %>
+      <button class="favorites plus card__block col-xs-12 col-md col-lg col-xl" id="new" >
         <div class="new-post"><%= fa_icon "plus-square-o 3x" %><br/>好きなものを追加</div>
-      <% end %>
+      </button>
     <% end %>
   </div>
 <% else %>
@@ -119,3 +126,9 @@
     <% end %>
   </ul>
 </div>
+<% if current_user == @user %>
+  <div id="form-box" class="hidden">
+    <%= render partial: "posts/form", locals: {post: @new_post, genres: @genres} %>
+  </div>
+  <div id="transparent" class="hidden"></div>
+<% end %>

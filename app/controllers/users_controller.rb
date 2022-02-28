@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order("updated_at DESC")
+    @new_post = Post.new
+    @genres = Genre.all
   end
 
   def edit

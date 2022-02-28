@@ -1,21 +1,17 @@
 <div class="inputBox">
-  <h2>わたしの好きなもの</h2>
+  <h2>投稿を編集</h2>
   <%= form_with model: @post, local: true do |f| %>
-    <div class="new-post-card">
-      <div class="box">
-        <div class="field post">
-          <%= f.label :genre_id, "ジャンル", class: "genre" %>
-          <%= f.collection_select :genre_id, @genres, :id, :name, selected: @post.genre_id %>
-        </div>
-        <div class="flag"></div>
-      </div>
-      <div class="field post">
-        <%= f.text_area :text, size: "40x3,", placeholder: "例：お寿司を食べてる時間が一番幸せです！", value: @post.text, class: "text" %>
-      </div>
+    <div class="field">
+      <%= f.label :genre_id, "ジャンル" %><br/>
+      <%= f.collection_select :genre_id, @genres, :id, :name, selected: @post.genre_id %>
+    </div>
+    <div class="field">
+      <%= f.label :text, "わたしの好きなもの" %><br/>
+      <%= f.text_area :text, size: "40x3,", placeholder: "例：お寿司を食べてる時間が一番幸せです！", value: @post.text %>
     </div>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="actions">
       <%= f.submit "変更を保存" %>
     </div>
   <% end %>
-</div>
+</div> 

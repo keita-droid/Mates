@@ -1,0 +1,19 @@
+<div class="inputBox">
+  <%= form_with model: post, local: true do |f| %>
+    <div class="new-post-card">
+      <div class="box">
+        <div class="field post">
+          <%= f.label :genre_id, "ジャンル", class: "genre" %>
+          <%= f.collection_select :genre_id, genres, :id, :name, value: post.genre_id %>
+        </div>
+      </div>
+      <div class="field post">
+        <%= f.text_area :text, size: "40x3,", placeholder: "例：お寿司を食べてる時間が一番幸せです！", class: "text", value: post.text %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <div class="actions post">
+        <%= f.submit "更新", class: "right-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
