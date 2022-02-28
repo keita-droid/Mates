@@ -94,20 +94,18 @@
   <ul>
     <% if current_user.id == @user.id %>
       <% unless @user.public_groups.empty? %>
-        <div class="filter">公開グループ</div>
         <% @user.public_groups.each do |group| %>
           <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
         <% end %>
       <% end %>
       <% unless @user.private_groups.empty? %>
-        <div class="filter">非公開グループ</div>
+        <div class="filter">非表示のグループ</div>
         <% @user.private_groups.each do |group| %>
           <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
         <% end %>
       <% end %>
     <% elsif current_user.same_group?(@user) %>
       <% unless @user.public_groups.empty? %>
-        <div class="filter">公開グループ</div>
         <% @user.public_groups.each do |group| %>
           <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
         <% end %>
@@ -118,7 +116,6 @@
       <% end %>
     <% else %>
       <% unless @user.public_groups.empty? %>
-        <div class="filter">公開グループ</div>
         <% @user.public_groups.each do |group| %>
           <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
         <% end %>
