@@ -37,15 +37,15 @@
             <div class="status"><%= member.status %></div>
           </div>
         </div>
-        <% member.taken_posts.each do |post| %>
-          <div class="favorites">
-            <% if post.genre.nil? %>
-              <div class="genre"><span>未分類</span></div>
-            <% else %>
+        <% member.taken_posts.each.with_index do |post, i| %>
+          <% if i < 3 %>
+            <div class="favorites">
               <div class="genre"><span><%= post.genre.name %></span></div>
-            <% end %>
-            <div class="text"><%= simple_format(post.text) %></div>
-          </div>
+              <div class="text"><%= simple_format(post.text) %></div>
+            </div>
+          <% else %>
+            <div class="more">And more...</div>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
