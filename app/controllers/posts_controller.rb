@@ -1,18 +1,9 @@
 class PostsController < ApplicationController
-  def new
-    @post = Post.new
-    @genres = Genre.all
-  end
 
   def create
     post = Post.new(post_params)
     post.save
     redirect_to user_path(current_user)
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-    @genres = Genre.all
   end
 
   def update
