@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :requested_groups, through: :requests, source: :group
   has_many :posts, dependent: :destroy
 
+  validates :name, presence: true
+
   def self.current
     Thread.current[:user]
   end
