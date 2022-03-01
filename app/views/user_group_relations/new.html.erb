@@ -3,7 +3,7 @@
   <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
     <div class="field">
       <%= f.label :group_id, "⚫︎ グループ" %><br/>
-      <%= f.collection_select :group_id, @groups, :id, :name, {prompt: "グループを選択してください"}, class: "select" %>
+      <%= f.collection_select :group_id, @groups, :id, :name, {prompt: "選択してください"}, class: "select" %>
     </div>
     <div class="field">
       <%= f.label :user_id, "⚫︎ 新メンバー" %><br/>
