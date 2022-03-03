@@ -6,12 +6,8 @@
       <%= f.file_field :image %>
     </div>
     <div class="field">
-      <%= f.label :name, "表示名" %><br/>
+      <%= f.label :name %><br/>
       <%= f.text_field :name, value: @user.name, size: 25 %>
-    </div>
-    <div class="field">
-      <%= f.label :account_name, "アカウントID" %><br/>
-      <%= f.text_field :account_name, value: @user.account_name, size: 25 %>
     </div>
     <div class="field">
       <%= f.label :status, "ステータス" %><br/>

@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     return User.order("updated_at DESC").limit(20) unless search
-    User.where('account_name LIKE(?)', "%#{search}%")
+    User.where('name LIKE(?)', "%#{search}%")
   end
 
   def in_this_group?(group)
