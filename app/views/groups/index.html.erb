@@ -1,25 +1,30 @@
-<div class="group-menu">
-  <%= link_to 'グループをつくる', new_group_path, class: "button" %>
-  <%= link_to 'グループをさがす',  search_groups_path, class: "button" %>
-  <%= link_to '仲間を見つける',  search_users_path, class: "button" %>
+<div class="groups">
+  <div class="title">クイックスタート</div>
+  <div class="group-menu">
+    <%= link_to 'グループをつくる', new_group_path, class: "button" %>
+    <%= link_to 'グループをさがす',  search_groups_path, class: "button" %>
+    <%= link_to '仲間を見つける',  search_users_path, class: "button" %>
+  </div>
 </div>
-<% if @groups.exists? %>
-  <div class="groups">
-    <div class="title">参加中のグループ</div>
-  </div>
-  <div class="wrapper card__contents flexBox">
-    <% @groups.each do |group| %>
-      <%= link_to group_path(group), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
-        <div class="member-header">
-          <div class="profile">
-            <div class="name"><%= group.name %></div>
-            <div class="status"><%= group.description %></div>
+<div class="groups">
+  <div class="title">参加中のグループ</div>
+  <% if @groups.exists? %>
+    <div class="wrapper card__contents flexBox">
+      <% @groups.each do |group| %>
+        <%= link_to group_path(group), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
+          <div class="member-header">
+            <div class="profile">
+              <div class="name"><%= group.name %></div>
+              <div class="status"><%= group.description %></div>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% else %>
+    <div><br/></div>
+  <% end %>
+</div>
 <% if @requests.exists? %>
   <div class="groups">
     <div class="title">リクエスト中のグループ</div>
