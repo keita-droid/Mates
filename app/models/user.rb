@@ -1,8 +1,9 @@
+require 'open-uri'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable, :omniauthable
   
   has_one_attached :image
   has_many :user_group_relations, dependent: :destroy
@@ -12,6 +13,18 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   validates :name, presence: true
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20] # ランダムなパスワードを作成
+      image_url = auth.info.image if user.provider == "facebook"
+      user.download_and_attach_avatar(image_url)
+    end
+  end
 
   def self.current
     Thread.current[:user]
@@ -70,5 +83,13 @@ class User < ApplicationRecord
     else
       return false
     end
+  end
+
+  def download_and_attach_avatar(image_url)
+    return unless image_url
+    file = open(image_url)
+    image.attach(io: file,
+                  filename: "profile_image.#{file.content_type_parse.first.split("/").last}",
+                  content_type: file.content_type_parse.first)  
   end
 end
