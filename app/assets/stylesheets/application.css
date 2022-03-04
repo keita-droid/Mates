@@ -40,11 +40,13 @@
 }
 
 footer {
-  height: 85px;
-  padding-top: 20px;
+  height: 75px;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   text-align: center;
-  line-height: 85px;
+  line-height: 75px;
+}
+.copyright {
+  color: rgba(128, 128, 128, 0.2);
 }
 
 .contents {

@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <header>Mates</header>
+    <header><%= link_to 'Mates', root_path %></header>
     <% if current_user %>
       <div class="contents">
         <%= render partial: 'layouts/sidebar' %>
@@ -25,6 +25,6 @@
         <%= yield %>
       </div>
     <% end %>
-    <footer></footer>
+    <footer><p class="copyright">&copy; 2022 keita inui </p></footer>
   </body>
 </html>
