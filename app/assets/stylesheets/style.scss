@@ -121,6 +121,35 @@ $breakpoint: (
       font-weight: normal;
       padding: 10px 20px;
     }
+    #info-btn {
+      border: none;
+      background-color: transparent;
+    }
+    .info {
+      color: lightgray;
+      font-weight: bold;
+      margin-left: 7px;
+    }
+    .info-text {
+      height: 0;
+      visibility: hidden;
+      span {
+        display: inline-block;
+        position: relative;
+        top: -10px;
+        left: 120px;
+        width: 200px;
+        color: #666;
+        font-size: 12px;
+        // border: 1px solid #666;
+        border-radius: 6px;
+        padding: 6px 3px;
+        background-color: #f6f6f4;
+      }
+    }
+    .info-text.reveal {
+      visibility: visible;
+    }
   }
   .actions {
     margin: 20px 0;

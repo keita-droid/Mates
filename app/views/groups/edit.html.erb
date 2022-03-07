@@ -10,7 +10,8 @@
       <%= f.text_area :description, size: "35x3,", value: @group.description %>
     </div>
     <div class="field">
-      <%= f.label :public, "グループ検索" %><br/>
+      <%= f.label :public, "グループ検索" %><button id="info-btn"><%= fa_icon "question-circle", class: "info" %></button><br/>
+      <div class="info-text" id="info-text"><span>表示にすると参加リクエストができるようになります。非表示の場合はメンバーによる招待制です。</span></div>
       <div class="radio">
         <%= f.radio_button :public, true %>表示
       </div>

@@ -1,5 +1,5 @@
 <div class="inputBox">
-  <h2>新規作成</h2>
+  <h2>グループをつくる</h2>
   <%= form_with model: @group, url:{ controller: 'groups', action: 'create'}, local: true do |f| %>
     <div class="field">
       <%= f.label :name, "グループ名（必須）" %><br/>
@@ -10,7 +10,8 @@
       <%= f.text_area :description, size: "25x3" %>
     </div>
     <div class="field">
-      <%= f.label :public, "グループ検索" %><br/>
+      <%= f.label :public, "グループ検索" %><button id="info-btn"><%= fa_icon "question-circle", class: "info" %></button><br/>
+      <div class="info-text" id="info-text"><span>表示にすると参加リクエストができるようになります。非表示の場合はメンバーによる招待制です。</span></div>
       <div class="radio">
         <%= f.radio_button :public, true %>表示
       </div>
