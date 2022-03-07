@@ -1,5 +1,16 @@
+<% if current_user.posts.empty? %>
+  <div class="groups">
+    <div class="title">スタートガイド</div>
+    <ul>
+      <li>
+          <div><%= link_to '自分の好きなものを追加しよう！', user_path(current_user), class: "requests" %></div>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
 <div class="groups">
-  <div class="title">クイックスタート</div>
+  <div class="title">グループメニュー</div>
   <div class="group-menu">
     <%= link_to 'グループをつくる', new_group_path, class: "button" %>
     <%= link_to 'グループをさがす',  search_groups_path, class: "button" %>
