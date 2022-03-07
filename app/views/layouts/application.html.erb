@@ -14,6 +14,9 @@
   </head>
 
   <body>
+    <% if notice || alert %>
+      <div class="notifications"><%= notice %><%= alert %></div>
+    <% end %>
     <header><%= link_to 'Mates', root_path %></header>
     <% if current_user %>
       <div class="contents">

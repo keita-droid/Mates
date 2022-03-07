@@ -1,3 +1,22 @@
+.notifications {
+  color: #fff;
+  background-color: rgb(126, 205, 231);
+  // background-color: rgba(0, 0, 0, 0.08);
+  padding: 3px 15px 3px 0;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  animation: fade-out 3s ease 2s forwards;
+  z-index: 100;
+}
+
+@keyframes fade-out {
+  0% {visibility: visible; opacity: 1;}
+  100% {visibility: hidden; opacity: 0;}
+}
+
 .side-bar {
   width: 15%;
   min-width: 185px;
