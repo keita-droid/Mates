@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("info-btn");
+  const button = document.getElementById("info");
   const text = document.getElementById("info-text");
 
   button.addEventListener("mouseover", () => {

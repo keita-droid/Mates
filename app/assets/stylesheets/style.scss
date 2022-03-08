@@ -121,10 +121,6 @@ $breakpoint: (
       font-weight: normal;
       padding: 10px 20px;
     }
-    #info-btn {
-      border: none;
-      background-color: transparent;
-    }
     .info {
       color: lightgray;
       font-weight: bold;
@@ -141,7 +137,6 @@ $breakpoint: (
         width: 200px;
         color: #666;
         font-size: 12px;
-        // border: 1px solid #666;
         border-radius: 6px;
         padding: 6px 3px;
         background-color: #f6f6f4;
