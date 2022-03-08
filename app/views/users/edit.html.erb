@@ -1,5 +1,5 @@
 <div class="inputBox">
-  <h2>プロフィール情報</h2>
+  <h2>アカウント情報</h2>
   <%= form_with model: @user, local: true do |f| %>
     <div class="field">
       <%= f.label :image, "プロフィール画像" %><br/>
@@ -21,4 +21,9 @@
       <%= f.submit "変更を保存" %>
     </div>
   <% end %>
+</div>
+<div class="unsubscribe">
+  <div class="actions">
+    <%= link_to 'アカウントの削除', unsubscribe_path(@user), class: "link-btn" %>
+  </div>
 </div>

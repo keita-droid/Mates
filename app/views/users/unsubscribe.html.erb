@@ -1,0 +1,13 @@
+<div class="unsubscribe">
+  <h2>退会お手続き</h2>
+  <p class="notice">
+    退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
+    （これまでに投稿した内容も全て削除されます。）<br/><br/>
+    再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
+    本当に退会してよろしいですか？
+  </p>
+  <div class="actions">
+    <%= link_to "退会する", user_path(current_user), method: :delete, class: "link-btn", data: { confirm: "本当に退会しますか？" } %>
+    <%= link_to "退会しない", user_path(current_user), class: "link-btn cancel" %>
+  </div>
+</div>

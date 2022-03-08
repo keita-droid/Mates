@@ -21,6 +21,16 @@ class UsersController < ApplicationController
     @users = User.search(params[:keyword])
   end
 
+  def unsubscribe
+  end
+
+  def destroy
+    reset_session
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to new_user_session_path, notice: "アカウントを削除しました。ご利用ありがとうございました！"
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :status, :description, :image)
