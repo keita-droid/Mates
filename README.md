@@ -3,13 +3,17 @@
 自分の「好きなもの」「興味のあるもの」についてシェアすることができます。<br>
 コロナ禍のリモートワーク等で雑談の機会が減ってきている中、話題作りのきっかけとして活用してもらえると嬉しいです。<br>
 
-<img alt="image" width="85%" src="./public/screenshots/screenshot01.png">
+![image](./public/screenshots/screenshot01.png)
 <br>
 
 # 使用技術
 * Ruby 2.6.5
 * Rails 6.0.4
 * MySQL 5.6
+<br>
+
+# DB設計
+![db](./public/screenshots/mates.png)
 <br>
 
 # 主な機能
