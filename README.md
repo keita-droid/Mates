@@ -1,24 +1,22 @@
-# README
+# Mates
+会社や部活、アルバイトなどのチームメンバー同士で簡単な自己紹介をするサービスです。<br>
+自分の「好きなもの」「興味のあるもの」についてシェアすることができます。<br>
+コロナ禍のリモートワーク等で雑談の機会が減ってきている中、話題作りのきっかけとして活用してもらえると嬉しいです。<br>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img alt="image" width="85%" src="./public/screenshots/screenshot01.png">
+<br>
 
-Things you may want to cover:
+# 使用技術
+* Ruby 2.6.5
+* Rails 6.0.4
+* MySQL 5.6
+<br>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 主な機能
+* ユーザー登録、ログイン機能（devise）
+  - Facebook認証を利用したログイン機能
+* グループの作成、編集機能
+* グループ／ユーザーの検索機能
+* グループへの参加リクエスト機能
+* グループへの別ユーザーの追加(招待)機能
+* 「好きなもの」の投稿、編集、削除機能
