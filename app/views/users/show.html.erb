@@ -12,7 +12,7 @@
       <div class="profile">
         <div class="name"><%= @user.name %></div>
         <div class="status"><%= @user.status %></div>
-        <% if @user.status.nil? && current_user == @user %>
+        <% if (@user.status.nil? || @user.status.empty?) && current_user == @user %>
           <div class="status">
             status（所属・役職など）
             <%= link_to edit_user_path(@user) do %><%= fa_icon "edit"%><% end %>
@@ -28,7 +28,7 @@
   </div>
   <div class="description">
     <%= simple_format(@user.description) %>
-    <% if @user.description.nil? && current_user == @user %>
+    <% if (@user.description.nil? || @user.description.empty?) && current_user == @user %>
       <div class="description">
         （ここは自由に自己紹介文を書くエリアです）
         <%= link_to edit_user_path(@user) do %><%= fa_icon "edit"%><% end %>
