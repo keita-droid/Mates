@@ -9,7 +9,7 @@
 # 使用技術
 * Ruby 2.6.5
 * Rails 6.0.4
-* MySQL 5.6
+* MySQL 5.7
 <br>
 
 # DB設計
