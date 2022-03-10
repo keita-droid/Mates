@@ -13,7 +13,7 @@
 <br>
 
 # DB設計
-![db](./public/screenshots/mates.png)
+![db](./public/screenshots/mates.jpeg)
 <br>
 
 # 主な機能
