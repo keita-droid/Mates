@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbolinks:load", () => {
   const button = document.getElementById("info");
   const text = document.getElementById("info-text");
 

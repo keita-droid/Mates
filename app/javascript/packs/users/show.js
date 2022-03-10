@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbolinks:load", () => {
   const button = document.getElementById("new");
   const box = document.getElementById("form-box");
   const veil = document.getElementById("transparent");
@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const editButtons = document.getElementsByClassName("edit-btn");
-  for(let i=0; i < editButtons.length; i++) {
-    editButtons[i].onclick = function(){
+  for (let i = 0; i < editButtons.length; i++) {
+    editButtons[i].onclick = function () {
       let editBox = document.getElementById(`form-box-edit-${i}`);
       const veil2 = document.getElementById("transparent-edit");
       editBox.classList.remove("hidden");
@@ -23,6 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         veil2.classList.add("hidden");
         editBox.classList.add("hidden");
       });
-    }
+    };
   }
 });

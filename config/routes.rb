@@ -18,10 +18,4 @@ Rails.application.routes.draw do
   resources :user_group_relations, only: %i[new create]
   resources :posts, only: %i[create update destroy]
 
-  # root to: 'site#index'
-  # namespace :api do
-  #   namespace :v1 do
-  #     resources :groups, only: %i[index show create]
-  #   end
-  # end
 end
