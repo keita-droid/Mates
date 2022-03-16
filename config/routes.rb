@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   resources :user_group_relations, only: %i[new create]
   resources :posts, only: %i[create update destroy]
 
+  namespace :helps do
+    # resource :about, only: %i[show]
+    # resource :terms, only: %i[show]
+    resource :policies, only: %i[show]
+  end
 end
