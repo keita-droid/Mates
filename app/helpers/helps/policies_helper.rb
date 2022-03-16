@@ -1,0 +1,2 @@
+module Helps::PoliciesHelper
+end

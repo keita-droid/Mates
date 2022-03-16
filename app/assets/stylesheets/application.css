@@ -43,10 +43,16 @@ footer {
   height: 75px;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   text-align: center;
-  line-height: 75px;
+  /* line-height: 75px; */
+}
+.footer-contents {
+  padding: 10px;
 }
 .copyright {
   color: rgba(128, 128, 128, 0.2);
+}
+.helps {
+  color: darkgray;
 }
 
 .contents {

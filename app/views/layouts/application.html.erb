@@ -25,9 +25,12 @@
       </div>
     <% else %>
       <div class="contents">
-        <%= yield %>
+        <div class="main-contents"><%= yield %></div>
       </div>
     <% end %>
-    <footer><p class="copyright">&copy; 2022 keita inui </p></footer>
+    <footer>
+      <p class="footer-contents"><%= link_to 'プライバシーポリシー', helps_policies_path, class: "helps" %></p>
+      <p class="footer-contents copyright">&copy; app-mates 2022</p>
+    </footer>
   </body>
 </html>
