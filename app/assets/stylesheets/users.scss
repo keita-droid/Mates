@@ -172,7 +172,7 @@
 
 #form-box {
   background-color: #fff;
-  border: solid 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   z-index: 200;
   position: fixed;
   top: 30%;
@@ -182,7 +182,7 @@
 
 .form-box-edit {
   background-color: #fff;
-  border: solid 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   z-index: 200;
   position: fixed;
   top: 30%;
@@ -201,7 +201,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 #transparent-edit {
   height: 100%;
@@ -210,7 +210,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .unsubscribe {
