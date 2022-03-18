@@ -1,5 +1,7 @@
 <div class="inputBox">
-  <h2>アカウント情報</h2>
+  <div class="groups">
+    <div class="title">アカウント情報</div>
+  </div>
   <%= form_with model: @user, local: true do |f| %>
     <div class="field">
       <%= f.label :image, "プロフィール画像" %><br/>
