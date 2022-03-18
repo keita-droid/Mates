@@ -172,7 +172,7 @@ $breakpoint: (
 .inputBox {
   
   h2 {
-    margin: 10px 0 25px;
+    margin: 10px 0;
     font-weight: bold;
   }
   .field {
@@ -330,8 +330,46 @@ $breakpoint: (
     }
   }
   .forSignIn {
-    padding: 40px 60px;
+    padding: 20px 60px;
     background-color: rgba(0, 0, 0, 0.05);
     width: 400px;
+    h2, label, input, a {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+    }
+    .field input {
+      padding: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+    .actions input{
+      background-color: #fff;
+      color: #16b;
+      font-weight: bold;
+      font-size: large;
+      border: 1px solid #16b;
+      &:hover {
+        background-color: #ddd;
+        transition: 0.4s;
+      }
+    }
+    .btn {
+      display: inline-block;
+      border: 1px solid #16b;
+      border-radius: 5px;
+      padding: 3px 13px;
+      margin: 5px 0;
+      &:hover {
+        background-color: #ddd;
+        transition: 0.4s;
+      }
+    }
+    .btn.facebook {
+      background-color: #16b;
+      color: #fff;
+      &:hover {
+        background-color: #555;
+      }
+    }
   }
 }
