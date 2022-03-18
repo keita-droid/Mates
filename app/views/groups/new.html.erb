@@ -3,7 +3,7 @@
   <%= form_with model: @group, url:{ controller: 'groups', action: 'create'}, local: true do |f| %>
     <div class="field">
       <%= f.label :name, "グループ名（必須）" %><br/>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, autofocus: true %>
     </div>
     <div class="field">
       <%= f.label :description, "概要説明（任意）" %><br/>
