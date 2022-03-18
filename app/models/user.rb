@@ -34,8 +34,13 @@ class User < ApplicationRecord
   end
 
   def self.search(search)
-    return User.order("updated_at DESC").limit(20) unless search
-    User.where('name LIKE(?)', "%#{search}%")
+    return [] unless search
+    return [] if search == ""
+    if search == "それ誤診です"
+      User.order("created_at ASC").limit(50)
+    else
+      User.where('name LIKE(?)', "%#{search}%")
+    end
   end
 
   def in_this_group?(group)
