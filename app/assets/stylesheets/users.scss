@@ -82,6 +82,9 @@
     .box {
       display: flex;
       justify-content: space-between;
+      .innerBox {
+        padding: 2px 5px;
+      }
     }
     .postTag {
       height: 15px;
@@ -170,6 +173,7 @@
   }
 }
 
+// 投稿フォーム
 #form-box {
   background-color: #fff;
   border-radius: 5px;
@@ -213,6 +217,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+// 退会処理
 .unsubscribe {
   .actions {
     margin-top: 30px;

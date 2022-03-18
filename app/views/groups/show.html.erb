@@ -39,7 +39,7 @@
         </div>
         <% member.taken_posts.each.with_index do |post, i| %>
           <% if i < 3 %>
-            <div class="favorites">
+            <div class="favorites group-fav">
               <div class="genre"><span><%= post.genre.name %></span></div>
               <div class="text"><%= simple_format(post.text) %></div>
             </div>
