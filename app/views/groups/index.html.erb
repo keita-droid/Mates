@@ -10,14 +10,6 @@
 <% end %>
 
 <div class="groups">
-  <div class="title">グループメニュー</div>
-  <div class="group-menu">
-    <%= link_to 'グループをつくる', new_group_path, class: "button" %>
-    <%= link_to 'グループをさがす',  search_groups_path, class: "button" %>
-    <%= link_to '仲間を見つける',  search_users_path, class: "button" %>
-  </div>
-</div>
-<div class="groups">
   <div class="title">参加中のグループ</div>
   <% if @groups.exists? %>
     <div class="wrapper card__contents flexBox">

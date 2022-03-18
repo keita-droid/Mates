@@ -71,15 +71,39 @@ footer {
     margin-top: 40px;
     margin-left: 5px;
     li {
-      margin: 30px 0 25px 5px;
       a {
         padding: 10px 20px;
         &:hover {
           background-color: rgba(0, 0, 0, 0.05);
           border-radius: 25px;
-          transition: 0.2s;
+          transition: 0.3s;
         }
       }
+    }
+  }
+  .nav.main {
+    li {
+      margin: 30px 0 25px 5px;
+    }
+  }
+  .nav.sub {
+    margin: 0 0 40px 5px;
+    li {
+      padding: 10px 0 10px 5px;
+      font-size: 14px;
+    }
+  }
+  .group-menu {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    font-size: small;
+    color: #666;
+    hr {
+      width: 85%;
+      margin: 0 auto;
     }
   }
 }
