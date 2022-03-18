@@ -1,3 +1,48 @@
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Sawarabi Gothic", sans-serif;
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ a {
+   text-decoration: none;
+   color: #000;
+ }
+
+ header {
+  font-size: 20px;
+  padding-left: 15px;
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+footer {
+  height: 75px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  text-align: center;
+  /* line-height: 75px; */
+}
+.footer-contents {
+  padding: 10px;
+}
+.copyright {
+  color: rgba(128, 128, 128, 0.2);
+}
+.helps {
+  color: darkgray;
+}
+
+.contents {
+  display: flex;
+}
+
+
 .notifications {
   color: #fff;
   background-color: rgb(126, 205, 231);
