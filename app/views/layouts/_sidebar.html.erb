@@ -2,12 +2,12 @@
     <ul class="nav main">
       <li><%= link_to groups_path do %><%= fa_icon "users" %> マイグループ<% end %></li>
       <li><%= link_to  user_path(current_user) do %><%= fa_icon "user-circle-o" %> マイアカウント<% end %></li>
-      <li><%= link_to destroy_user_session_path, method: :delete do %><%= fa_icon "sign-out" %> サインアウト<% end %></li>
     </ul>
     <div class="group-menu"><hr></div>
     <ul class="nav sub">
       <li><%= link_to new_group_path do %><%= fa_icon "handshake-o" %> グループをつくる<% end %></li>
       <li><%= link_to search_groups_path do %><%= fa_icon "search" %> グループをさがす<% end %></li>
       <li><%= link_to search_users_path do %><%= fa_icon "search" %> 仲間を見つける<% end %></li>
+      <li><%= link_to destroy_user_session_path, method: :delete do %><%= fa_icon "sign-out" %> サインアウト<% end %></li>
     </ul>
   </div>
