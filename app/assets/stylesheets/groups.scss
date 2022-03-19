@@ -51,7 +51,6 @@
       }
       .description {
         color: gray;
-        margin-left: 8px;
       }
     }
   }
@@ -118,6 +117,26 @@
     }
     .search {
       min-height: 50px;
+      box-shadow: 0 0 7px #aaa;
+      border: none;
+      &:hover {
+        border: none;
+        box-shadow: 0 0 7px #aaa;
+      }
+    }
+    .group-index {
+      // padding: 0;
+      .profile {
+        width: 100%;
+        .name {
+          font-size: 1.2em;
+          padding: 3px 5px;
+        }
+        .status {
+          padding: 2px 5px;
+          font-size: 0.8em;
+        }
+      }
     }
     
     .favorites.group-fav {
