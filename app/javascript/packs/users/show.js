@@ -25,4 +25,20 @@ document.addEventListener("turbolinks:load", () => {
       });
     };
   }
+
+  const editGroupsBtn =document.getElementById('edit-groups');
+  const withdrawBtns = document.getElementsByClassName("withdraw-btn");
+  editGroupsBtn.addEventListener('click', () => {
+    if(withdrawBtns[0].classList.contains("reveal")) {
+      for (let i=0; i< withdrawBtns.length; i++) {
+        withdrawBtns[i].classList.remove("reveal");
+      }
+      editGroupsBtn.innerHTML = "[編集]"
+    } else {
+      for (let i = 0; i < withdrawBtns.length; i++) {
+        withdrawBtns[i].classList.add("reveal");
+      }
+      editGroupsBtn.innerHTML = "[完了]"
+    }
+  });
 });

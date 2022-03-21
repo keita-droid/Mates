@@ -163,16 +163,56 @@
     font-size: 20px;
   }
   li {
-    margin: 15px 0;
+    margin: 15px 30px;
+    list-style: circle;
     .group-link {
-      padding: 5px;
-      background-color: rgba(97, 219, 199, 0.7);
-      border-radius: 3px;
+      margin: 0 5px;
+      &:hover {
+        border-bottom: 1px solid #000;
+      }
+    }
+    .withdraw-btn {
+      visibility: hidden;
+      background-color: #f06060;
+      color: #fff;
+      border-radius: 5px;
+      font-size: small;
+      font-weight: bold;
+      padding: 3px 8px;
+      &:hover {
+        background-color: #fa3932;
+        transition: 0.4s;
+      }
+    }
+    .withdraw-btn.reveal {
+      visibility: visible;
+      animation-name: fadeIn;
+      animation-duration:.2s;
+      animation-fill-mode:forwards;
+      opacity:0;
+    }
+    @keyframes fadeIn{
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   }
   .filter {
     font-size: small;
     color: #666;
+    margin-top: 30px;
+  }
+
+  #edit-groups {
+    font-size: small;
+    color: #454245;
+    padding: 2px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
