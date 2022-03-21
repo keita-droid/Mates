@@ -7,8 +7,12 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
-    @members = @group.users.includes(posts: :genre)
+    @group = Group.find_by(id: params[:id])
+    if @group.nil?
+      redirect_to root_path, notice: "存在しないグループです"
+    else
+      @members = @group.users.includes(posts: :genre)
+    end
   end
 
   def new
@@ -35,8 +39,18 @@ class GroupsController < ApplicationController
     redirect_to group_path(group)
   end
 
+  def destroy
+    group = Group.find(params[:id])
+    group.destroy if current_user.in_this_group?(group)
+    redirect_to root_path, notice: "グループを削除しました"
+  end
+
   def search
     @groups = Group.search(params[:keyword])
+  end
+
+  def delete
+    @group = Group.find(params[:id])
   end
 
   private
