@@ -5,11 +5,11 @@
   <%= form_with model: @group, local: true do |f| %>
     <div class="field">
       <%= f.label :name, "グループ名" %><br/>
-      <%= f.text_field :name, value: @group.name, size: 35 %>
+      <%= f.text_field :name, value: @group.name, size: 35, class: "group-input" %>
     </div>
     <div class="field">
       <%= f.label :description, "概要説明" %><br/>
-      <%= f.text_area :description, size: "35x3,", value: @group.description %>
+      <%= f.text_area :description, size: "35x3,", value: @group.description, class: "group-input" %>
     </div>
     <div class="field">
       <%= f.label :public, "グループ検索" %><%= fa_icon "question-circle", class: "info", id: "info" %><br/>

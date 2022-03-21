@@ -177,7 +177,15 @@ $breakpoint: (
   }
   .field {
     font-weight: bold;
-    margin: 10px 0;
+    margin: 10px 0 20px;
+    
+    .group-input {
+      padding: 8px;
+      font-size: 16px;
+      background-color: #f6f6f6;
+      border: none;
+      border-radius: 5px;
+    }
 
     .radio {
       margin-bottom: 5px;
