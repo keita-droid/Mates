@@ -78,10 +78,10 @@
               <%= fa_icon "trash-o" %>
             <% end %>
           </div>
-          <div id="form-box-edit-<%= i %>" class="form-box-edit hidden">
+          <div id="form-box-edit-<%= i %>" class="form-box-edit">
             <%= render partial: "posts/form", locals: {post: post, genres: @genres} %>
           </div>
-          <div id="transparent-edit" class="hidden"></div>
+          <div id="transparent-edit"></div>
         <% end %>
       </div>
     <% end %>
@@ -144,8 +144,8 @@
   </ul>
 </div>
 <% if current_user == @user %>
-  <div id="form-box" class="hidden">
+  <div id="form-box">
     <%= render partial: "posts/form", locals: {post: @new_post, genres: @genres} %>
   </div>
-  <div id="transparent" class="hidden"></div>
+  <div id="transparent"></div>
 <% end %>

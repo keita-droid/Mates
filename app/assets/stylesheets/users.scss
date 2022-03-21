@@ -191,21 +191,13 @@
       animation-fill-mode:forwards;
       opacity:0;
     }
-    @keyframes fadeIn{
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
   }
   .filter {
     font-size: small;
     color: #666;
     margin-top: 30px;
   }
-
+  
   #edit-groups {
     font-size: small;
     color: #454245;
@@ -216,8 +208,18 @@
   }
 }
 
+@keyframes fadeIn{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 // 投稿フォーム
 #form-box {
+  visibility: hidden;
   background-color: #fff;
   border-radius: 5px;
   z-index: 200;
@@ -225,9 +227,18 @@
   top: 30%;
   left: 30%;
   box-shadow: 1px 1px 5px #666;
+}
+
+#form-box.reveal, .form-box-edit.reveal {
+  visibility: visible;
+  animation-name: fadeIn;
+  animation-duration:.4s;
+  animation-fill-mode:forwards;
+  opacity:0;
 }
 
 .form-box-edit {
+  visibility: hidden;
   background-color: #fff;
   border-radius: 5px;
   z-index: 200;
@@ -237,11 +248,8 @@
   box-shadow: 1px 1px 5px #666;
 }
 
-.hidden {
-  display: none;
-}
-
 #transparent {
+  visibility: hidden;
   height: 100%;
   width: 100%;
   z-index: 100;
@@ -250,7 +258,16 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.3);
 }
+#transparent.reveal, #transparent-edit.reveal {
+  visibility: visible;
+  animation-name: fadeIn;
+  animation-duration:.4s;
+  animation-fill-mode:forwards;
+  opacity:0;
+}
+
 #transparent-edit {
+  visibility: hidden;
   height: 100%;
   width: 100%;
   z-index: 100;

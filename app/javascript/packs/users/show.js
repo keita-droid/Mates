@@ -3,12 +3,12 @@ document.addEventListener("turbolinks:load", () => {
   const box = document.getElementById("form-box");
   const veil = document.getElementById("transparent");
   button.addEventListener("click", () => {
-    box.classList.remove("hidden");
-    veil.classList.remove("hidden");
+    box.classList.add("reveal");
+    veil.classList.add("reveal");
   });
   veil.addEventListener("click", () => {
-    box.classList.add("hidden");
-    veil.classList.add("hidden");
+    box.classList.remove("reveal");
+    veil.classList.remove("reveal");
   });
 
   const editButtons = document.getElementsByClassName("edit-btn");
@@ -16,12 +16,12 @@ document.addEventListener("turbolinks:load", () => {
     editButtons[i].onclick = function () {
       let editBox = document.getElementById(`form-box-edit-${i}`);
       const veil2 = document.getElementById("transparent-edit");
-      editBox.classList.remove("hidden");
-      veil2.classList.remove("hidden");
+      editBox.classList.add("reveal");
+      veil2.classList.add("reveal");
 
       veil2.addEventListener("click", () => {
-        veil2.classList.add("hidden");
-        editBox.classList.add("hidden");
+        veil2.classList.remove("reveal");
+        editBox.classList.remove("reveal");
       });
     };
   }
