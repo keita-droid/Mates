@@ -22,7 +22,12 @@ class UserGroupRelationsController < ApplicationController
 
   def destroy
     record = UserGroupRelation.find(params[:id])
-    record.destroy if current_user.id == record.user_id
+    group = record.group
+    if group.users.length == 1
+      group.destroy
+    else
+      record.destroy if current_user.id == record.user_id
+    end
     redirect_to user_path(current_user), notice: "#{record.group.name}を脱退しました"
   end
 
