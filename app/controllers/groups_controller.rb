@@ -10,6 +10,8 @@ class GroupsController < ApplicationController
     @group = Group.find_by(id: params[:id])
     if @group.nil?
       redirect_to root_path, notice: "存在しないグループです"
+    elsif @group.users.empty?
+      redirect_to root_path, notice: "表示できないグループです"
     else
       @members = @group.users.includes(posts: :genre)
     end

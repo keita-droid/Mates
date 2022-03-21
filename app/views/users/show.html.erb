@@ -105,13 +105,19 @@
     <% if current_user.id == @user.id %>
       <% unless @user.public_groups.empty? %>
         <% @user.public_groups.each do |group| %>
-          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+          <li>
+            <%= link_to group.name, group_path(group), class: "group-link" %>
+            <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, data: { confirm: "確認：#{group.name}から脱退します" }  %>
+          </li>
         <% end %>
       <% end %>
       <% unless @user.private_groups.empty? %>
         <div class="filter">非表示のグループ</div>
         <% @user.private_groups.each do |group| %>
-          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+          <li>
+            <%= link_to group.name, group_path(group), class: "group-link" %>
+            <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, data: { confirm: "確認：#{group.name}から脱退します" }  %>
+          </li>
         <% end %>
       <% end %>
     <% elsif current_user.same_group?(@user) %>

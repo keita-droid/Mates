@@ -12,6 +12,10 @@ class Group < ApplicationRecord
     Group.where('public = true AND name LIKE(?)', "%#{search}%")
   end
 
+  def relation(user)
+    UserGroupRelation.find_by(group_id: self.id, user_id: user.id)
+  end
+
   private
   def create_user_group_relation
     self.users << User.current

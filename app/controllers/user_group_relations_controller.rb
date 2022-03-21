@@ -20,6 +20,12 @@ class UserGroupRelationsController < ApplicationController
     end
   end
 
+  def destroy
+    record = UserGroupRelation.find(params[:id])
+    record.destroy if current_user.id == record.user_id
+    redirect_to user_path(current_user), notice: "#{record.group.name}を脱退しました"
+  end
+
   private
   def create_params
     params.permit(:group_id, :user_id)

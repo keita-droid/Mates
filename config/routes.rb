@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
     resources :requests, only: %i[new create destroy index]
   end
-  
+
   resources :users, only: %i[show edit update destroy] do
     collection do
       get 'search'
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   get '/users/:id/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
 
-  resources :user_group_relations, only: %i[new create]
+  resources :user_group_relations, only: %i[new create destroy]
   resources :posts, only: %i[create update destroy]
 
   namespace :helps do
