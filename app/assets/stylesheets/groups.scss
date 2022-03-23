@@ -9,7 +9,7 @@
 
   .groups {
     .requested-group {
-      margin: 10px 20px;
+      margin: 10px 30px;
       font-size: 17px;
       .link {
         &:hover {
@@ -24,10 +24,19 @@
         font-size: small;
         border-radius: 10px;
         cursor: pointer;
+        &:hover {
+          background-color: #16b;
+          color: #fff;
+          transition: 0.3s;
+        }
       }
       .reject {
         color: rgb(252, 96, 122);
         border: 1.5px solid pink;
+        &:hover {
+          background-color: rgb(252, 96, 122);
+          color: #fff;
+        }
       }
       .admit {
         display: inline;

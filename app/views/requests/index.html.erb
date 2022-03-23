@@ -6,7 +6,7 @@
     </div>
     <% if current_user.in_this_group?(@group) %>
       <div class="edit">
-        <%= link_to 'グループ情報を編集', edit_group_path(@group) %><br/>
+        <%= link_to 'グループ情報', edit_group_path(@group) %><br/>
       </div> 
     <% end %>
   </div>

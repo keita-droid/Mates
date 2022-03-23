@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
   def destroy
     request = Request.find(params[:id])
     request.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "参加リクエストを取り消しました"
   end
 
 

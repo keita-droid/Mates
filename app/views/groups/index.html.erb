@@ -35,7 +35,7 @@
       <% @requests.each do |request| %>
         <li class="requested-group">
           <%= link_to request.group.name, group_path(request.group), class: "link" %>
-          <%= link_to '取消', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
+          <%= link_to '取り消し', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
         </li>
       <% end %>
     </ul>

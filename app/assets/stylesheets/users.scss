@@ -314,10 +314,19 @@
       font-weight: bold;
       font-size: 14px;
       margin-right: 15px;
+      &:hover {
+        background-color: red;
+        color: #fff;
+        transition: 0.3s;
+      }
     }
     .link-btn.cancel {
       color: #666;
       border: 1px solid #666;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+        color: #454245;
+      }
     }
   }
   .notice {
