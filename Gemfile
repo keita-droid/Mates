@@ -67,3 +67,4 @@ gem 'omniauth-rails_csrf_protection'
 gem 'i18n'
 gem 'mini_magick'
 gem 'font-awesome-rails'
+gem 'aws-sdk-s3', require: false
