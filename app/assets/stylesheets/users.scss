@@ -137,13 +137,19 @@
 }
 
 .invite {
+  margin: 20px;
   .invite-btn {
     padding: 10px;
     margin: 10px 0;
-    border: none;
-
+    background-color: transparent;
+    color: #454245;
+    border: 1px solid #666;
+    border-radius: 5px;
+    box-shadow: 0 0 1px #666;
     &:hover {
-      background-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 3px #666;
+      background-color: rgba(128, 128, 128, 0.1);
+      border: 1px solid gray;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -152,10 +158,9 @@
 
 .groups {
   margin: 10px 0 30px;
-
+  
   .title {
     font-size: 17px;
-    // padding: 20px 0 0;
     margin-bottom: 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
@@ -190,6 +195,24 @@
       animation-duration:.2s;
       animation-fill-mode:forwards;
       opacity:0;
+    }
+  }
+  .invite-other {
+    margin: 25px 0;
+    .invite-other-btn {
+      padding: 3px 6px;
+      background-color: transparent;
+      color: #454245;
+      border: 1px solid #666;
+      border-radius: 5px;
+      box-shadow: 0 0 1px #666;
+      &:hover {
+        box-shadow: 0 0 3px #666;
+        background-color: rgba(128, 128, 128, 0.1);
+        border: 1px solid gray;
+        cursor: pointer;
+        transition: 0.3s;
+      }
     }
   }
   .filter {

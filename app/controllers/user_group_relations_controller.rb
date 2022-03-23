@@ -2,7 +2,7 @@ class UserGroupRelationsController < ApplicationController
 
   def new
     @user = User.find(params[:id])
-    @groups = current_user.groups
+    @groups = current_user.groups - @user.groups
   end
 
   def create
