@@ -53,9 +53,7 @@ class User < ApplicationRecord
   end
 
   def same_group?(user)
-    group_ids1 = self.groups.map{|g| g.id}
-    group_ids2 = user.groups.map{|g| g.id}
-    unless (group_ids1 & group_ids2).empty?
+    unless (self.groups & user.groups).empty?
       return true
     else
       return false
@@ -63,10 +61,7 @@ class User < ApplicationRecord
   end
   
   def same_groups(user)
-    group_ids1 = self.groups.map{|g| g.id}
-    group_ids2 = user.groups.map{|g| g.id}
-    ids = group_ids1 & group_ids2
-    Group.where(id: ids)
+    self.groups & user.groups
   end
 
   def public_groups
