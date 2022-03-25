@@ -36,3 +36,7 @@
     <% end %>
   <% end %>
 <% end %>
+
+<%- if controller_name == 'sessions' %>
+  <%= link_to 'ゲストユーザーでログイン', guest_user_path, method: "post", class: "btn guest" %>
+<% end %>

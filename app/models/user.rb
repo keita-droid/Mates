@@ -33,6 +33,14 @@ class User < ApplicationRecord
     Thread.current[:user] = user
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = 'ゲストユーザー'
+      user.status = '体験版'
+    end
+  end
+
   def self.search(search)
     return [] unless search
     return [] if search == ""
