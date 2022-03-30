@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.update(user_params) if user.id == current_user.id
 
-    redirect_to user_path(user)
+    redirect_to user_path(user), notice: "アカウント情報を変更しました"
   end
 
   def search

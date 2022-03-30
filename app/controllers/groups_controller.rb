@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     group.update(group_params) if current_user.in_this_group?(group)
 
-    redirect_to group_path(group)
+    redirect_to group_path(group), notice: "グループ情報を変更しました"
   end
 
   def destroy
