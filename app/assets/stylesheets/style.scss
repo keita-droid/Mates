@@ -36,7 +36,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  h1 a {
+  .logo {
+    margin: 0;
     font-size: 3.6rem;
     text-shadow: 1px 1px 5px #666;
   }
@@ -45,10 +46,11 @@
     li {
       margin-left: 25px;
       text-align: center;
-      font-size: 1.2rem;
+      // font-size: 1.2rem;
       i {
         display: block;
-        font-size: 2.2rem;
+        font-size: 2.6rem;
+        line-height: 1.2;
       }
     }
   }
@@ -68,5 +70,11 @@
   background-color: lightslategray;
   text-align: center;
   padding: 20px;
+  .footer-contents {
+    font-size: 1.6rem;
+  }
+  .copyright {
+    margin-top: 35px;
+  }
  }
 
