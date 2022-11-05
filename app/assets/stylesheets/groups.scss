@@ -8,6 +8,7 @@
 
 .group-contents {
   display: flex;
+  align-items: flex-start;
   padding: 40px 0;
 
   .members {
@@ -90,11 +91,20 @@
     }
   }
 
+  // メンバーリストのサイドバー
   .member-list {
     flex-basis: 15%;
     font-size: 1.4rem;
-    padding-left: 15px;
+    padding: 20px 15px;
+    margin-left: 10px;
+    background-color: #eee;
 
+    p {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 0;
+      margin-bottom: 5px;
+    }
     li {
       padding: 5px 0;
     }
