@@ -97,6 +97,10 @@
     padding: 20px 15px;
     margin-left: 10px;
     background-color: #eee;
+    position: sticky;
+    top: 100px;
+    max-width: 460px;
+    overflow: scroll;
 
     p {
       font-size: 1.6rem;
