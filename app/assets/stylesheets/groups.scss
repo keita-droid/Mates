@@ -12,17 +12,16 @@
   padding: 40px 0;
 
   .members {
-    flex-basis: 85%;
+    flex-basis: 80%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 280px);
-    column-gap: 20px;
-    row-gap: 30px;
+    grid-template-columns: repeat(auto-fit, 320px);
+    column-gap: 30px;
+    row-gap: 40px;
     justify-content: center;
 
     .member-card {
       display: block;
       background-color: #ffddbc;
-      box-shadow: 1px 1px 5px #666;
       padding: 10px;
       font-size: 1.6rem;
       min-height: 460px;
@@ -84,7 +83,7 @@
       }
 
       &:hover {
-        box-shadow: 0 0 3px darkslategray;
+        box-shadow: 1px 1px 5px #666;
         transition: 0.3s;
         transform: scale(1.05, 1.05)
       }
@@ -93,7 +92,7 @@
 
   // メンバーリストのサイドバー
   .member-list {
-    flex-basis: 15%;
+    flex-basis: 20%;
     font-size: 1.4rem;
     padding: 20px 15px;
     margin-left: 10px;
