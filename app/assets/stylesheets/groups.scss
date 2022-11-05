@@ -2,3 +2,92 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+/* --------------------------------
+ * groups#show
+ * -------------------------------- */
+
+.group-contents {
+  display: flex;
+
+  .members {
+    flex-basis: 85%;
+    background-color: #aaa;
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px);
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-content: center;
+
+    .member-card {
+      display: block;
+      background-color: #fff;
+      border: 1px solid #333;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 1.6rem;
+
+      .member-info {
+        background-color: #eee;
+        display: flex;
+        
+        .member-image div {
+          width: 50px;
+          height: 50px;
+          background-size: cover;
+          border: 1px solid #333;
+          border-radius: 50%;
+          margin: 5px;
+        }
+        .member-image .no-image {
+          background-image: url("default_icon.png");
+        }
+
+        .member-profile {
+          margin-left: 10px;
+          .name {
+            font-size: 1.8rem;
+          }
+          .status {
+            color: #666;
+          }
+        }
+      }
+
+      .favorite {
+        padding: 10px 0 15px;
+
+        .genre {
+          color: #fff;
+          margin: 8px 0;
+          font-size: 1.2rem;
+          span {
+            background-color: rgba(0,0,0,0.8);
+            padding: 3px 8px;
+          }
+        }
+
+        .text {
+          font-size: 1.8rem;
+          line-height: 2;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .member-list {
+    flex-basis: 15%;
+    font-size: 1.4rem;
+    padding-left: 15px;
+
+    li {
+      padding: 5px 0;
+    }
+    li::before {
+      content: '▶';
+      padding-right: 3px;
+      font-size: 1.4rem;
+    }
+  }
+}

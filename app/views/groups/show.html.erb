@@ -21,36 +21,49 @@
 <% if current_user.in_this_group?(@group) && @group.requests.exists? %>
   <div><%= link_to '＼参加リクエストが届いています！／', group_requests_path(@group), class: "requests" %></div>
 <% end %>
-<div class="wrapper card__contents flexBox">
-  <% if current_user.in_this_group?(@group) %>
-    <% @members.each do |member| %>
-      <%= link_to user_path(member), class: "member-card card__block col-xs-12 col-md col-lg col-xl" do %>
-        <div class="member-header">
-          <div class="image">
-            <% if member.image.attached? %>
-              <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
-            <% else %>
-              <div class="no-image"></div>
-            <% end %>
-          </div>
-          <div class="profile">
-            <div class="name"><%= member.name %></div>
-            <div class="status"><%= member.status %></div>
-          </div>
-        </div>
-        <% member.taken_posts.each.with_index do |post, i| %>
-          <% if i < 3 %>
-            <div class="favorites group-fav">
-              <div class="genre"><span><%= post.genre.name %></span></div>
-              <div class="text"><%= simple_format(post.text) %></div>
+<!-- members -->
+<% if current_user.in_this_group?(@group) %>
+  <div class="group-contents">
+    <div class="members">
+      <% @members.each do |member| %>
+        <%= link_to user_path(member), class: "member-card" do %>
+          <div class="member-info">
+            <div class="member-image">
+              <% if member.image.attached? %>
+                <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
+              <% else %>
+                <div class="no-image"></div>
+              <% end %>
             </div>
-          <% else %>
-            <div class="more">And more...</div>
+            <div class="member-profile">
+              <div class="name"><%= member.name %></div>
+              <div class="status"><%= member.status %></div>
+            </div>
+          </div>
+          <% member.taken_posts.each.with_index do |post, i| %>
+            <% if i < 3 %>
+              <div class="favorite">
+                <div class="genre"><span><%= post.genre.name %></span></div>
+                <div class="text"><%= simple_format(post.text) %></div>
+              </div>
+            <% else %>
+              <div class="more">And more...</div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  <% elsif @group.public %>
+    </div>
+    <div class="member-list">
+      <p>メンバーリスト</p>
+      <ul>
+        <% @members.each do |member| %>
+        <li><%= member.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% elsif @group.public %>
+  <div class="members">
     <% @members.each do |member| %>
       <%= link_to user_path(member), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
         <div class="member-header">
@@ -68,7 +81,10 @@
         </div>
       <% end %>
     <% end %>
-  <% else %>
+  </div>
+<% else %>
+  <div class="members">
     ※グループメンバーのみ閲覧できます※
-  <% end %>
-</div>
+  </div>
+<% end %>
+<!-- members End -->
