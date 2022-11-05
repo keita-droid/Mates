@@ -8,36 +8,36 @@
 
 .group-contents {
   display: flex;
+  padding: 40px 0;
 
   .members {
     flex-basis: 85%;
-    background-color: #aaa;
-    padding: 20px 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, 280px);
     column-gap: 20px;
-    row-gap: 20px;
+    row-gap: 30px;
     justify-content: center;
 
     .member-card {
       display: block;
-      background-color: #fff;
-      border: 1px solid #333;
-      border-radius: 5px;
+      background-color: #ffddbc;
+      box-shadow: 1px 1px 5px #666;
       padding: 10px;
       font-size: 1.6rem;
 
       .member-info {
-        background-color: #eee;
         display: flex;
+        margin: 5px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #666;
         
         .member-image div {
           width: 50px;
           height: 50px;
           background-size: cover;
-          border: 1px solid #333;
+          border: 1px solid #888;
           border-radius: 50%;
-          margin: 5px;
+          margin: 0 5px;
         }
         .member-image .no-image {
           background-image: url("default_icon.png");
@@ -50,6 +50,7 @@
           }
           .status {
             color: #666;
+            font-size: 1.2rem;
           }
         }
       }
@@ -60,7 +61,7 @@
         .genre {
           color: #fff;
           margin: 8px 0;
-          font-size: 1.2rem;
+          font-size: 1rem;
           span {
             background-color: rgba(0,0,0,0.8);
             padding: 3px 8px;
@@ -68,10 +69,22 @@
         }
 
         .text {
-          font-size: 1.8rem;
+          font-weight: lighter;
           line-height: 2;
-          margin-left: 5px;
         }
+      }
+
+      .more {
+        color: #666;
+        font-size: 1.2rem;
+        letter-spacing: 0;
+        text-align: right;
+      }
+
+      &:hover {
+        box-shadow: 0 0 3px darkslategray;
+        transition: 0.3s;
+        transform: scale(1.05, 1.05)
       }
     }
   }

@@ -16,6 +16,7 @@
   body {
    font-family: 'Noto Sans JP', sans-serif;
    letter-spacing: 1px;
+   color: #333;
  }
 
  ul {
@@ -31,18 +32,21 @@
  * header
  * -------------------------------- */
  .header {
+  position: fixed;
+  z-index: 100;
   height: 90px;
-  padding: 0 20px;
-  background-color: skyblue;
+  width: 100%;
+  padding: 0 40px;
+  background-color: rgba(0,0,0,0.8);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  
   .logo {
     margin: 0;
     font-size: 3.6rem;
     font-weight: lighter;
-    text-shadow: 1px 1px 5px #666;
   }
 
   .g-nav ul {
@@ -64,17 +68,17 @@
  * main
  * -------------------------------- */
 .main {
-  background-color: #ddd;
-  padding: 20px;
+  background-color: #f8f8f8;
+  padding: 90px 20px;
 }
 
 // グループ詳細＆メンバー詳細ページ共通設定
 .info {
-  background-color: #fff;
   padding: 25px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: #aaa 1px solid;
 
   .profile {
     .name {
@@ -106,7 +110,7 @@
  * -------------------------------- */
  .footer {
   height: 150px;
-  background-color: lightslategray;
+  background-color: #eee;
   text-align: center;
   padding: 20px;
 
