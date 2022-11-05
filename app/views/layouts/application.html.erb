@@ -32,12 +32,12 @@
     <%#  --- header End --- %>
     <%# --- main --- %>
     <% if current_user %>
-      <div class="contents">
-        <div class="main-contents"><%= yield %></div>
+      <div class="main">
+        <%= yield %>
       </div>
     <% else %>
-      <div class="contents">
-        <div class="main-contents"><%= yield %></div>
+      <div class="main">
+        <%= yield %>
       </div>
     <% end %>
     <%# --- main  End --- %>
