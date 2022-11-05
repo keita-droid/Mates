@@ -14,7 +14,7 @@
     <% if notice || alert %>
       <div class="notifications"><%= notice %><%= alert %></div>
     <% end %>
-    <%#  --- header --- %>
+    <!-- header -->
     <header class="header">
       <h1 class="logo">
         <%= link_to 'Mates', root_path %>
@@ -29,8 +29,8 @@
         <% end%>
       </nav>
     </header>
-    <%#  --- header End --- %>
-    <%# --- main --- %>
+    <!--  header End -->
+    <!-- main -->
     <% if current_user %>
       <div class="main">
         <%= yield %>
@@ -40,12 +40,12 @@
         <%= yield %>
       </div>
     <% end %>
-    <%# --- main  End --- %>
-    <%# --- footer --- %>
+    <!-- main  End -->
+    <!-- footer -->
     <footer class="footer">
       <p class="footer-contents"><%= link_to 'プライバシーポリシー', helps_policies_path, class: "helps" %></p>
       <p class="footer-contents copyright">&copy; app-mates 2022</p>
     </footer>
-    <%# --- footer  End --- %>
+    <!-- footer  End -->
   </body>
 </html>
