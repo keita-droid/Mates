@@ -1,23 +1,23 @@
 <% provide :title, "#{@group.name} | " %>
-<div class="group-header">
-  <div class="flex">
-    <div class="profile">
-      <h1 class="name"><%= @group.name %></h1>
-      <div class="description"><%= @group.description %></div>
-    </div>
-    <% if current_user.in_this_group?(@group) %>
-      <div class="edit">
-        <%= link_to 'グループ情報', edit_group_path(@group) %><br/>
-      </div>
-    <% elsif @group.public && !(current_user.requested?(@group)) %>
-      <div class="edit">
-        <%= link_to '参加をリクエスト', new_group_request_path(@group) %>
-      </div>
-    <% elsif current_user.requested?(@group) %>
-      <div class="edit"><div class="requested">リクエスト済み</div></div>
-    <% end %>
+<!-- group info -->
+<div class="info">
+  <div class="profile">
+    <h2 class="name"><%= @group.name %></h2>
+    <p class="description"><%= @group.description %></p>
   </div>
+  <% if current_user.in_this_group?(@group) %>
+    <button class="action button">
+      <%= link_to '編集', edit_group_path(@group) %><br/>
+    </button>
+  <% elsif @group.public && !(current_user.requested?(@group)) %>
+    <button class="action button">
+      <%= link_to '参加をリクエスト', new_group_request_path(@group) %>
+    </button>
+  <% elsif current_user.requested?(@group) %>
+    <p class="action requested">リクエスト済み</p>
+  <% end %>
 </div>
+<!-- group info End -->
 <% if current_user.in_this_group?(@group) && @group.requests.exists? %>
   <div><%= link_to '＼参加リクエストが届いています！／', group_requests_path(@group), class: "requests" %></div>
 <% end %>
