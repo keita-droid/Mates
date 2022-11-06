@@ -69,7 +69,7 @@
  * -------------------------------- */
 .main {
   background-color: #f8f8f8;
-  padding: 90px 20px;
+  padding: 70px 20px;
 }
 
 // グループ詳細＆メンバー詳細ページ共通設定
@@ -101,6 +101,12 @@
     border: 1px solid #666;
     border-radius: 5px;
     background-color: transparent;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px #666;
+      transition: 0.2s;
+    }
   }
 }
 

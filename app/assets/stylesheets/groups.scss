@@ -6,6 +6,14 @@
  * groups#show
  * -------------------------------- */
 
+.requests {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: #555;
+  text-shadow: 0 0 5px #666;
+  margin: 5px;
+}
+
 .group-contents {
   display: flex;
   align-items: flex-start;
@@ -83,7 +91,6 @@
       }
 
       &:hover {
-        box-shadow: 1px 1px 5px #666;
         transition: 0.3s;
         transform: scale(1.05, 1.05)
       }
@@ -98,7 +105,7 @@
     margin-left: 10px;
     background-color: #eee;
     position: sticky;
-    top: 100px;
+    top: 80px;
     max-width: 460px;
     overflow: scroll;
 

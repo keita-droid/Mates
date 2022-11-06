@@ -18,9 +18,11 @@
   <% end %>
 </div>
 <!-- group info End -->
+<!-- requests -->
 <% if current_user.in_this_group?(@group) && @group.requests.exists? %>
-  <div><%= link_to '＼参加リクエストが届いています！／', group_requests_path(@group), class: "requests" %></div>
+  <%= link_to '＼参加リクエストが届いています！／', group_requests_path(@group), class: "requests" %>
 <% end %>
+<!-- requests End -->
 <!-- members -->
 <% if current_user.in_this_group?(@group) %>
   <div class="group-contents">
