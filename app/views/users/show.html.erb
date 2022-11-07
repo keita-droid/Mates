@@ -1,35 +1,36 @@
 <% provide :title, "#{@user.name} | " %>
 <!-- user info -->
 <div class="info">
-  <div class="profile">
-    <div class="image">
+  <div class="profile-wrap">
+    <div class="member-image">
       <% if @user.image.attached? %>
         <div style="background-image:url(<%= rails_blob_path(@user.image) %>)"></div>
       <% else %>
         <div class="no-image"></div>
       <% end %>
     </div>
-    <h2 class="name"><%= @user.name %></h2>
-    <p class="status"><%= @user.status %></p>
-    <% if (@user.status.nil? || @user.status.empty?) && current_user == @user %>
-      <p class="status">
-        status（所属・役職など）
-        <%= link_to edit_user_path(@user) do %><%= fa_icon "edit"%><% end %>
-      </p>
-    <% end %>
-    <p class="description">
-      <%= simple_format(@user.description) %>
+    <div class="profile">
+      <h2 class="name"><%= @user.name %></h2>
+      <p class="status"><%= @user.status %></p>
+      <% if (@user.status.nil? || @user.status.empty?) && current_user == @user %>
+        <p class="status">
+          status（所属・役職など）
+          <%= link_to edit_user_path(@user) do %><%= fa_icon "edit"%><% end %>
+        </p>
+      <% end %>
       <% if (@user.description.nil? || @user.description.empty?) && current_user == @user %>
         <p class="description">
           （ここは自由に自己紹介文を書くエリアです）
           <%= link_to edit_user_path(@user) do %><%= fa_icon "edit"%><% end %>
         </p>
+      <% else %>
+        <%= simple_format(@user.description, class:"description") %>
       <% end %>
-    </p>
+    </div>
   </div>
   <% if @user.id == current_user.id %>
     <button class="action button">
-      <%= link_to 'アカウント情報', edit_user_path(@user) %>
+      <%= link_to '編集', edit_user_path(@user) %>
     </button>
   <% end %>
 </div>

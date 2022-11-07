@@ -92,15 +92,25 @@
   border-bottom: #aaa 1px solid;
   padding: 20px 0;
 
-  .profile {
-    .name {
-      font-size: 4.2rem;
-      line-height: 1.5;
-    }
-    .description {
-      font-size: 1.6rem;
-      color: #555;
-      margin-left: 10px;
+  .profile-wrap {
+    .profile {
+      .name {
+        font-size: 4.2rem;
+        line-height: 1.5;
+      }
+      .description {
+        font-size: 1.6rem;
+        color: #555;
+        margin-left: 10px;
+        line-height: 1.5;
+      }
+      .status {
+        font-size: 1.4rem;
+        color: #555;
+        margin-left: 10px;
+        margin-bottom: 35px;
+        line-height: 1.5;
+      }
     }
   }
 

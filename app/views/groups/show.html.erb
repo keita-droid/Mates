@@ -2,9 +2,11 @@
 <!-- group info -->
 <% if current_user.in_this_group?(@group) || @group.public %>
 <div class="info">
-  <div class="profile">
-    <h2 class="name"><%= @group.name %></h2>
-    <p class="description"><%= @group.description %></p>
+  <div class="profile-wrap">
+    <div class="profile">
+      <h2 class="name"><%= @group.name %></h2>
+      <p class="description"><%= @group.description %></p>
+    </div>
   </div>
   <% if current_user.in_this_group?(@group) %>
     <button class="action button">
@@ -92,11 +94,11 @@
           </div>
           <div class="favorite no-member">
             <div class="genre"><span>その他</span></div>
-            <div class="text">グループに加入してね</div>
+            <div class="text">この文章が読める人は偉い</div>
           </div>
           <div class="favorite no-member">
             <div class="genre"><span>その他</span></div>
-            <div class="text">この文章が読める人は偉い</div>
+            <div class="text">グループに加入してね</div>
           </div>
           <p class="no-member-notice">CONFIDENTIAL</p>
         <% end %>
