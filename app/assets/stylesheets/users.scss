@@ -6,6 +6,7 @@
  * users#show
  * -------------------------------- */
 
+//  上部・info（style.scssでの記述への追加分）
 .profile-wrap {
   display: flex;
   align-items: flex-start;
@@ -22,4 +23,73 @@
     background-image: url("default_icon.png");
   }
   
+}
+
+// メインエリア
+
+.user-contents {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 30px;
+
+  .posts,
+  .invite {
+    flex-basis: 75%;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+    row-gap: 30px;
+    column-gap: 20px;
+    justify-content: center;
+  }
+
+  .post {
+    margin: 15px auto;
+    padding: 0 0 20px;
+    font-size: 1.6rem;
+    background-color: #eee;
+    min-width: 450px;
+    
+    .genre {
+      display: inline-block;
+      background-color: rgba(0,0,0,0.7);
+      color: #ffc266;
+      padding: 8px 15px;
+      letter-spacing: 3px;
+      font-size: 1.4rem;
+    }
+    
+    .text {
+      margin: 15px;
+      font-size: 1.8rem;
+      letter-spacing: 0;
+      font-weight: lighter;
+    }
+  }
+
+  .side-menu {
+    flex-basis: 25%;
+    font-size: 1.4rem;
+    padding: 20px 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: sticky;
+    top: 80px;
+    max-width: 460px;
+    overflow: scroll;
+
+    p {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 0;
+      margin: 10px 0 5px;
+    }
+    li {
+      padding: 5px 0;
+      margin-left: 20px;
+      list-style: square inside;
+    }
+  }
 }

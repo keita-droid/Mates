@@ -35,119 +35,123 @@
   <% end %>
 </div>
 <!-- user info End -->
-<% if current_user == @user || current_user.same_group?(@user) %>
-  <div class="wrapper card__contents flexBox">
-    <% @posts.each.with_index do |post, i| %>
-      <div class="favorites card__block col-xs-12 col-md col-lg col-xl">
-        <div class="box">
-          <div class="innerBox">
-            <div class="genre"><span><%= post.genre.name %></span></div>
-            <div class="text"><%= simple_format(post.text) %></div>
-          </div>
-          <% if i < 3 %>
-            <% if current_user == @user %>
-              <%= form_with model: post, local: true do |f| %>
-                <%= f.hidden_field :text, value: post.text %>
-                <%= f.hidden_field :genre_id, value: post.genre_id %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :updated_at, value: Time.current %>
-                <%= f.submit "", class: "postTag top input" %>
-              <% end %>
-            <% else %>
-              <div class="postTag top"></div>
-            <% end %>
-          <% else %>
-            <% if current_user == @user %>
-              <%= form_with model: post, local: true do |f| %>
-                <%= f.hidden_field :text, value: post.text %>
-                <%= f.hidden_field :genre_id, value: post.genre_id %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :updated_at, value: Time.current %>
-                <%= f.submit "", class: "postTag input" %>
-              <% end %>
+<!-- user contents -->
+<div class="user-contents">
+  <!-- main area -->
+  <% if current_user == @user || current_user.same_group?(@user) %>
+    <div class="posts">
+      <% @posts.each.with_index do |post, i| %>
+        <div class="post">
+          <p class="genre"><%= post.genre.name %></p>
+          <%= simple_format(post.text, class:"text") %>
+        </div>
+      <% end %>
+            <%# if i < 3 %>
+              <%# if current_user == @user %>
+                <%#= form_with model: post, local: true do |f| %>
+                  <%#= f.hidden_field :text, value: post.text %>
+                  <%#= f.hidden_field :genre_id, value: post.genre_id %>
+                  <%#= f.hidden_field :user_id, value: current_user.id %>
+                  <%#= f.hidden_field :updated_at, value: Time.current %>
+                  <%#= f.submit "", class: "postTag top input" %>
+                <%# end %>
+              <%# else %>
+                <%# <div class="postTag top"></div> %>
+              <%# end %>
+            <%# else %>
+              <%# if current_user == @user %>
+                <%#= form_with model: post, local: true do |f| %>
+                  <%#= f.hidden_field :text, value: post.text %>
+                  <%#= f.hidden_field :genre_id, value: post.genre_id %>
+                  <%#= f.hidden_field :user_id, value: current_user.id %>
+                  <%#= f.hidden_field :updated_at, value: Time.current %>
+                  <%#= f.submit "", class: "postTag input" %>
+                <%# end %>
+              <%# end %>
+            <%# end %>
+          <%# if @user.id == current_user.id %>
+            <%# <div class="btns"> %>
+              <%# <button class="edit-btn" > %>
+                <%#= fa_icon "pencil-square-o" %>
+              <%# </button> %>
+              <%#= link_to post_path(post), method: :delete, data: { confirm: '投稿を削除しますか？' } do %>
+                <%#= fa_icon "trash-o" %>
+              <%# end %>
+            <%# </div> %>
+            <%# <div id="form-box-edit-= i" class="form-box-edit"> %>
+              <%#= render partial: "posts/form", locals: {post: post, genres: @genres} %>
+            <%# </div> %>
+            <%# <div id="transparent-edit"></div> %>
+          <%# end %>
+    </div>
+    <%# <% if current_user == @user %>
+      <%# <button class="favorite" id="new" > %>
+        <%# <div class="new-post"><%= fa_icon "plus-square-o 3x" %><%#<br/>好きなものを追加</div> %>
+      <%# </button> %>
+    <%# <% end %>
+  <% else %>
+    <div class="invite">
+      <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
+        <%= f.hidden_field :id, value: @user.id %>
+        <%= f.submit "グループに招待", class: "invite-btn"%>
+      <% end %>
+    </div>
+  <% end %>
+  <!-- sub area -->
+  <div class="side-menu">
+    <div class="my-groups">
+      <p>参加中のグループ
+        <% if current_user.id == @user.id %>
+          <span id="edit-groups">[編集]</span>
+        <% end %>
+      </p>
+      <ul>
+        <% if current_user.id == @user.id %>
+          <% unless @user.public_groups.empty? %>
+            <% @user.public_groups.each do |group| %>
+              <li>
+                <%= link_to group.name, group_path(group), class: "group-link" %>
+                <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, class: "withdraw-btn", data: { confirm: "【確認】#{group.name}から脱退します" }  %>
+              </li>
             <% end %>
           <% end %>
-        </div>
-        <% if @user.id == current_user.id %>
-          <div class="btns">
-            <button class="edit-btn" >
-              <%= fa_icon "pencil-square-o" %>
-            </button>
-            <%= link_to post_path(post), method: :delete, data: { confirm: '投稿を削除しますか？' } do %>
-              <%= fa_icon "trash-o" %>
+          <% unless @user.private_groups.empty? %>
+            <p class="filter">非表示のグループ</p>
+            <% @user.private_groups.each do |group| %>
+              <li>
+                <%= link_to group.name, group_path(group), class: "group-link" %>
+                <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, class: "withdraw-btn", data: { confirm: "【確認】#{group.name}から脱退します" }  %>
+              </li>
+            <% end %>
+          <% end %>
+        <% elsif current_user.same_group?(@user) %>
+          <% unless @user.public_groups.empty? %>
+            <% @user.public_groups.each do |group| %>
+              <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+            <% end %>
+          <% end %>
+          <p class="filter">同じメンバーのグループ</p>
+          <% @user.same_groups(current_user).each do |group| %>
+            <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+          <% end %>
+          <div class="invite-other">
+            <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
+              <%= f.hidden_field :id, value: @user.id %>
+              <%= f.submit "自分のグループに招待", class: "invite-other-btn"%>
             <% end %>
           </div>
-          <div id="form-box-edit-<%= i %>" class="form-box-edit">
-            <%= render partial: "posts/form", locals: {post: post, genres: @genres} %>
-          </div>
-          <div id="transparent-edit"></div>
+        <% else %>
+          <% unless @user.public_groups.empty? %>
+            <% @user.public_groups.each do |group| %>
+              <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+            <% end %>
+          <% end %>
         <% end %>
-      </div>
-    <% end %>
-    <% if current_user == @user %>
-      <button class="favorites plus card__block col-xs-12 col-md col-lg col-xl" id="new" >
-        <div class="new-post"><%= fa_icon "plus-square-o 3x" %><br/>好きなものを追加</div>
-      </button>
-    <% end %>
+      </ul>
+    </div>
   </div>
-<% else %>
-  <div class="invite">
-    <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
-      <%= f.hidden_field :id, value: @user.id %>
-      <%= f.submit "グループに招待", class: "invite-btn"%>
-    <% end %>
-  </div>
-<% end %>
-<div class="groups">
-  <div class="title">参加中のグループ
-    <% if current_user.id == @user.id %>
-      <span id="edit-groups">[編集]</span>
-    <% end %>
-  </div>
-  <ul>
-    <% if current_user.id == @user.id %>
-      <% unless @user.public_groups.empty? %>
-        <% @user.public_groups.each do |group| %>
-          <li>
-            <%= link_to group.name, group_path(group), class: "group-link" %>
-            <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, class: "withdraw-btn", data: { confirm: "【確認】#{group.name}から脱退します" }  %>
-          </li>
-        <% end %>
-      <% end %>
-      <% unless @user.private_groups.empty? %>
-        <div class="filter">非表示のグループ</div>
-        <% @user.private_groups.each do |group| %>
-          <li>
-            <%= link_to group.name, group_path(group), class: "group-link" %>
-            <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, class: "withdraw-btn", data: { confirm: "【確認】#{group.name}から脱退します" }  %>
-          </li>
-        <% end %>
-      <% end %>
-    <% elsif current_user.same_group?(@user) %>
-      <% unless @user.public_groups.empty? %>
-        <% @user.public_groups.each do |group| %>
-          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
-        <% end %>
-      <% end %>
-      <div class="filter">同じメンバーのグループ</div>
-      <% @user.same_groups(current_user).each do |group| %>
-        <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
-      <% end %>
-      <div class="invite-other">
-        <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
-          <%= f.hidden_field :id, value: @user.id %>
-          <%= f.submit "ほかのグループに招待", class: "invite-other-btn"%>
-        <% end %>
-      </div>
-    <% else %>
-      <% unless @user.public_groups.empty? %>
-        <% @user.public_groups.each do |group| %>
-          <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
-        <% end %>
-      <% end %>
-    <% end %>
-  </ul>
 </div>
+<!-- user contents End -->
 <% if current_user == @user %>
   <div id="form-box">
     <%= render partial: "posts/form", locals: {post: @new_post, genres: @genres} %>
