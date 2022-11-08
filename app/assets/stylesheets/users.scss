@@ -31,7 +31,8 @@
   display: flex;
   align-items: flex-start;
   margin-top: 30px;
-
+  
+  // 投稿一覧
   .posts,
   .invite {
     flex-basis: 75%;
@@ -48,7 +49,6 @@
   .post {
     margin: 15px auto;
     padding: 0 0 20px;
-    font-size: 1.6rem;
     background-color: #eee;
     min-width: 450px;
     border: none;
@@ -72,6 +72,7 @@
 
   .post.new-post {
     color: #666;
+    font-size: 1.6rem;
     
     .new-post-button {
       padding-top: 20px;
@@ -83,6 +84,7 @@
     }
   }
 
+  // サイドメニュー
   .side-menu {
     flex-basis: 25%;
     font-size: 1.4rem;
@@ -106,4 +108,19 @@
       list-style: square inside;
     }
   }
+}
+
+// 新規投稿エリア
+.post-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
