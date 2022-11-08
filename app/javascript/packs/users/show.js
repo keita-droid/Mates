@@ -1,14 +1,14 @@
 document.addEventListener("turbolinks:load", () => {
-  const button = document.getElementById("new");
-  const box = document.getElementById("form-box");
-  const veil = document.getElementById("transparent");
+  const button = document.getElementById("newPost");
+  const box = document.getElementById("formBox");
+
   button.addEventListener("click", () => {
-    box.classList.add("reveal");
-    veil.classList.add("reveal");
+    box.classList.add("active");
   });
-  veil.addEventListener("click", () => {
-    box.classList.remove("reveal");
-    veil.classList.remove("reveal");
+  box.addEventListener("click", (e) => {
+    if (e.target.closest("#modal") === null) {
+      box.classList.remove("active");
+    }
   });
 
   const editButtons = document.getElementsByClassName("edit-btn");
