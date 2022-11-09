@@ -16,12 +16,21 @@
     flex-basis: 75%;
     padding: 20px;
 
+    .title {
+      color: #ffc266;
+      background-color: rgba(0,0,0,0.7);
+      padding: 10px;
+      letter-spacing: 2px;
+      max-width: 250px;
+    }
+
     .group-index {
       .group {
         display: block;
         border: 1px solid #666;
         margin: 20px 0;
         padding: 20px;
+        font-size: 1.4rem;
       }
     }
   }

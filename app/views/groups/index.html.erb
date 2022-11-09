@@ -17,8 +17,11 @@
           <% @groups.each do |group| %>
             <%= link_to group_path(group), class: "group" do %>
               <div class="profile">
-                <div class="name"><%= group.name %></div>
-                <div class="status"><%= group.description %></div>
+                <h3 class="name"><%= group.name %></h3>
+                <p class="status"><%= group.description %></p>
+              </div>
+              <div class="group-data">
+                <p>メンバー数：<%= group.users.count %>人</p>
               </div>
             <% end %>
           <% end %>
