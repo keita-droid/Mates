@@ -18,10 +18,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def new
-    @group = Group.new
-  end
-
   def create
     group = Group.new(group_params)
     if group.save
