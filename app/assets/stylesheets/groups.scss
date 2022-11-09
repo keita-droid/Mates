@@ -10,27 +10,67 @@
   
   h2 {
     font-size: 1.6em;
+    font-weight: normal;
   }
 
   .main-area {
     flex-basis: 75%;
-    padding: 20px;
+    padding: 20px 40px;
 
     .title {
-      color: #ffc266;
+      display: inline-block;
+      color: #eee;
       background-color: rgba(0,0,0,0.7);
-      padding: 10px;
+      padding: 10px 20px 10px 10px;
       letter-spacing: 2px;
-      max-width: 250px;
+      border-left: 6px solid #ffc266;
     }
 
     .group-index {
+      padding: 10px 0 50px;
+
       .group {
         display: block;
-        border: 1px solid #666;
-        margin: 20px 0;
+        margin: 10px 0;
         padding: 20px;
         font-size: 1.4rem;
+        background-color: #e1e1e1;
+
+        &:nth-of-type(even) {
+          background-color: #eee;
+        }
+
+        .profile {
+          display: flex;
+          align-items: center;
+          padding-bottom: 10px;
+
+          .name {
+            font-size: 2.2rem;
+            letter-spacing: 0;
+            font-weight: normal;
+            margin-right: 20px;
+          }
+          .description {
+            color: #555;
+          }
+        }
+
+        .group-data {
+          text-align: end;
+        }
+
+        
+        &:hover {
+          transform: scale(1.03, 1.03);
+          transition: 0.3s;
+        }
+      }
+
+      .delete {
+        border: 1px solid #c00;
+        padding: 5px 10px;
+        margin: 10px;
       }
     }
   }

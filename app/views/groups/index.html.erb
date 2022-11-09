@@ -18,10 +18,10 @@
             <%= link_to group_path(group), class: "group" do %>
               <div class="profile">
                 <h3 class="name"><%= group.name %></h3>
-                <p class="status"><%= group.description %></p>
+                <p class="description"><%= group.description %></p>
               </div>
               <div class="group-data">
-                <p>メンバー数：<%= group.users.count %>人</p>
+                <p>メンバー：<%= group.users.count %>人</p>
               </div>
             <% end %>
           <% end %>
@@ -33,14 +33,20 @@
     <% if @requests.exists? %>
       <div class="groups">
         <h2 class="title">リクエスト中のグループ</h2>
-        <ul>
+        <div class="group-index">
           <% @requests.each do |request| %>
-            <li class="requested-group">
-              <%= link_to request.group.name, group_path(request.group), class: "link" %>
-              <%= link_to '取り消し', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
-            </li>
+            <%= link_to group_path(request.group), class: "group" do %>
+              <div class="profile">
+                <h3 class="name"><%= request.group.name %></h3>
+                <p class="status"><%= request.group.description %></p>
+              </div>
+              <div class="group-data">
+                <p>メンバー数：<%= request.group.users.count %>人</p>
+              </div>
+            <% end %>
+            <%= link_to '取り消し', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
           <% end %>
-        </ul>
+        </div>
       </div>
   <% end %>
   </div>
