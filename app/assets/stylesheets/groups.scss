@@ -3,6 +3,58 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 /* --------------------------------
+ * groups#index
+ * -------------------------------- */
+ .wrapper {
+  display: flex;
+  
+  h2 {
+    font-size: 1.6em;
+  }
+
+  .main-area {
+    flex-basis: 75%;
+    padding: 20px;
+
+    .group-index {
+      .group {
+        display: block;
+        border: 1px solid #666;
+        margin: 20px 0;
+        padding: 20px;
+      }
+    }
+  }
+
+  .sub-area {
+    flex-basis: 25%;
+    padding: 20px;
+    background-color: #fff;
+
+    .action {
+      margin-bottom: 40px;
+
+      h2 {
+        padding-bottom: 15px;
+      }
+      .search {
+        font-size: 1.6rem;
+
+        .form,
+        .form-button {
+          padding: 5px 10px;
+          margin: 5px 0;
+        }
+        .form {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+    
+
+/* --------------------------------
  * groups#show
  * -------------------------------- */
 

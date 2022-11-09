@@ -1,6 +1,6 @@
 <% if current_user.posts.empty? %>
   <div class="groups">
-    <div class="title">スタートガイド</div>
+    <h2 class="title">スタートガイド</h2>
     <ul>
       <li>
           <div><%= link_to '自分の好きなものを追加しよう！', user_path(current_user), class: "requests" %></div>
@@ -8,36 +8,56 @@
     </ul>
   </div>
 <% end %>
-
-<div class="groups">
-  <div class="title main">参加中のグループ</div>
-  <% if @groups.exists? %>
-    <div class="wrapper card__contents flexBox">
-      <% @groups.each do |group| %>
-        <%= link_to group_path(group), class: "search group-index member-card card__block col-xs-12 col-md col-lg col-xl" do %>
-          <div class="member-header">
-            <div class="profile">
-              <div class="name"><%= group.name %></div>
-              <div class="status"><%= group.description %></div>
-            </div>
-          </div>
-        <% end %>
+<div class="wrapper">
+  <div class="main-area">
+    <div class="groups">
+      <h2 class="title">参加中のグループ</h2>
+      <% if @groups.exists? %>
+        <div class="group-index">
+          <% @groups.each do |group| %>
+            <%= link_to group_path(group), class: "group" do %>
+              <div class="profile">
+                <div class="name"><%= group.name %></div>
+                <div class="status"><%= group.description %></div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <div><br/></div>
       <% end %>
     </div>
-  <% else %>
-    <div><br/></div>
+    <% if @requests.exists? %>
+      <div class="groups">
+        <h2 class="title">リクエスト中のグループ</h2>
+        <ul>
+          <% @requests.each do |request| %>
+            <li class="requested-group">
+              <%= link_to request.group.name, group_path(request.group), class: "link" %>
+              <%= link_to '取り消し', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
   <% end %>
-</div>
-<% if @requests.exists? %>
-  <div class="groups">
-    <div class="title">リクエスト中のグループ</div>
-    <ul>
-      <% @requests.each do |request| %>
-        <li class="requested-group">
-          <%= link_to request.group.name, group_path(request.group), class: "link" %>
-          <%= link_to '取り消し', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
-        </li>
-      <% end %>
-    </ul>
   </div>
-<% end %>
+  <div class="sub-area">
+    <div class="action">
+      <h2><%= fa_icon "search" %> 仲間を見つける</h2>
+      <%= form_with url: search_users_path, method: :get, local: true, class: "search" do |f| %>
+        <%= f.search_field :keyword, placeholder: "ユーザー名", class: "form" %>
+        <%= f.submit "検索", class: "form-button" %>
+      <% end %>
+    </div>
+    <div class="action">
+      <h2><%= fa_icon "search" %> グループをさがす</h2>
+      <%= form_with url: search_groups_path, method: :get, local: true, class: "search" do |f| %>
+        <%= f.search_field :keyword, placeholder: "グループ名", class: "form" %>
+        <%= f.submit "検索", class: "form-button" %>
+      <% end %>
+    </div>
+    <div class="action">
+      <h2><%= fa_icon "plus-square-o" %> グループをつくる</h2>
+    </div>
+  </div>
+</div>
