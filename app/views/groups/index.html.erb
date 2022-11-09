@@ -58,6 +58,26 @@
     </div>
     <div class="action">
       <h2><%= fa_icon "plus-square-o" %> グループをつくる</h2>
+      <%= form_with model: @group, url:{ controller: 'groups', action: 'create'}, local: true, class: "new" do |f| %>
+        <div class="field">
+          <%= f.label :name, "グループ名（必須）" %><br/>
+          <%= f.text_field :name, class: "form" %>
+        </div>
+        <div class="field">
+          <%= f.label :description, "概要説明（任意）" %><br/>
+          <%= f.text_area :description, class: "form" %>
+        </div>
+        <div class="field">
+          <%= f.label :public, "グループ検索" %><br/>
+          <div class="radio">
+            <label><%= f.radio_button :public, true %>表示させる</label>
+          </div>
+          <div class="radio">
+            <label><%= f.radio_button :public, false, checked: true %>表示させない</label>
+          </div>
+        </div>
+        <%= f.submit "作成", class: "form-button" %>
+      <% end %>
     </div>
   </div>
 </div>

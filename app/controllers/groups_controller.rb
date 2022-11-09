@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   def index
     @groups = current_user.groups
     @requests = current_user.requests.includes(:group)
+    @group = Group.new
   end
 
   def show
