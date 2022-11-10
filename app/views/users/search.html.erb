@@ -9,16 +9,16 @@
     <% @users.each do |user| %>
       <%= link_to user_path(user), class: "card" do %>
         <div class="data">
+          <div class="profile">
+            <h3 class="name"><%= user.name %></h3>
+            <p class="status description"><%= user.status %></p>
+          </div>
           <div class="image">
             <% if user.image.attached? %>
               <div style="background-image:url(<%= rails_blob_path(user.image) %>)"></div>
             <% else %>
               <div class="no-image"></div>
             <% end %>
-          </div>
-          <div class="profile">
-            <h3 class="name"><%= user.name %></h3>
-            <p class="status description"><%= user.status %></p>
           </div>
         </div>
       <% end %>

@@ -8,9 +8,11 @@
   <div class="cards">
     <% @groups.each do |group| %>
       <%= link_to group_path(group), class: "card" do %>
-        <div class="profile">
-          <h3 class="name"><%= group.name %></h3>
-          <p class="description"><%= group.description %></p>
+        <div class="data">
+          <div class="profile">
+            <h3 class="name"><%= group.name %></h3>
+            <p class="description"><%= group.description %></p>
+          </div>
         </div>
       <% end %>
     <% end %>
