@@ -16,6 +16,10 @@ class Group < ApplicationRecord
     UserGroupRelation.find_by(group_id: self.id, user_id: user.id)
   end
 
+  def request(user)
+    Request.find_by(group_id: self.id, user_id: user.id)
+  end
+
   private
   def create_user_group_relation
     self.users << User.current
