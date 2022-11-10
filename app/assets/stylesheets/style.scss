@@ -84,7 +84,29 @@
   padding: 70px 20px;
 }
 
-// グループ詳細＆メンバー詳細ページ共通設定
+ /* --------------------------------
+ * footer
+ * -------------------------------- */
+ .footer {
+  height: 150px;
+  background-color: #eee;
+  text-align: center;
+  padding: 20px;
+
+  .footer-contents {
+    font-size: 1.6rem;
+  }
+
+  .copyright {
+    margin-top: 35px;
+    letter-spacing: 0;
+  }
+ }
+
+
+/* --------------------------------
+ * グループ詳細＆メンバー詳細ページ共通設定
+ * -------------------------------- */
 .info {
   display: flex;
   justify-content: space-between;
@@ -98,12 +120,14 @@
         font-size: 4.2rem;
         line-height: 1.5;
       }
+
       .description {
         font-size: 1.6rem;
         color: #555;
         margin-left: 10px;
         line-height: 1.5;
       }
+
       .status {
         font-size: 1.4rem;
         color: #555;
@@ -119,13 +143,14 @@
     margin: 10px;
     padding: 5px 15px;
   }
+
   .action.button {
     border: 1px solid #666;
     border-radius: 5px;
     background-color: transparent;
 
     &:hover {
-      background-color: rgba(0,0,0,0.1);
+      background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 0 8px #666;
       transition: 0.2s;
     }
@@ -133,16 +158,99 @@
     &.delete {
       color: #c00;
       border-color: #c00;
-      
+
       &:hover {
         background-color: transparent;
-        box-shadow:  0 0 8px #c00;
+        box-shadow: 0 0 8px #c00;
       }
     }
   }
 }
 
-// ユーザー検索＆グループ検索ページ共通設定
+/* --------------------------------
+ * グループ編集＆メンバー編集ページ共通設定
+ * -------------------------------- */
+.edit {
+  // background-color: #fff;
+  max-width: 700px;
+  margin: 0 auto;
+
+  .title {
+    font-weight: normal;
+    font-size: 2rem;
+    border-bottom: 3px solid #ffc266;
+    display: inline-block;
+    margin: 25px 0;
+  }
+
+  .edit-form {
+    font-size: 1.6rem;
+    background-color: #eee;
+    padding: 0 20px 20px;
+
+    .field {
+      padding: 15px 0;
+
+      .label {
+        font-size: 1.4rem;
+        display: block;
+      }
+      .form {
+        display: block;
+        width: 70%;
+        border: none;
+        outline: none;
+        padding: 5px 10px;
+        margin: 5px 0;
+
+        &.textarea {
+          width: 100%;
+          min-height: 200px;
+        }
+      }
+
+      .profile-image {
+        margin-top: 15px;
+      }
+
+      .radio {
+        margin: 5px 0;
+        padding-left: 15px;
+      }
+    }
+  }
+
+  .actions {
+    .form-button {
+      padding: 5px 10px;
+      margin: 5px 0;
+    }
+  }
+
+  .unsubscribe {
+    font-size: 1.6rem;
+    padding: 40px 20px;
+    background-color: #eee;
+    border-top: 1px solid #aaa;
+
+    .form-button {
+      color: #c00;
+      border: 1px solid #c00;
+      border-radius: 3px;
+
+      &:hover {
+        background-color: #c00;
+        color: #fff;
+        transition: 0.2s;
+      }
+    }
+  }
+ }
+
+
+/* --------------------------------
+ * ユーザー検索＆グループ検索ページ共通設定
+ * -------------------------------- */
 .search-page {
   font-size: 1.6rem;
   max-width: 700px;
@@ -171,7 +279,7 @@
     }
 
   }
-  
+
   .cards {
     padding-top: 30px;
     border-top: 1px solid #aaa;
@@ -188,6 +296,7 @@
       &:nth-of-type(odd) {
         background-color: #eee;
       }
+
       &:hover {
         transform: scale(1.03, 1.03);
         box-shadow: 0 0 3px #666;
@@ -209,11 +318,12 @@
             font-size: 2rem;
             margin-bottom: 5px;
           }
+
           .status {
             color: #666;
             margin-left: 15px;
           }
-          
+
           &.group {
             display: block;
 
@@ -230,8 +340,6 @@
           }
         }
 
-
-
         .image div {
           width: 50px;
           height: 50px;
@@ -240,7 +348,7 @@
           border-radius: 50%;
           margin-right: 15px;
         }
-        
+
         .image .no-image {
           background-image: url("default_icon.png");
         }
@@ -248,24 +356,3 @@
     }
   }
 }
-
-
- /* --------------------------------
- * footer
- * -------------------------------- */
- .footer {
-  height: 150px;
-  background-color: #eee;
-  text-align: center;
-  padding: 20px;
-
-  .footer-contents {
-    font-size: 1.6rem;
-  }
-
-  .copyright {
-    margin-top: 35px;
-    letter-spacing: 0;
-  }
- }
-
