@@ -21,9 +21,10 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    group = Group.find(params[:group_id])
     request = Request.find(params[:id])
     request.destroy
-    redirect_to root_path, notice: "参加リクエストを取り消しました"
+    redirect_to group_path(group), notice: "参加リクエストを取り消しました"
   end
 
 
