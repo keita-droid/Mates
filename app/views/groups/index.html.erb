@@ -69,7 +69,7 @@
       <%= form_with model: @group, url:{ controller: 'groups', action: 'create'}, local: true, class: "new" do |f| %>
         <div class="field">
           <%= f.label :name, "グループ名", class: "label" %>
-          <%= f.text_field :name, class: "form" %>
+          <%= f.text_field :name, class: "form", required: true %>
         </div>
         <div class="field">
           <%= f.label :description, "概要説明", class: "label" %>
