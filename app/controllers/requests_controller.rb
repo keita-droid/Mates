@@ -3,6 +3,10 @@ class RequestsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @requests = @group.requests.includes(:user)
+
+    unless current_user.in_this_group?(@group)
+      redirect_to root_path
+    end
   end
 
   def new
