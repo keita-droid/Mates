@@ -44,7 +44,6 @@
                 <p>メンバー数：<%= request.group.users.count %>人</p>
               </div>
             <% end %>
-            <%= link_to '取り消し', group_request_path(request.group.id, request.id), class: "delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
           <% end %>
         </div>
       </div>
