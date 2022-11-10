@@ -1,30 +1,39 @@
-<div class="group-header">
-  <div class="flex">
+<div class="info">
+  <div class="profile-wrap">
     <div class="profile">
-      <h1 class="name"><%= @group.name %></h1>
-      <div class="description"><%= @group.description %></div>
+      <h2 class="name"><%= link_to @group.name, group_path(@group) %></h2>
+      <p class="description"><%= @group.description %></p>
     </div>
-    <% if current_user.in_this_group?(@group) %>
-      <div class="edit">
-        <%= link_to 'グループ情報', edit_group_path(@group) %><br/>
-      </div> 
-    <% end %>
   </div>
+  <button class="action button">
+    <%= link_to '編集', edit_group_path(@group) %><br/>
+  </button>
 </div>
-<div class="groups">
-  <div class="title">参加リクエスト</div>
+
+<div class="request-users">
+  <h3 class="title">参加リクエスト</h3>
+  <p><%= @requests.count %>件</p>
   <ul>
     <% @requests.each do |request| %>
-      <li class="requested-group">
-        <%= link_to user_path(request.user), class: "link" do %>
-          <%= fa_icon "user" %> <%= request.user.name %>
+      <li class="request-user">
+        <%= link_to user_path(request.user), class: "user" do %>
+          <div class="image">
+            <% if request.user.image.attached? %>
+              <div style="background-image:url(<%= rails_blob_path(request.user.image) %>)"></div>
+            <% else %>
+              <div class="no-image"></div>
+            <% end %>
+          </div>
+          <p class="name"><%= request.user.name %></p>
         <% end %>
-        <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true, class: "admit" do |f| %>
-          <%= f.hidden_field :user_id, value: request.user_id %>
-          <%= f.hidden_field :group_id, value: request.group_id %>
-          <%= f.submit "承認", class: "delete" %>
-        <% end %>
-        <%= link_to '拒否', group_request_path(request.group.id, request.id), class: "delete reject", method: :delete, data: { confirm: '【確認】リクエストを拒否します' } %>
+        <div class="buttons">
+          <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+            <%= f.hidden_field :user_id, value: request.user_id %>
+            <%= f.hidden_field :group_id, value: request.group_id %>
+            <%= f.submit "承認", class: "button", data: { confirm: '【確認】リクエストを承認します' } %>
+          <% end %>
+          <%= link_to '拒否', group_request_path(request.group.id, request.id), class: "button reject", method: :delete, data: { confirm: '【確認】リクエストを拒否します' } %>
+        </div>
       </li>
     <% end %>
   </ul>
