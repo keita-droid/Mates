@@ -129,6 +129,16 @@
       box-shadow: 0 0 8px #666;
       transition: 0.2s;
     }
+
+    &.delete {
+      color: #c00;
+      border-color: #c00;
+      
+      &:hover {
+        background-color: transparent;
+        box-shadow:  0 0 8px #c00;
+      }
+    }
   }
 }
 

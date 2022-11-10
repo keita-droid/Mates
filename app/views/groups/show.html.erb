@@ -17,7 +17,7 @@
       <%= link_to '参加をリクエスト', new_group_request_path(@group) %>
     </button>
   <% elsif current_user.requested?(@group) %>
-    <p class="action requested">リクエスト済み</p>
+    <%= link_to 'リクエスト取り消し', group_request_path(@group.id, @group.request(current_user)), class: "action button delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
   <% end %>
 </div>
 <% end %>
