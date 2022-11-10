@@ -9,7 +9,7 @@
       <%= f.collection_select :genre_id, genres, :id, :name, value: post.genre_id %>
     </div>
     <div class="field">
-      <%= f.text_area :text, value: post.text, placeholder: "好きなことを自由に書いてください。", class: "textarea" %>
+      <%= f.text_area :text, value: post.text, placeholder: "好きなことを自由に書いてください。", class: "textarea", required: true %>
     </div>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="actions">
