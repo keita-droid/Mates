@@ -142,6 +142,44 @@
   }
 }
 
+// ユーザー検索＆グループ検索ページ共通設定
+.search-page {
+  background-color: #fff;
+  font-size: 1.6rem;
+  margin: 0 20px;
+
+  .title {
+    margin: 20px 0;
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: normal;
+    border-bottom: 3px solid #ffc266;
+  }
+
+  .search {
+    margin-bottom: 20px;
+
+    .form,
+    .form-button {
+      padding: 5px 10px;
+    }
+
+    .form {
+      outline: none;
+    }
+
+  }
+  
+  .cards {
+    .card {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 20px;
+      border: 1px solid #666;
+    }
+  }
+}
+
 
  /* --------------------------------
  * footer
