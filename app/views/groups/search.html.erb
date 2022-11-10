@@ -6,12 +6,18 @@
   <% end %>
 
   <div class="cards">
+    <% if @groups.empty? %>
+      <p>検索結果：0件</p>
+    <% else %>
+      <p>検索結果：<%= @groups.count %>件</p>
+    <% end %>
     <% @groups.each do |group| %>
       <%= link_to group_path(group), class: "card" do %>
         <div class="data">
-          <div class="profile">
+          <div class="profile group">
             <h3 class="name"><%= group.name %></h3>
             <p class="description"><%= group.description %></p>
+            <p class="info">[参加メンバー：<%= group.users.count %>人]</p>
           </div>
         </div>
       <% end %>

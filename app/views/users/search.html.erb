@@ -6,6 +6,11 @@
   <% end %>
 
   <div class="cards">
+    <% if @users.empty? %>
+      <p>検索結果：0件</p>
+    <% else %>
+      <p>検索結果：<%= @users.count %>件</p>
+    <% end %>
     <% @users.each do |user| %>
       <%= link_to user_path(user), class: "card" do %>
         <div class="data">
