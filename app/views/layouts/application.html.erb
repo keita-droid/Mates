@@ -13,8 +13,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if notice || alert %>
-      <div class="notifications"><p><%= notice %><%= alert %></p></div>
+    <% if notice %>
+      <div class="notifications notice"><p><%= notice %></p></div>
+    <% end %>
+    <% if alert %>
+      <div class="notifications alert"><p><%= alert %></p></div>
     <% end %>
     <!-- header -->
     <header class="header">

@@ -55,6 +55,13 @@
     padding: 20px;
     font-size: 1.6rem;
     text-align: center;
+
+  }
+  &.alert {
+    p {
+      border: 1px solid #c00;
+      color: #c00;
+    }
   }
 }
 
