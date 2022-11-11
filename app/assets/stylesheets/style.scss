@@ -40,6 +40,35 @@
   margin: 20px;
 }
 
+.notifications {
+  position: fixed;
+  top: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  opacity: 0;
+  animation: fadeInOut 3.5s forwards ease-in;
+  p {
+    border: 1px solid #ffc266;
+    color: #666;
+    background-color: rgba(255,255,255,0.8);
+    padding: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+}
+
+/* --------------------------------
+ * Animation
+ * -------------------------------- */
+
+@keyframes fadeInOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
 /* --------------------------------
  * header
  * -------------------------------- */
