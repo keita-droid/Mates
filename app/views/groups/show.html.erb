@@ -9,15 +9,11 @@
     </div>
   </div>
   <% if current_user.in_this_group?(@group) %>
-    <button class="action button">
-      <%= link_to '編集', edit_group_path(@group) %><br/>
-    </button>
+    <%= link_to '編集', edit_group_path(@group), class: "action" %>
   <% elsif @group.public && !(current_user.requested?(@group)) %>
-    <button class="action button">
-      <%= link_to '参加をリクエスト', new_group_request_path(@group) %>
-    </button>
+    <%= link_to '参加をリクエスト', new_group_request_path(@group), class: "action" %>
   <% elsif current_user.requested?(@group) %>
-    <%= link_to 'リクエスト取り消し', group_request_path(@group.id, @group.request(current_user)), class: "action button delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
+    <%= link_to 'リクエスト取り消し', group_request_path(@group.id, @group.request(current_user)), class: "action delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
   <% end %>
 </div>
 <% end %>
