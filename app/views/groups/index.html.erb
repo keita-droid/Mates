@@ -33,6 +33,7 @@
     <% if @requests.exists? %>
       <div class="groups">
         <h2 class="title">リクエスト中のグループ</h2>
+        <p class="notes">- メンバーからの承認待ち</p>
         <div class="group-index">
           <% @requests.each do |request| %>
             <%= link_to group_path(request.group), class: "group" do %>

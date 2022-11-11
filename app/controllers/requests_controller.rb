@@ -9,16 +9,11 @@ class RequestsController < ApplicationController
     end
   end
 
-  def new
-    @group = Group.find(params[:group_id])
-    @request = Request.new
-  end
-
   def create
     @group = Group.find(params[:group_id])
     request = Request.new(request_params)
     if request.save
-      render :create
+      redirect_to group_path(@group), notice: "送信しました！メンバーからの承認をお待ちください"
     else
       redirect_to group_path(@group)
     end

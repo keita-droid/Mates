@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
       redirect_to root_path, alert: "ERROR: 表示できないグループです"
     else
       @members = @group.users.includes(posts: :genre)
+      @request = Request.new
     end
   end
 
