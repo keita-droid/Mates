@@ -1,21 +1,25 @@
-<% if current_user.posts.empty? %>
-  <div class="groups">
-    <h2 class="title">スタートガイド</h2>
-    <ul>
-      <li>
-        <p>1.グループに参加しよう！</p>
-        <p> - 新しくグループをつくる</p>
-        <p> - グループを見つけて参加する</p>
-      </li>
-      <li>
-          <div><%= link_to '2.自分の好きなものを追加しよう！', user_path(current_user), class: "requests" %></div>
-      </li>
-    </ul>
-  </div>
-<% end %>
 <div class="wrapper">
+  <!-- main-area -->
   <div class="main-area">
-    <div class="groups">
+    <!-- start guide -->
+    <% if current_user.posts.empty? %>
+      <div class="section">
+        <h2 class="title">スタートガイド</h2>
+        <ul>
+          <li>
+            <p>1.グループに参加しよう！</p>
+            <p> - 新しくグループをつくる</p>
+            <p> - グループを見つけて参加する</p>
+          </li>
+          <li>
+              <div><%= link_to '2.自分の好きなものを追加しよう！', user_path(current_user), class: "requests" %></div>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    <!-- start guide End -->
+    <!-- my groups -->
+    <div class="section">
       <h2 class="title">参加中のグループ</h2>
       <% if @groups.exists? %>
         <div class="group-index">
@@ -35,8 +39,10 @@
         <div><br/></div>
       <% end %>
     </div>
+    <!-- my groups End -->
+    <!-- requests -->
     <% if @requests.exists? %>
-      <div class="groups">
+      <div class="section">
         <h2 class="title">リクエスト中のグループ</h2>
         <p class="notes">- メンバーからの承認待ち</p>
         <div class="group-index">
@@ -53,8 +59,11 @@
           <% end %>
         </div>
       </div>
-  <% end %>
+    <% end %>
+    <!-- requests End -->
   </div>
+  <!-- main-area End -->
+  <!-- sub-area -->
   <div class="sub-area">
     <div class="action">
       <h2><%= fa_icon "search" %> 仲間を見つける</h2>
@@ -94,4 +103,5 @@
       <% end %>
     </div>
   </div>
+  <!-- sub-area End -->
 </div>
