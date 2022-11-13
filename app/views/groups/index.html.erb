@@ -19,26 +19,24 @@
     <% end %>
     <!-- start guide End -->
     <!-- my groups -->
+    <% if @groups.exists? %>
     <div class="section">
       <h2 class="title">参加中のグループ</h2>
-      <% if @groups.exists? %>
-        <div class="group-index">
-          <% @groups.each do |group| %>
-            <%= link_to group_path(group), class: "group" do %>
-              <div class="profile">
-                <h3 class="name"><%= group.name %></h3>
-                <p class="description"><%= group.description %></p>
-              </div>
-              <div class="group-data">
-                <p>メンバー：<%= group.users.count %>人</p>
-              </div>
-            <% end %>
+      <div class="group-index">
+        <% @groups.each do |group| %>
+          <%= link_to group_path(group), class: "group" do %>
+            <div class="profile">
+              <h3 class="name"><%= group.name %></h3>
+              <p class="description"><%= group.description %></p>
+            </div>
+            <div class="group-data">
+              <p>メンバー：<%= group.users.count %>人</p>
+            </div>
           <% end %>
-        </div>
-      <% else %>
-        <div><br/></div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+    <% end %>
     <!-- my groups End -->
     <!-- requests -->
     <% if @requests.exists? %>
