@@ -11,17 +11,16 @@ document.addEventListener("turbolinks:load", () => {
     }
   });
 
-  const editButtons = document.getElementsByClassName("edit-btn");
+  const editButtons = document.getElementsByClassName("editButton");
   for (let i = 0; i < editButtons.length; i++) {
     editButtons[i].onclick = function () {
-      let editBox = document.getElementById(`form-box-edit-${i}`);
-      const veil2 = document.getElementById("transparent-edit");
-      editBox.classList.add("reveal");
-      veil2.classList.add("reveal");
+      let editBox = document.getElementById(`editPost${i}`);
+      editBox.classList.add("active");
 
-      veil2.addEventListener("click", () => {
-        veil2.classList.remove("reveal");
-        editBox.classList.remove("reveal");
+      editBox.addEventListener("click", (e) => {
+        if (e.target.closest(".modal") === null) {
+          editBox.classList.remove("active");
+        }
       });
     };
   }

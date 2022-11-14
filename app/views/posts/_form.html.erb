@@ -1,11 +1,15 @@
 <div class="close-button">
   <button>×</button>
 </div>
-<div class="input-box" id="modal">
-  <h3>NEW POST</h3>
+<div class="input-box modal">
+  <%if post.text.nil? %>
+    <h3>NEW POST</h3>
+  <% else %>
+    <h3>EDIT</h3>
+  <% end %>
   <%= form_with model: post, local: true do |f| %>
     <div class="field">
-      <%= f.label :genre_id, "テーマ：", class: "genre" %>
+      <%= f.label :genre_id, "テーマ：" %>
       <%= f.collection_select :genre_id, genres, :id, :name, value: post.genre_id %>
     </div>
     <div class="field">
@@ -13,7 +17,7 @@
     </div>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="actions">
-      <%= f.submit "追加", class: "submit" %>
+      <%= f.submit "送信", class: "submit" %>
     </div>
   <% end %>
 </div>

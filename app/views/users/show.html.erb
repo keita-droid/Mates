@@ -42,45 +42,20 @@
         <div class="post">
           <h3 class="genre"><%= post.genre.name %></h3>
           <%= simple_format(post.text, class:"text") %>
+          
+          <% if current_user == @user %>
+            <div class="buttons">
+              <button class="button editButton"><%= fa_icon "pencil-square-o" %></button>
+              <%= link_to post_path(post), method: :delete, class: "button", data: { confirm: '投稿を削除してもよろしいですか？' } do %>
+                <%= fa_icon "trash-o" %>
+              <% end %>
+            </div>
+            <div class="post-box" id="editPost<%= i %>">
+              <%= render partial: "posts/form", locals: {post: post, genres: @genres} %>
+            </div>
+          <% end %>
         </div>
       <% end %>
-            <%# if i < 3 %>
-              <%# if current_user == @user %>
-                <%#= form_with model: post, local: true do |f| %>
-                  <%#= f.hidden_field :text, value: post.text %>
-                  <%#= f.hidden_field :genre_id, value: post.genre_id %>
-                  <%#= f.hidden_field :user_id, value: current_user.id %>
-                  <%#= f.hidden_field :updated_at, value: Time.current %>
-                  <%#= f.submit "", class: "postTag top input" %>
-                <%# end %>
-              <%# else %>
-                <%# <div class="postTag top"></div> %>
-              <%# end %>
-            <%# else %>
-              <%# if current_user == @user %>
-                <%#= form_with model: post, local: true do |f| %>
-                  <%#= f.hidden_field :text, value: post.text %>
-                  <%#= f.hidden_field :genre_id, value: post.genre_id %>
-                  <%#= f.hidden_field :user_id, value: current_user.id %>
-                  <%#= f.hidden_field :updated_at, value: Time.current %>
-                  <%#= f.submit "", class: "postTag input" %>
-                <%# end %>
-              <%# end %>
-            <%# end %>
-          <%# if @user.id == current_user.id %>
-            <%# <div class="btns"> %>
-              <%# <button class="edit-btn" > %>
-                <%#= fa_icon "pencil-square-o" %>
-              <%# </button> %>
-              <%#= link_to post_path(post), method: :delete, data: { confirm: '投稿を削除しますか？' } do %>
-                <%#= fa_icon "trash-o" %>
-              <%# end %>
-            <%# </div> %>
-            <%# <div id="form-box-edit-= i" class="form-box-edit"> %>
-              <%#= render partial: "posts/form", locals: {post: post, genres: @genres} %>
-            <%# </div> %>
-            <%# <div id="transparent-edit"></div> %>
-          <%# end %>
       <% if current_user == @user %>
         <button class="post new-post" id="newPost" >
           <div class="new-post-button"><%= fa_icon "plus-square-o 3x" %><br/>追加する</div>

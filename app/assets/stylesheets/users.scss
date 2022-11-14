@@ -52,6 +52,7 @@
     background-color: #f5ebdc;
     min-width: 450px;
     border: none;
+    position: relative;
     
     .genre {
       display: inline-block;
@@ -67,6 +68,27 @@
       font-size: 1.8rem;
       letter-spacing: 0;
       font-weight: lighter;
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 5px 10px;
+      font-size: 1.6rem;
+      color: #666;
+
+      .button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 2px;
+
+        &:hover {
+          color: #000;
+          transition: 0.2s;
+        }
+      }
     }
   }
 
