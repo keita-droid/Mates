@@ -133,7 +133,7 @@
   }
 }
 
-// 新規投稿エリア
+// 新規投稿,編集エリア
 .post-box {
   position: fixed;
   top: 0;
@@ -146,8 +146,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform: scale(1.05, 1.05);
 
   &.active {
     z-index: 50;
+    transition: 0.2s;
+    transform: scale(1,1);
   }
 }
