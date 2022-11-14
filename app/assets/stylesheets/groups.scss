@@ -25,55 +25,60 @@
     
     .section {
       margin-bottom: 40px;
-    }
 
-    .title {
-      display: inline-block;
-      color: #eee;
-      background-color: rgba(0,0,0,0.7);
-      padding: 10px 20px 10px 10px;
-      letter-spacing: 2px;
-      border-left: 6px solid #ffc266;
-    }
+      .title {
+        display: inline-block;
+        color: #eee;
+        background-color: rgba(0,0,0,0.7);
+        padding: 10px 20px 10px 10px;
+        letter-spacing: 2px;
+        border-left: 6px solid #ffc266;
+      }
 
-    .group-index {
-      padding: 10px 0;
+      .start-guide {
+        margin-top: 20px;
+        font-size: 1.6rem;
+        line-height: 1.7;
+      }
 
-      .group {
-        display: block;
-        margin: 10px 0;
-        padding: 20px;
-        font-size: 1.4rem;
-        background-color: #f5e0c4;
-        
-        &:nth-of-type(even) {
-          background-color: #f5ebdc;
-        }
+      .group-index {
+        padding: 10px 0;
 
-        .profile {
-          display: flex;
-          align-items: center;
-          padding-bottom: 10px;
-
-          .name {
-            font-size: 2.2rem;
-            letter-spacing: 0;
-            font-weight: normal;
-            margin-right: 20px;
+        .group {
+          display: block;
+          margin: 10px 0;
+          padding: 20px;
+          font-size: 1.4rem;
+          background-color: #f5e0c4;
+          
+          &:nth-of-type(even) {
+            background-color: #f5ebdc;
           }
-          .description {
-            color: #555;
+
+          .profile {
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+
+            .name {
+              font-size: 2.2rem;
+              letter-spacing: 0;
+              font-weight: normal;
+              margin-right: 20px;
+            }
+            .description {
+              color: #555;
+            }
           }
-        }
 
-        .group-data {
-          text-align: end;
-        }
-
-        
-        &:hover {
-          transform: scale(1.03, 1.03);
-          transition: 0.3s;
+          .group-data {
+            text-align: end;
+          }
+          
+          &:hover {
+            transform: scale(1.03, 1.03);
+            transition: 0.3s;
+          }
         }
       }
     }

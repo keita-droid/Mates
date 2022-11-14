@@ -5,15 +5,10 @@
     <% if current_user.posts.empty? %>
       <div class="section">
         <h2 class="title">スタートガイド</h2>
-        <ul>
-          <li>
-            <p>1.グループに参加しよう！</p>
-            <p> - 新しくグループをつくる</p>
-            <p> - グループを見つけて参加する</p>
-          </li>
-          <li>
-              <div><%= link_to '2.自分の好きなものを追加しよう！', user_path(current_user), class: "requests" %></div>
-          </li>
+        <ul class="start-guide">
+          <li class="guide-item">新しくグループをつくる</li>
+          <li class="guide-item">グループを見つけて参加する</li>
+          <li class="guide-item"><%= link_to 'プロフィールを充実させる', user_path(current_user) %></li>
         </ul>
       </div>
     <% end %>
