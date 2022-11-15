@@ -63,7 +63,20 @@
       <% end %>
     </div>
   <% else %>
-    <div class="posts"></div>
+    <div class="posts">
+      <% @posts.each do |post| %>
+        <div class="post confidential">
+          <h3 class="genre"><%= post.genre.name %></h3>
+          <% num = rand(2) %>
+          <% if num == 0 %>
+            <p class="text">覗き見しないで！これはダミーテキストです</p>
+          <% else %>
+            <p class="text">グループに参加してプロフィールをシェアしよう</p>
+          <% end %>
+          <p class="no-member-notice">CONFIDENTIAL</p>
+        </div>
+      <% end %>
+    </div>
   <% end %>
   <!-- sub area -->
   <div class="side-menu">
