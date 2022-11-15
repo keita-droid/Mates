@@ -7,17 +7,13 @@ class UserGroupRelationsController < ApplicationController
 
   def create
     user = User.find(create_params[:user_id])
-    unless create_params[:group_id].blank?
-      group = Group.find(create_params[:group_id])
-      request = Request.find_by(create_params)
-      if current_user.in_this_group?(group)
-        group.users << user
-        request.destroy unless request.nil?
-      end
-      redirect_to group_path(group)
-    else
-      redirect_to user_path(user)
+    group = Group.find(create_params[:group_id])
+    request = Request.find_by(create_params)
+    if current_user.in_this_group?(group)
+      group.users << user
+      request.destroy unless request.nil?
     end
+    redirect_to group_path(group), notice: "#{user.name}がメンバーに加入しました"
   end
 
   def destroy
