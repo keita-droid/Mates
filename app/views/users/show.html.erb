@@ -31,7 +31,7 @@
   <% if @user.id == current_user.id %>
     <%= link_to '編集', edit_user_path(@user), class: "action" %>
   <% elsif !(current_user.same_group?(@user)) %>
-    <button class="action invite">グループに招待</button>
+    <button class="action invite" id="inviteButton">グループに招待</button>
   <% end %>
 </div>
 <!-- user info End -->
@@ -144,3 +144,10 @@
   </div>
 <% end %>
 <!-- new post End -->
+<!-- invite form -->
+<% unless current_user == @user %>
+  <div class="post-box" id="inviteBox">
+    <%= render partial: "user_group_relations/form", locals: {user: @user, groups: @groups_for_invite} %>
+  </div>
+<% end %>
+<!-- invite form End -->
