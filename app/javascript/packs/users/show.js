@@ -1,14 +1,13 @@
-document.addEventListener("turbolinks:load", () => {
+$(document).on("turbolinks:load", function() {
   // 新規投稿フォームの表示
-  const newPostButton = document.getElementById("newPost");
-  const box = document.getElementById("formBox");
+  const formBox = $("#formBox");
 
-  newPostButton.addEventListener("click", () => {
-    box.classList.add("active");
+  $('#newPost').click(function() {
+    formBox.addClass("active");
   });
-  box.addEventListener("click", (e) => {
+  formBox.on("click", function(e) {
     if (e.target.closest(".modal") === null) {
-      box.classList.remove("active");
+      formBox.removeClass("active");
     }
   });
 
@@ -29,15 +28,14 @@ document.addEventListener("turbolinks:load", () => {
   }
   
   // 招待フォームの表示
-  const inviteButton = document.getElementsById("inviteButton");
-  const inviteBox = document.getElementById("inviteBox");
+  const inviteBox = $("#inviteBox");
 
-  inviteButton.addEventListener("click", () => {
-    inviteBox.classList.add("active");
+  $("#inviteButton").click(function() {
+    inviteBox.addClass("active");
   });
-  inviteBox.addEventListener("click", (e) => {
+  inviteBox.on("click", function(e) {
     if (e.target.closest(".modal") === null) {
-      inviteBox.classList.remove("active");
+      inviteBox.removeClass("active");
     }
   });
   
