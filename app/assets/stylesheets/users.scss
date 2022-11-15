@@ -153,6 +153,15 @@
       margin-left: 20px;
       list-style: square inside;
     }
+
+    .invite {
+      background-color: #fff;
+      padding: 20px 0;
+
+      .invite-button {
+        padding: 5px 10px;
+      }
+    }
   }
 }
 

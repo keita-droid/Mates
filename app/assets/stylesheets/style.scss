@@ -198,6 +198,16 @@
         box-shadow: 0 0 8px #c00;
       }
     }
+    
+    &.invite {
+      color: seagreen;
+      border-color: seagreen;
+
+      &:hover {
+        background-color: transparent;
+        box-shadow: 0 0 8px seagreen;
+      }
+    }
   }
 }
 

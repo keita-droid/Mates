@@ -30,6 +30,8 @@
   </div>
   <% if @user.id == current_user.id %>
     <%= link_to '編集', edit_user_path(@user), class: "action" %>
+  <% elsif !(current_user.same_group?(@user)) %>
+    <button class="action invite">グループに招待</button>
   <% end %>
 </div>
 <!-- user info End -->
@@ -128,7 +130,7 @@
       <div class="invite">
         <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
           <%= f.hidden_field :id, value: @user.id %>
-          <%= f.submit "グループに招待", class: "invite-btn"%>
+          <%= f.submit "グループに招待", class: "invite-button"%>
         <% end %>
       </div>
     <% end %>
