@@ -63,12 +63,7 @@
       <% end %>
     </div>
   <% else %>
-    <div class="invite">
-      <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
-        <%= f.hidden_field :id, value: @user.id %>
-        <%= f.submit "グループに招待", class: "invite-btn"%>
-      <% end %>
-    </div>
+    <div class="posts"></div>
   <% end %>
   <!-- sub area -->
   <div class="side-menu">
@@ -107,12 +102,6 @@
           <% @user.same_groups(current_user).each do |group| %>
             <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
           <% end %>
-          <div class="invite-other">
-            <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
-              <%= f.hidden_field :id, value: @user.id %>
-              <%= f.submit "自分のグループに招待", class: "invite-other-btn"%>
-            <% end %>
-          </div>
         <% else %>
           <% unless @user.public_groups.empty? %>
             <% @user.public_groups.each do |group| %>
@@ -122,6 +111,14 @@
         <% end %>
       </ul>
     </div>
+    <% unless current_user == @user %>
+      <div class="invite">
+        <%= form_with url: new_user_group_relation_path, method: :get, local: true do |f| %>
+          <%= f.hidden_field :id, value: @user.id %>
+          <%= f.submit "グループに招待", class: "invite-btn"%>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <!-- user contents End -->
