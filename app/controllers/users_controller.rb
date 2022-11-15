@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.order("updated_at DESC")
     @new_post = Post.new
     @genres = Genre.all
+    @groups_for_invite = current_user.groups - @user.groups
   end
 
   def edit
