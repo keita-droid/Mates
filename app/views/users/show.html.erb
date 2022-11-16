@@ -83,14 +83,10 @@
   <!-- sub area -->
   <div class="side-menu">
     <div class="my-groups">
-      <p>参加中のグループ
-        <% if current_user.id == @user.id %>
-          <span id="edit-groups">[編集]</span>
-        <% end %>
-      </p>
       <ul>
         <% if current_user.id == @user.id %>
           <%# マイページの場合 %>
+          <h3 class="title">参加中のグループ</h3>
           <% unless @user.public_groups.empty? %>
             <% @user.public_groups.each do |group| %>
               <li>
@@ -100,7 +96,7 @@
             <% end %>
           <% end %>
           <% unless @user.private_groups.empty? %>
-            <p class="filter">非表示のグループ</p>
+            <h3 class="title">非公開のグループ</h3>
             <% @user.private_groups.each do |group| %>
               <li>
                 <%= link_to group.name, group_path(group), class: "group-link" %>
@@ -110,18 +106,20 @@
           <% end %>
         <% elsif current_user.same_group?(@user) %>
           <%# グループメンバーのページの場合 %>
+          <h3 class="title">参加中のグループ</h3>
           <% unless @user.public_groups.empty? %>
             <% @user.public_groups.each do |group| %>
               <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
             <% end %>
           <% end %>
-          <p class="filter">同じメンバーのグループ</p>
+          <h3 class="title">同じメンバーのグループ</h3>
           <% @user.same_groups(current_user).each do |group| %>
             <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
           <% end %>
           <button class="action invite" id="inviteButton">別のグループに招待する</button>
         <% else %>
           <%# 知り合いではないユーザーページの場合 %>
+          <h3 class="title">参加中のグループ</h3>
           <% unless @user.public_groups.empty? %>
             <% @user.public_groups.each do |group| %>
               <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
