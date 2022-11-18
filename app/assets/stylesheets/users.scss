@@ -18,6 +18,7 @@
   border: 1px solid #888;
   border-radius: 50%;
   margin: 10px;
+  cursor: pointer;
   }
   .member-image .no-image {
     background-image: url("default_icon.png");
@@ -227,5 +228,40 @@
     transition: 0.2s;
     transform: scale(1,1);
     background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+// プロフィール画像の拡大表示
+.image-large {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .image {
+    border-radius: 5px;
+    height: auto;
+    max-width: 360px;
+    transform: scale(0.2, 0.2);
+  }
+
+  &.active {
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.6);
+    .image {
+      transition: 0.3s;
+      transform: scale(1,1);
+    }
+    &.deactivate {
+      .image {
+        transition: 0.3s;
+        transform: scale(0.01, 0.01);
+      }
+    }
   }
 }

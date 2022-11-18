@@ -4,7 +4,7 @@
   <div class="profile-wrap">
     <div class="member-image">
       <% if @user.image.attached? %>
-        <div style="background-image:url(<%= rails_blob_path(@user.image) %>)"></div>
+        <div id="image-icon" style="background-image:url(<%= rails_blob_path(@user.image) %>)"></div>
       <% else %>
         <div class="no-image"></div>
       <% end %>
@@ -147,3 +147,8 @@
   </div>
 <% end %>
 <!-- invite form End -->
+<!-- user image -->
+<% if @user.image.attached? %>
+  <div class="image-large" id="image-large"><%= image_tag @user.image, class: "image modal" %></div>
+<% end %>
+<!-- user image End -->

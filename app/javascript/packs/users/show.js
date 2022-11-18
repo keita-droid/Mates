@@ -38,6 +38,21 @@ $(document).on("turbolinks:load", function() {
       inviteBox.removeClass("active");
     }
   });
+
+  // プロフィール画像の拡大表示
+  const imageLarge = $("#image-large");
+
+  $("#image-icon").click(function() {
+    imageLarge.addClass("active");
+  });
+  imageLarge.on("click", function(e) {
+    if (e.target.closest(".modal") === null) {
+      imageLarge.addClass("deactivate");
+      imageLarge.delay(200).queue(function(){
+        imageLarge.removeClass("active deactivate").dequeue();
+      });
+    }
+  });
   
 
   const editGroupsBtn =document.getElementById('edit-groups');
