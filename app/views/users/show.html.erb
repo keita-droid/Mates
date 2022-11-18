@@ -83,50 +83,52 @@
   <!-- sub area -->
   <div class="side-menu">
     <div class="my-groups">
-      <ul>
-        <% if current_user.id == @user.id %>
-          <%# マイページの場合 %>
-          <h3 class="title">参加中のグループ</h3>
-          <% unless @user.public_groups.empty? %>
-            <% @user.public_groups.each do |group| %>
-              <li>
-                <%= link_to group.name, group_path(group), class: "group-link" %>
-                <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, class: "withdraw-btn", data: { confirm: "【確認】#{group.name}から脱退します" }  %>
-              </li>
-            <% end %>
-          <% end %>
-          <% unless @user.private_groups.empty? %>
-            <h3 class="title">非公開のグループ</h3>
-            <% @user.private_groups.each do |group| %>
-              <li>
-                <%= link_to group.name, group_path(group), class: "group-link" %>
-                <%= link_to '脱退', user_group_relation_path(group.relation(@user)), method: :delete, class: "withdraw-btn", data: { confirm: "【確認】#{group.name}から脱退します" }  %>
-              </li>
-            <% end %>
-          <% end %>
-        <% elsif current_user.same_group?(@user) %>
-          <%# グループメンバーのページの場合 %>
-          <h3 class="title">参加中のグループ</h3>
-          <% unless @user.public_groups.empty? %>
+      <% if current_user.id == @user.id %>
+        <%# マイページの場合 %>
+        <h3 class="title">参加中のグループ</h3>
+        <% unless @user.public_groups.empty? %>
+          <ul>
             <% @user.public_groups.each do |group| %>
               <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
             <% end %>
-          <% end %>
-          <h3 class="title">同じメンバーのグループ</h3>
+          </ul>
+        <% end %>
+        <% unless @user.private_groups.empty? %>
+          <h3 class="title">非公開のグループ</h3>
+          <ul>
+            <% @user.private_groups.each do |group| %>
+              <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% elsif current_user.same_group?(@user) %>
+        <%# グループメンバーのページの場合 %>
+        <h3 class="title">参加中のグループ</h3>
+        <% unless @user.public_groups.empty? %>
+          <ul>
+            <% @user.public_groups.each do |group| %>
+              <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <h3 class="title">自分と一緒のグループ</h3>
+        <ul>
           <% @user.same_groups(current_user).each do |group| %>
             <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
           <% end %>
-          <button class="action invite" id="inviteButton">別のグループに招待する</button>
-        <% else %>
-          <%# 知り合いではないユーザーページの場合 %>
-          <h3 class="title">参加中のグループ</h3>
-          <% unless @user.public_groups.empty? %>
+          <button class="action invite" id="inviteButton">ほかのグループにも招待する</button>
+        </ul>
+      <% else %>
+        <%# 知り合いではないユーザーページの場合 %>
+        <h3 class="title">参加中のグループ</h3>
+        <% unless @user.public_groups.empty? %>
+          <ul>
             <% @user.public_groups.each do |group| %>
               <li><%= link_to group.name, group_path(group), class: "group-link" %></li>
             <% end %>
-          <% end %>
+          </ul>
         <% end %>
-      </ul>
+      <% end %>
     </div>
   </div>
 </div>

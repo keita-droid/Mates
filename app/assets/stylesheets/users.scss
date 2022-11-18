@@ -135,23 +135,70 @@
     flex-basis: 25%;
     font-size: 1.4rem;
     padding: 20px 15px;
-    margin-top: 10px;
-    margin-left: 10px;
     position: sticky;
     top: 80px;
     max-width: 460px;
     overflow: scroll;
 
-    p {
-      font-size: 1.6rem;
-      font-weight: bold;
-      letter-spacing: 0;
-      margin: 10px 0 5px;
+    .my-groups {
+      width: 80%;
     }
-    li {
-      padding: 5px 0;
-      margin-left: 20px;
-      list-style: square inside;
+
+    .title {
+      margin-bottom: 15px;
+      padding: 0 5px;
+      border-bottom: 4px solid #ffc266;
+      font-weight: normal;
+    }
+
+    ul {
+      margin: 10px 0 40px;
+      li {
+        margin-bottom: 15px;
+        list-style: square inside;
+        letter-spacing: 0;
+        font-size: 1.6rem;
+        
+        .group-link {
+          padding: 0 5px;
+          margin-right: 15px;
+          position: relative;
+
+          &::after {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #666;
+            transform: scale(0, 1);
+            transform-origin: center left;
+            transition: transform 0.3s;
+          }
+          &:hover::after {
+            transform: scale(1, 1);
+          }
+        }
+      }
+
+      .action.invite {
+        border: solid 1px #ffc266;
+        border-radius: 3px;
+        color: #555;
+        background-color: inherit;
+        font-size: 1.2rem;
+        padding: 8px 15px;
+        letter-spacing: 1px;
+        display: block;
+        margin: 30px auto;
+
+        &:hover {
+          box-shadow: 0 0 5px #ffc266;
+          color: #333;
+          transition: 0.3s;
+        }
+      }
     }
 
     .invite {
