@@ -24,7 +24,7 @@ class UserGroupRelationsController < ApplicationController
     else
       record.destroy if current_user.id == record.user_id
     end
-    redirect_to user_path(current_user), notice: "#{record.group.name}から抜けました"
+    redirect_to groups_path, notice: "#{record.group.name}を退会しました"
   end
 
   private

@@ -22,6 +22,13 @@
       <%= f.submit "変更を保存", class:"form-button" %>
     </div>
   <% end %>
+  <h2 class="title">グループを退会</h2>
+  <div class="unsubscribe">
+    <div class="actions">
+      <p>「<%= @group.name %>」を退会します。<br>この操作を取り消したい場合は、再度参加リクエストをするか、グループのメンバーに招待を依頼してください。<br><span>※自分以外にメンバーが一人もいない場合は、グループごと削除されます。</span></p>
+      <%= link_to '退会する', user_group_relation_path(@group.relation(current_user)), method: :delete, class: "form-button withdraw", data: { confirm: "【確認】#{@group.name}を退会します" } %>
+    </div>
+  </div>
   <h2 class="title">グループの削除</h2>
   <div class="unsubscribe">
     <div class="actions">
