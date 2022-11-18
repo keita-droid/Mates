@@ -177,9 +177,10 @@
 
   .action {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin: 10px;
-    padding: 5px 15px;
+    padding: 8px 15px;
+    letter-spacing: 0;
     border: 1px solid #666;
     border-radius: 5px;
     background-color: transparent;
@@ -201,12 +202,13 @@
     }
     
     &.invite {
-      color: seagreen;
-      border-color: seagreen;
+      color: #666;
+      border-color: #ffc266;
 
       &:hover {
         background-color: transparent;
-        box-shadow: 0 0 8px seagreen;
+        box-shadow: 0 0 8px #ffc266;
+        color: #333;
       }
     }
   }
