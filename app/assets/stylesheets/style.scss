@@ -419,3 +419,94 @@
     }
   }
 }
+
+/* --------------------------------
+ * ログイン、サインアップ画面
+ * -------------------------------- */
+
+.first-view {
+  background-image: url('people-g0ff231217_1920.jpg');
+  background-size: cover;
+  margin: 10px auto 0;
+  width: 85vw;
+  height: 85vh;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .catchcopy {
+    margin: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 5px #111;
+    font-size: 3.4rem;
+    font-weight: lighter;
+    line-height: 1.8;
+
+    .main-copy {
+      font-size: 4.5rem;
+    }
+    .sub-copy {
+      font-size: 2.5rem;
+      letter-spacing: 0;
+    }
+  }
+
+  .login-form {
+    margin: 20px 30px;
+    padding: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    max-width: 300px;
+
+    .title {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #ffc266;
+      padding: 3px 15px;
+    }
+
+    .field {
+      margin: 20px 0;
+      max-width: 350px;
+      label {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        letter-spacing: 0;
+      }
+      .text-field {
+        font-size: 1.6rem;
+        padding: 3px 5px;
+        width: 100%;
+        outline: none;
+        border: none;
+      }
+    }
+    .actions {
+      .submit-button {
+        display: block;
+        padding: 3px 10px;
+        font-size: 1.4rem;
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+    
+    .options {
+      margin-top: 30px;
+      border-top: 1px solid #666;
+      padding-top: 20px;
+
+      .btn {
+        display: block;
+        font-size: 1.2rem;
+        line-height: 1;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
