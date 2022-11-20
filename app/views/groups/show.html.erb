@@ -60,9 +60,9 @@
     </div>
     <div class="member-list">
       <p>メンバーリスト</p>
-      <ul>
+      <ul id="memberList">
         <% @members.each do |member| %>
-        <li><%= member.name %></li>
+        <li><a href="#user<%= member.id %>"><%= member.name %></a></li>
         <% end %>
       </ul>
     </div>
