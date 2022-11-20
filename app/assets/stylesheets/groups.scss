@@ -181,7 +181,8 @@
       background-color: #f5e0c4;
       padding: 10px;
       font-size: 1.6rem;
-      min-height: 460px;
+      min-height: 400px;
+      max-height: 460px;
       outline: none;
 
       .member-info {
@@ -275,19 +276,24 @@
     background-color: #eee;
     position: sticky;
     top: 80px;
-    max-width: 460px;
+    max-width: 240px;
     overflow: scroll;
 
-    p {
+    h3 {
       font-size: 1.6rem;
-      font-weight: bold;
-      letter-spacing: 0;
-      margin-bottom: 5px;
+      margin-bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #ffc266;
+      padding: 3px 15px;
     }
     li {
-      padding: 5px 0;
-      margin-left: 20px;
+      padding: 3px 0;
+      margin: 5px 0;
       list-style: square inside;
+      
+      &:hover {
+        text-shadow: 0 0 3px #bbb;
+      }
     }
   }
 }
