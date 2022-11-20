@@ -179,11 +179,12 @@
       display: block;
       position: relative;
       background-color: #f5e0c4;
-      padding: 10px;
+      padding: 10px 10px 30px;
       font-size: 1.6rem;
       min-height: 400px;
-      max-height: 460px;
+      max-height: 500px;
       outline: none;
+      overflow: scroll;
 
       .member-info {
         display: flex;
@@ -229,7 +230,8 @@
 
         .text {
           font-weight: lighter;
-          line-height: 2;
+          line-height: 1.3;
+          letter-spacing: 0;
         }
       }
 

@@ -49,7 +49,7 @@
             <% if i < 3 %>
               <div class="favorite">
                 <div class="genre"><span><%= post.genre.name %></span></div>
-                <div class="text"><%= simple_format(post.text) %></div>
+                <div class="text"><%= truncate(simple_format(post.text), length: 60, escape: false) %></div>
               </div>
             <% else %>
               <p class="more">And more...</p>
