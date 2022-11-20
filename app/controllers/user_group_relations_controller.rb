@@ -10,7 +10,7 @@ class UserGroupRelationsController < ApplicationController
     group = Group.find(create_params[:group_id])
     request = Request.find_by(create_params)
     if current_user.in_this_group?(group)
-      group.users << user
+      group.users << user unless user.in_this_group?(group)
       request.destroy unless request.nil?
     end
     redirect_to group_path(group), notice: "#{user.name}がメンバーに加入しました"
