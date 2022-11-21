@@ -125,18 +125,38 @@
  * footer
  * -------------------------------- */
  .footer {
-  height: 150px;
+  height: 200px;
   background-color: #eee;
   text-align: center;
   padding: 20px;
+  letter-spacing: 0;
 
   .footer-contents {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin: 35px 0 50px;
+
+    ul {
+      display: flex;
+      justify-content: center;
+
+      li+li:before {
+        content: '|';
+        color: #333;
+      }
+      .helps-button {
+        margin: 0 20px;
+        position: relative;
+        &:hover {
+          color: #888;
+          transition: 0.3s;
+        }
+      }
+    }
   }
 
   .copyright {
     margin-top: 35px;
-    letter-spacing: 0;
+    font-size: 1.2rem;
   }
  }
 
