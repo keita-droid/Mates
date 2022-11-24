@@ -332,7 +332,8 @@
 
 
 /* --------------------------------
- * ユーザー検索＆グループ検索ページ共通設定
+ * ユーザー検索＆グループ検索ページ,
+ * グループ新規作成ページ共通設定
  * -------------------------------- */
 .search-page {
   font-size: 1.6rem;
@@ -359,6 +360,22 @@
       outline: none;
       width: 300px;
       margin-right: 5px;
+    }
+
+    // グループ新規作成用
+    .field.make-new-group {
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        color: #555;
+        letter-spacing: 0;
+      }
+
+      .form-button {
+        margin-top: 20px;
+        min-width: 200px;
+      }
     }
 
   }

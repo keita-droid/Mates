@@ -1,0 +1,25 @@
+<div class="search-page">
+  <h2 class="title">グループをつくる</h2>
+  <%= form_with model: @group, url:{ controller: 'groups', action: 'create'}, local: true, class: "search new" do |f| %>
+    <div class="field make-new-group">
+      <%= f.label :name, "グループ名", class: "label" %>
+      <%= f.text_field :name, class: "form", autofocus: true, required: true %>
+    </div>
+    <div class="field make-new-group">
+      <%= f.label :description, "概要説明", class: "label" %>
+      <%= f.text_area :description, class: "form" %>
+    </div>
+    <div class="field make-new-group">
+      <%= f.label :public, "公開設定", class: "label" %>
+      <div class="radio">
+        <label><%= f.radio_button :public, true %> 参加リクエスト可能</label>
+      </div>
+      <div class="radio">
+        <label><%= f.radio_button :public, false, checked: true %> メンバーによる招待制</label>
+      </div>
+    </div>
+    <div class="field make-new-group">
+      <%= f.submit "作成", class: "form-button" %>
+    </div>
+  <% end %>
+</div>
