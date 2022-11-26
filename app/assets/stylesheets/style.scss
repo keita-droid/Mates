@@ -546,5 +546,34 @@
         }
       }
     }
+
+    .fa-facebook-square {
+      color: royalblue;
+    }
+  }
+  
+  .about {
+    position: absolute;
+    right: 18%;
+    bottom: 18%;
+    background-color: tomato;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 2rem;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    
+    a {
+      display: block;
+      width: 250px;
+      padding: 15px 30px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 10px #aaa;
+      transition: 0.2s;
+    }
   }
 }
