@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   resources :posts, only: %i[create update destroy]
 
   namespace :helps do
-    # resource :about, only: %i[show]
-    # resource :terms, only: %i[show]
+    resource :about, only: %i[show]
+    resource :manual, only: %i[show]
     resource :policies, only: %i[show]
   end
 end
