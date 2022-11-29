@@ -6,7 +6,11 @@
       <% if @user.image.attached? %>
         <div id="image-icon" style="background-image:url(<%= rails_blob_path(@user.image) %>)"></div>
       <% else %>
-        <div class="no-image"></div>
+        <div class="no-image">
+          <% if current_user == @user %>
+            <%= link_to '', edit_user_path(@user), class: "no-image-user" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <div class="profile">

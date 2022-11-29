@@ -22,6 +22,12 @@
   }
   .member-image .no-image {
     background-image: url("default_icon.png");
+    cursor: default;
+     & .no-image-user {
+      display: block;
+      width: 100%;
+      height: 100%;
+     }
   }
   
 }
