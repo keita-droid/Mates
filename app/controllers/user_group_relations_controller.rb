@@ -1,13 +1,18 @@
 class UserGroupRelationsController < ApplicationController
 
-  def new
-    @user = User.find(params[:id])
-    @groups = current_user.groups - @user.groups
-  end
-
   def create
     user = User.find(create_params[:user_id])
     group = Group.find(create_params[:group_id])
+
+    # グループからの招待を承認する処理
+    invite = Invite.find_by(create_params)
+    unless invite.nil?
+      group.users << user unless user.in_this_group?(group)
+      invite.destroy
+      return redirect_to group_path(group), notice: "ようこそ！メンバーに加入しました！"
+    end
+
+    # ユーザーからのリクエストを承認する処理
     request = Request.find_by(create_params)
     if current_user.in_this_group?(group)
       group.users << user unless user.in_this_group?(group)
