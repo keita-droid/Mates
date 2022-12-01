@@ -94,6 +94,15 @@ class User < ApplicationRecord
     end
   end
 
+  def invited?(group)
+    invite = Invite.find_by(user_id: self.id, group_id: group.id)
+    unless invite.nil?
+      return true
+    else
+      return false
+    end
+  end
+
   def download_and_attach_avatar(image_url)
     return unless image_url
     file = open(image_url)

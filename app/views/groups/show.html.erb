@@ -10,6 +10,12 @@
   </div>
   <% if current_user.in_this_group?(@group) %>
     <%= link_to '編集', edit_group_path(@group), class: "action" %>
+  <% elsif current_user.invited?(@group) %>
+    <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :group_id, value: @group.id %>
+      <%= f.submit "すぐに参加", class: "action" %>
+    <% end %>
   <% elsif @group.public && !(current_user.requested?(@group)) %>
     <%= form_with model: [@group, @request], local: true do |f| %>
       <%= f.submit "参加をリクエスト", class:"action" %>
