@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     member do
       get 'delete'
     end
-    resources :requests, only: %i[new create destroy index]
+    resources :requests, only: %i[create destroy index]
   end
 
   resources :users, only: %i[show edit update destroy] do
@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   resources :posts, only: %i[create update destroy]
 
   namespace :helps do
-    # resource :about, only: %i[show]
-    # resource :terms, only: %i[show]
+    resource :about, only: %i[show]
+    resource :manual, only: %i[show]
     resource :policies, only: %i[show]
   end
 end

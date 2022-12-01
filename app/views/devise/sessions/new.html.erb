@@ -1,21 +1,20 @@
-<div class="wrap">
-  <div class="image">
-    <div class="copy">
-      自分の好きなことを<br/>チームやグループのメンバーと<br/>シェアしよう
-    </div>
+<div class="first-view">
+  <div class="catchcopy">
+    <p class="main-copy">「好き」を知れば、会話は広がる。</p>
+    <p class="sub-copy">　チームビルディング支援アプリ <span>Mates</span></p>
   </div>
-  <div class="inputBox forSignIn">
-    <h2>ログイン</h2>
 
+  <div class="login-form">
+    <h2 class="title">SIGN IN</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"text-field" %>
       </div>
 
       <div class="field">
         <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, autocomplete: "current-password", class:"text-field" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
@@ -26,10 +25,12 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "ログイン" %>
+        <%= f.submit "ログイン", class:"submit-button" %>
       </div>
     <% end %>
-    <hr><br>
-    <%= render "devise/shared/links" %>
+    <div class="options">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
+  <%= render "devise/shared/about" %>
 </div>

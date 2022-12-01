@@ -2,334 +2,272 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.user-header {
-  padding-top: 15px;
-  margin-bottom: 10px;
-  width: 100%;
-  // background-color: rgb(255, 199, 255);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+/* --------------------------------
+ * users#show
+ * -------------------------------- */
 
-  .image {
-    margin-right: 10px;
-    div {
-      width: 65px;
-      height: 65px;
-      background-size: cover;
-      border-radius: 33px;
-      border: 1px solid rgb(230, 230, 230);
-    }
-    .no-image {
-      // background-color: rgba(0, 0, 0, 0.05);
-      background-image: url("default_icon.png");
-    }
-  }
-  .profile {
-    .name {
-      font-size: 23px;
-      font-weight: bold;
-      span {
-        margin: 0 10px;
-        font-size: small;
-        font-weight: lighter;
-      }
-    }
-    .status {
-      font-size: small;
-      color: darkslategray;
-    }
-  }
-  .description {
-    margin-top: 10px;
-    padding: 10px 0;
-    font-size: 15px;
-  }
-}
-.flex {
-  width: 100%;
+//  上部・info（style.scssでの記述への追加分）
+.profile-wrap {
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start;
 
-  .edit {
-    margin: 15px;
-    a {
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #666;
-      border-radius: 5px;
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-        transition: 0.3s;
-      }
+  .member-image div {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  border: 1px solid #888;
+  border-radius: 50%;
+  margin: 10px;
+  cursor: pointer;
+  }
+  .member-image .no-image {
+    background-image: url("default_icon.png");
+    cursor: default;
+     & .no-image-user {
+      display: block;
+      width: 100%;
+      height: 100%;
+     }
+  }
+  
+}
+
+// メインエリア
+
+.user-contents {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 30px;
+  
+  // 投稿一覧
+  .posts,
+  .invite {
+    flex-basis: 75%;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+    row-gap: 30px;
+    column-gap: 20px;
+    justify-content: center;
+  }
+
+  .post {
+    margin: 15px auto;
+    padding: 0 0 20px;
+    background-color: #f5ebdc;
+    min-width: 450px;
+    border: none;
+    position: relative;
+    
+    .genre {
+      display: inline-block;
+      background-color: rgba(0,0,0,0.7);
+      color: #ffc266;
+      padding: 8px 15px;
+      letter-spacing: 3px;
+      font-size: 1.4rem;
     }
-    .requested {
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #666;
-      border-radius: 5px;
+    
+    .text {
+      margin: 15px;
+      font-size: 1.8rem;
+      letter-spacing: 0;
+      font-weight: lighter;
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 5px 10px;
+      font-size: 1.6rem;
       color: #666;
-    }
-  }
-}
-.flex-left {
-  display: flex;
-}
 
-.wrapper {
-  padding: 10px;
-  display: flex;
-
-  .favorites {
-    .box {
-      display: flex;
-      justify-content: space-between;
-      .innerBox {
-        padding: 2px 5px;
-      }
-    }
-    .postTag {
-      height: 15px;
-      width: 15px;
-      border-top: 15px solid rgba(0, 0, 0, 0.18);
-      border-right: 15px solid rgba(0, 0, 0, 0.18);
-      border-bottom: 15px solid transparent;
-      border-left: 15px solid transparent;
-    }
-    .postTag.input {
-      background-color: transparent;
-      cursor: pointer;
-      &:hover {
-        border-top: 15px solid rgb(182, 182, 252);
-        border-right: 15px solid rgb(182, 182, 252);
-        transition: 0.2s;
-      }
-    }
-    .top {
-      border-top: 15px solid rgb(182, 182, 252);
-      border-right: 15px solid rgb(182, 182, 252);
-    }
-
-    .btns {
-      display: flex;
-      justify-content: flex-end;
-      a {
-        font-size: 18px;
-        color: #666;
-        margin: 5px;
-        &:hover {
-          color: #000;
-          transition: 0.1s;
-        }
-      }
-      .edit-btn {
-        border: none;
+      .button {
         background-color: transparent;
-        font-size: 18px;
-        color: #666;
-        margin: 5px;
-        cursor: pointer;
+        border: none;
+        outline: none;
+        padding: 2px;
+
         &:hover {
           color: #000;
-          transition: 0.1s;
+          transition: 0.2s;
         }
       }
     }
-  }
-}
 
-.invite {
-  margin: 20px;
-  .invite-btn {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: transparent;
-    color: #454245;
-    border: 1px solid #666;
-    border-radius: 5px;
-    box-shadow: 0 0 1px #666;
+    &.confidential {
+      background-color: #f5e0c4;
+
+      .text {
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+      }
+    }
+    
+    .no-member-notice {
+      position: absolute;
+      top: 30%;
+      left: 120px;
+      background-color: #fff;
+      font-weight: bold;
+      font-size: 1.8rem;
+      color: #c00;
+      padding: 10px 35px;
+      transform: skew(8deg, -8deg);
+      letter-spacing: 0;
+      border: solid 2px #c00;
+    }
+  }
+
+  .post.new-post {
+    color: #666;
+    font-size: 1.6rem;
+    background-color: #eee;
+    
+    .new-post-button {
+      padding-top: 20px;
+    }
     &:hover {
-      box-shadow: 0 0 3px #666;
-      background-color: rgba(128, 128, 128, 0.1);
-      border: 1px solid gray;
-      cursor: pointer;
+      color: #333;
+      background-color: #ddd;
       transition: 0.3s;
     }
   }
-}
 
-.groups {
-  margin: 10px 0 30px;
-  
-  .title {
-    font-size: 17px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  }
-  .title.main {
-    font-size: 20px;
-  }
-  li {
-    margin: 15px 30px;
-    list-style: circle;
-    .group-link {
-      margin: 0 5px;
-      &:hover {
-        border-bottom: 1px solid #000;
+  // サイドメニュー
+  .side-menu {
+    flex-basis: 25%;
+    font-size: 1.4rem;
+    padding: 20px 15px;
+    position: sticky;
+    top: 80px;
+    max-width: 460px;
+    overflow: scroll;
+
+    .my-groups {
+      width: 80%;
+    }
+
+    .title {
+      margin-bottom: 15px;
+      padding: 0 5px;
+      border-bottom: 4px solid #ffc266;
+      font-weight: normal;
+    }
+
+    ul {
+      margin: 10px 0 40px;
+      li {
+        margin-bottom: 15px;
+        list-style: square inside;
+        letter-spacing: 0;
+        font-size: 1.6rem;
+        
+        .group-link {
+          padding: 0 5px;
+          margin-right: 15px;
+          position: relative;
+
+          &::after {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #666;
+            transform: scale(0, 1);
+            transform-origin: center left;
+            transition: transform 0.3s;
+          }
+          &:hover::after {
+            transform: scale(1, 1);
+          }
+        }
+      }
+
+      .action.invite {
+        border: solid 1px #ffc266;
+        border-radius: 3px;
+        color: #555;
+        background-color: inherit;
+        font-size: 1.2rem;
+        padding: 8px 15px;
+        letter-spacing: 1px;
+        display: block;
+        margin: 30px auto;
+
+        &:hover {
+          box-shadow: 0 0 5px #ffc266;
+          color: #333;
+          transition: 0.3s;
+        }
       }
     }
-    .withdraw-btn {
-      visibility: hidden;
-      background-color: #f06060;
-      color: #fff;
-      border-radius: 5px;
-      font-size: small;
-      font-weight: bold;
-      padding: 3px 8px;
-      &:hover {
-        background-color: #fa3932;
-        transition: 0.4s;
-      }
-    }
-    .withdraw-btn.reveal {
-      visibility: visible;
-      animation-name: fadeIn;
-      animation-duration:.2s;
-      animation-fill-mode:forwards;
-      opacity:0;
-    }
-  }
-  .invite-other {
-    margin: 25px 0;
-    .invite-other-btn {
-      padding: 3px 6px;
-      background-color: transparent;
-      color: #454245;
-      border: 1px solid #666;
-      border-radius: 5px;
-      box-shadow: 0 0 1px #666;
-      &:hover {
-        box-shadow: 0 0 3px #666;
-        background-color: rgba(128, 128, 128, 0.1);
-        border: 1px solid gray;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-    }
-  }
-  .filter {
-    font-size: small;
-    color: #666;
-    margin-top: 30px;
-  }
-  
-  #edit-groups {
-    font-size: small;
-    color: #454245;
-    padding: 2px;
-    &:hover {
-      cursor: pointer;
+
+    .invite {
+      padding: 5px 10px;
+      margin: 20px 0;
     }
   }
 }
 
-@keyframes fadeIn{
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-// 投稿フォーム
-#form-box {
-  visibility: hidden;
-  background-color: #fff;
-  border-radius: 5px;
-  z-index: 200;
-  position: fixed;
-  top: 30%;
-  left: 30%;
-  box-shadow: 1px 1px 5px #666;
-}
-
-#form-box.reveal, .form-box-edit.reveal {
-  visibility: visible;
-  animation-name: fadeIn;
-  animation-duration:.4s;
-  animation-fill-mode:forwards;
-  opacity:0;
-}
-
-.form-box-edit {
-  visibility: hidden;
-  background-color: #fff;
-  border-radius: 5px;
-  z-index: 200;
-  position: fixed;
-  top: 30%;
-  left: 30%;
-  box-shadow: 1px 1px 5px #666;
-}
-
-#transparent {
-  visibility: hidden;
-  height: 100%;
-  width: 100%;
-  z-index: 100;
+// 新規投稿,編集エリア
+.post-box {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-#transparent.reveal, #transparent-edit.reveal {
-  visibility: visible;
-  animation-name: fadeIn;
-  animation-duration:.4s;
-  animation-fill-mode:forwards;
-  opacity:0;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.05, 1.05);
+
+  &.active {
+    z-index: 50;
+    transition: 0.2s;
+    transform: scale(1,1);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
 
-#transparent-edit {
-  visibility: hidden;
-  height: 100%;
-  width: 100%;
-  z-index: 100;
+// プロフィール画像の拡大表示
+.image-large {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-// 退会処理
-.unsubscribe {
-  color: #454245;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
-  .actions {
-    margin-top: 30px;
-    .link-btn {
-      padding: 5px 30px;
-      border: 1px solid orangered;
-      border-radius: 5px;
-      color: orangered;
-      font-weight: bold;
-      font-size: 14px;
-      margin-right: 15px;
-      &:hover {
-        background-color: red;
-        color: #fff;
-        transition: 0.3s;
-      }
-    }
-    .link-btn.cancel {
-      color: #666;
-      border: 1px solid #666;
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.15);
-        color: #454245;
-      }
-    }
+  .image {
+    border-radius: 5px;
+    height: auto;
+    max-width: 360px;
+    transform: scale(0.2, 0.2);
   }
-  .notice {
-    margin: 20px 0;
+
+  &.active {
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.6);
+    .image {
+      transition: 0.3s;
+      transform: scale(1,1);
+    }
+    &.deactivate {
+      .image {
+        transition: 0.3s;
+        transform: scale(0.01, 0.01);
+      }
+    }
   }
 }

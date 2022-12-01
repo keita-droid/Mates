@@ -1,44 +1,57 @@
-document.addEventListener("turbolinks:load", () => {
-  const button = document.getElementById("new");
-  const box = document.getElementById("form-box");
-  const veil = document.getElementById("transparent");
-  button.addEventListener("click", () => {
-    box.classList.add("reveal");
-    veil.classList.add("reveal");
+$(document).on("turbolinks:load", function() {
+  // 新規投稿フォームの表示
+  const formBox = $("#formBox");
+
+  $('#newPost').click(function() {
+    formBox.addClass("active");
   });
-  veil.addEventListener("click", () => {
-    box.classList.remove("reveal");
-    veil.classList.remove("reveal");
+  formBox.on("click", function(e) {
+    if (e.target.closest(".modal") === null) {
+      formBox.removeClass("active");
+    }
   });
 
-  const editButtons = document.getElementsByClassName("edit-btn");
+  
+  // 編集フォームの表示
+  const editButtons = document.getElementsByClassName("editButton");
   for (let i = 0; i < editButtons.length; i++) {
     editButtons[i].onclick = function () {
-      let editBox = document.getElementById(`form-box-edit-${i}`);
-      const veil2 = document.getElementById("transparent-edit");
-      editBox.classList.add("reveal");
-      veil2.classList.add("reveal");
-
-      veil2.addEventListener("click", () => {
-        veil2.classList.remove("reveal");
-        editBox.classList.remove("reveal");
+      let editBox = document.getElementById(`editPost${i}`);
+      editBox.classList.add("active");
+      
+      editBox.addEventListener("click", (e) => {
+        if (e.target.closest(".modal") === null) {
+          editBox.classList.remove("active");
+        }
       });
     };
   }
+  
+  // 招待フォームの表示
+  const inviteBox = $("#inviteBox");
 
-  const editGroupsBtn =document.getElementById('edit-groups');
-  const withdrawBtns = document.getElementsByClassName("withdraw-btn");
-  editGroupsBtn.addEventListener('click', () => {
-    if(withdrawBtns[0].classList.contains("reveal")) {
-      for (let i=0; i< withdrawBtns.length; i++) {
-        withdrawBtns[i].classList.remove("reveal");
-      }
-      editGroupsBtn.innerHTML = "[編集]"
-    } else {
-      for (let i = 0; i < withdrawBtns.length; i++) {
-        withdrawBtns[i].classList.add("reveal");
-      }
-      editGroupsBtn.innerHTML = "[完了]"
+  $("#inviteButton").click(function() {
+    inviteBox.addClass("active");
+  });
+  inviteBox.on("click", function(e) {
+    if (e.target.closest(".modal") === null) {
+      inviteBox.removeClass("active");
     }
   });
+
+  // プロフィール画像の拡大表示
+  const imageLarge = $("#image-large");
+
+  $("#image-icon").click(function() {
+    imageLarge.addClass("active");
+  });
+  imageLarge.on("click", function(e) {
+    if (e.target.closest(".modal") === null) {
+      imageLarge.addClass("deactivate");
+      imageLarge.delay(200).queue(function(){
+        imageLarge.removeClass("active deactivate").dequeue();
+      });
+    }
+  });
+  
 });

@@ -1,0 +1,85 @@
+<div class="helps manual">
+  <h2 class="manual-title">よくある質問</h2>
+  <div class="how-to-use">
+    <h3>基本操作ガイド</h3>
+    <ul class="accordion-area">
+      <li>
+        <section>
+          <h4 class="question">グループを作りたい</h4>
+          <div class="box">
+            <p>「<%= link_to 'トップページ', root_path %>」または「<%= link_to 'グループをつくる', new_group_path %>」から作成できます。</p>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h4 class="question">自分のグループにメンバーを招待したい</h4>
+          <div class="box">
+            <p>「<%= link_to 'ユーザー検索', search_users_path %>」から招待したいユーザーのページに移動して、「グループに招待」を選択してください。</p>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h4 class="question">ほかのグループに入りたい</h4>
+          <div class="box">
+            <p>公開されいるグループの場合は、「<%= link_to 'グループ検索', search_groups_path %>」からグループを選択して、「参加リクエスト」を送信してください。グループメンバーよりリクエストが承認されるとメンバーに追加されます。</p>
+            <p>非公開のグループの場合、グループメンバーから招待を受ける必要があります。</p>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h4 class="question">グループを退会したい</h4>
+          <div class="box">
+            <p>参加しているグループの編集ボタンから「グループを退会」へお進み下さい。</p>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h4 class="question">プロフィールにステータス、自己紹介、アイコンを設定したい</h4>
+          <div class="box">
+            <% if user_signed_in? %>
+              <p><%= link_to 'マイページ', user_path(current_user) %>から「編集」を選択してください。</p>
+            <% else %>
+              <p>マイページから「編集」を選択してください。</p>
+            <% end %>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h4 class="question">新しい投稿をしたい</h4>
+          <div class="box">
+            <% if user_signed_in? %>
+              <p><%= link_to 'マイページ', user_path(current_user) %>の「追加する」を選択すると投稿フォームが表示されます。</p>
+            <% else %>
+              <p>マイページの「追加する」を選択すると投稿フォームが表示されます。</p>
+            <% end %>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h4 class="question">投稿を編集、削除したい</h4>
+          <div class="box">
+            <p>投稿一覧から編集の場合は <%= fa_icon "pencil-square-o" %> を、削除の場合は <%= fa_icon "trash-o" %> を選択してください。</p>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h4 class="question">アカウントを削除したい</h4>
+          <div class="box">
+            <% if user_signed_in? %>
+              <p><%= link_to 'マイページ', user_path(current_user) %>から「編集」を選択し、「退会のお手続き」へ進んでください。</p>
+              <% else %>
+              <p>マイページから「編集」を選択し、「退会のお手続き」へ進んでください。</p>
+            <% end %>
+          </div>
+        </section>
+      </li>
+    </ul>
+  </div>
+</div>

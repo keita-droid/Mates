@@ -1,17 +1,13 @@
-<div class="inputBox">
-  <div class="groups">
-    <div class="title">グループ情報</div>
-  </div>
-</div>
-<div class="unsubscribe">
-  <h2>「<%= @group.name %>」を削除します。</h2>
-  <p class="notice">
+<div class="helps">
+  <h2>グループ「<%= @group.name %>」を削除します。</h2>
+  <p>
+    【※注意※】<br>
     この操作は取り消すことができません。<br>
-    グループ内の全てのメンバーに影響します。<br>
-    本当に削除してよろしいですか？
+    グループ内の<span>全てのメンバー（<%= @group.users.count %>人）に影響します。</span><br>
+    本当に削除してもよろしいですか？
   </p>
   <div class="actions">
-    <%= link_to "削除する", group_path(@group), method: :delete, class: "link-btn", data: { confirm: "本当に削除しますか？" } %>
-    <%= link_to "削除しない", group_path(@group), class: "link-btn cancel" %>
+    <%= link_to "削除", group_path(@group), method: :delete, class: "button", data: { confirm: "【最終確認】本当に削除しますか？" } %>
+    <%= link_to "キャンセル", group_path(@group), class: "button cancel" %>
   </div>
 </div>

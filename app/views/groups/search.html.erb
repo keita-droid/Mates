@@ -1,20 +1,26 @@
-<div class="groups">
-  <div class="title">グループをさがす</div>
-</div>
-<%= form_with url: search_groups_path, method: :get, local: true, class: "search-form" do |f| %>
-  <%= f.search_field :keyword, autofocus: true, placeholder: "Group Name", size: 25, class: "form" %>
-  <%= f.submit "検索", class: "btn" %>
-<% end %>
-
-<div class="wrapper card__contents flexBox">
-<% @groups.each do |group| %>
-  <%= link_to group_path(group), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
-    <div class="member-header">
-      <div class="profile">
-        <div class="name"><%= group.name %></div>
-        <div class="status"><%= group.description %></div>
-      </div>
-    </div>
+<div class="search-page">
+  <h2 class="title"><%= fa_icon "search" %> グループをさがす</h2>
+  <%= form_with url: search_groups_path, method: :get, local: true, class: "search" do |f| %>
+    <%= f.search_field :keyword, autofocus: true, placeholder: "グループ名", class: "form" %>
+    <%= f.submit "検索", class: "form-button" %>
   <% end %>
-<% end %>
+
+  <div class="cards">
+    <% if @groups.empty? %>
+      <p>検索結果：0件</p>
+    <% else %>
+      <p>検索結果：<%= @groups.count %>件</p>
+    <% end %>
+    <% @groups.each do |group| %>
+      <%= link_to group_path(group), class: "card" do %>
+        <div class="data">
+          <div class="profile group">
+            <h3 class="name"><%= group.name %></h3>
+            <p class="description"><%= group.description %></p>
+            <p class="info">[参加メンバー：<%= group.users.count %>人]</p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

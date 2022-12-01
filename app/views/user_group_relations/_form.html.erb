@@ -1,0 +1,16 @@
+<div class="close-button">
+  <button>×</button>
+</div>
+<div class="input-box modal">
+  <h3>INVITE</h3>
+  <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+    <div class="field for-invite">
+      <%= f.label :group_id, "招待するグループ：" %>
+      <%= f.collection_select :group_id, groups, :id, :name, {prompt: "選択してください"}, class: "select", required: true %>
+    </div>
+    <%= f.hidden_field :user_id, value: user.id %>
+    <div class="actions">
+      <%= f.submit "送信", class: "submit" %>
+    </div>
+  <% end %>
+</div>

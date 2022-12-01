@@ -1,74 +1,112 @@
 <% provide :title, "#{@group.name} | " %>
-<div class="group-header">
-  <div class="flex">
+<!-- group info -->
+<% if current_user.in_this_group?(@group) || @group.public %>
+<div class="info">
+  <div class="profile-wrap">
     <div class="profile">
-      <h1 class="name"><%= @group.name %></h1>
-      <div class="description"><%= @group.description %></div>
+      <h2 class="name"><%= link_to @group.name, group_path(@group) %></h2>
+      <p class="description"><%= @group.description %></p>
     </div>
-    <% if current_user.in_this_group?(@group) %>
-      <div class="edit">
-        <%= link_to 'グループ情報', edit_group_path(@group) %><br/>
-      </div>
-    <% elsif @group.public && !(current_user.requested?(@group)) %>
-      <div class="edit">
-        <%= link_to '参加をリクエスト', new_group_request_path(@group) %>
-      </div>
-    <% elsif current_user.requested?(@group) %>
-      <div class="edit"><div class="requested">リクエスト済み</div></div>
-    <% end %>
   </div>
-</div>
-<% if current_user.in_this_group?(@group) && @group.requests.exists? %>
-  <div><%= link_to '＼参加リクエストが届いています！／', group_requests_path(@group), class: "requests" %></div>
-<% end %>
-<div class="wrapper card__contents flexBox">
   <% if current_user.in_this_group?(@group) %>
-    <% @members.each do |member| %>
-      <%= link_to user_path(member), class: "member-card card__block col-xs-12 col-md col-lg col-xl" do %>
-        <div class="member-header">
-          <div class="image">
-            <% if member.image.attached? %>
-              <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
-            <% else %>
-              <div class="no-image"></div>
-            <% end %>
-          </div>
-          <div class="profile">
-            <div class="name"><%= member.name %></div>
-            <div class="status"><%= member.status %></div>
-          </div>
-        </div>
-        <% member.taken_posts.each.with_index do |post, i| %>
-          <% if i < 3 %>
-            <div class="favorites group-fav">
-              <div class="genre"><span><%= post.genre.name %></span></div>
-              <div class="text"><%= simple_format(post.text) %></div>
+    <%= link_to '編集', edit_group_path(@group), class: "action" %>
+  <% elsif @group.public && !(current_user.requested?(@group)) %>
+    <%= form_with model: [@group, @request], local: true do |f| %>
+      <%= f.submit "参加をリクエスト", class:"action" %>
+    <% end %>
+  <% elsif current_user.requested?(@group) %>
+    <%= link_to 'リクエスト取り消し', group_request_path(@group.id, @group.request(current_user)), class: "action delete", method: :delete, data: { confirm: 'リクエストを取り下げますか？' } %>
+  <% end %>
+</div>
+<% end %>
+<!-- group info End -->
+<!-- requests -->
+<% if current_user.in_this_group?(@group) && @group.requests.exists? %>
+  <%= link_to '＼参加リクエストが届いています！／', group_requests_path(@group), class: "requests" %>
+<% end %>
+<!-- requests End -->
+<!-- members -->
+<% if current_user.in_this_group?(@group) %>
+  <!-- グループのメンバー -->
+  <div class="group-contents">
+    <div class="members">
+      <% @members.each do |member| %>
+        <%= link_to user_path(member), class: "member-card", id: "user#{member.id}" do %>
+          <div class="member-info">
+            <div class="member-image">
+              <% if member.image.attached? %>
+                <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
+              <% else %>
+                <div class="no-image"></div>
+              <% end %>
             </div>
-          <% else %>
-            <div class="more">And more...</div>
+            <div class="member-profile">
+              <div class="name"><%= member.name %></div>
+              <div class="status"><%= member.status %></div>
+            </div>
+          </div>
+          <% member.taken_posts.each.with_index do |post, i| %>
+            <% if i < 3 %>
+              <div class="favorite">
+                <div class="genre"><span><%= post.genre.name %></span></div>
+                <div class="text"><%= truncate(simple_format(post.text), length: 60, escape: false) %></div>
+              </div>
+            <% else %>
+              <p class="more">And more...</p>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  <% elsif @group.public %>
-    <% @members.each do |member| %>
-      <%= link_to user_path(member), class: "search member-card card__block col-xs-12 col-md col-lg col-xl" do %>
-        <div class="member-header">
-          <div class="image">
-            <% if member.image.attached? %>
-              <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
-            <% else %>
-              <div class="no-image"></div>
-            <% end %>
+    </div>
+    <div class="member-list">
+      <h3>MEMBERS</h3>
+      <ul id="memberList">
+        <% @members.each do |member| %>
+        <li><a href="#user<%= member.id %>"><%= member.name %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% elsif @group.public %>
+  <!-- 検索可能な公開グループ -->
+  <div class="group-contents">
+    <div class="members">
+      <% @members.each do |member| %>
+        <%= link_to user_path(member), class: "member-card disabled" do %>
+          <div class="member-info">
+            <div class="member-image">
+              <% if member.image.attached? %>
+                <div style="background-image:url(<%= rails_blob_path(member.image) %>)"></div>
+              <% else %>
+                <div class="no-image"></div>
+              <% end %>
+            </div>
+            <div class="member-profile">
+              <div class="name"><%= member.name %></div>
+              <div class="status"><%= member.status %></div>
+            </div>
           </div>
-          <div class="profile">
-            <div class="name"><%= member.name %></div>
-            <div class="status"><%= member.status %></div>
+          <div class="favorite no-member">
+            <div class="genre"><span>その他</span></div>
+            <div class="text">これはサンプルテキストです</div>
           </div>
-        </div>
+          <div class="favorite no-member">
+            <div class="genre"><span>その他</span></div>
+            <div class="text">この文章が読める人は偉い</div>
+          </div>
+          <div class="favorite no-member">
+            <div class="genre"><span>その他</span></div>
+            <div class="text">グループに加入してね</div>
+          </div>
+          <p class="no-member-notice">CONFIDENTIAL</p>
+        <% end %>
       <% end %>
-    <% end %>
-  <% else %>
-    ※グループメンバーのみ閲覧できます※
-  <% end %>
-</div>
+    </div>
+  </div>
+<% else %>
+  <!-- 非公開のグループ -->
+  <div class="message">
+    <p>※このグループは非公開です。メンバーのみ閲覧できます。<p>
+  </div>
+<% end %>
+<!-- members End -->

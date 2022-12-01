@@ -4,16 +4,18 @@ class GroupsController < ApplicationController
   def index
     @groups = current_user.groups
     @requests = current_user.requests.includes(:group)
+    @group = Group.new
   end
 
   def show
     @group = Group.find_by(id: params[:id])
     if @group.nil?
-      redirect_to root_path, notice: "存在しないグループです"
+      redirect_to root_path, alert: "ERROR: グループが見つかりません"
     elsif @group.users.empty?
-      redirect_to root_path, notice: "表示できないグループです"
+      redirect_to root_path, alert: "ERROR: 表示できないグループです"
     else
       @members = @group.users.includes(posts: :genre)
+      @request = Request.new
     end
   end
 
@@ -26,7 +28,7 @@ class GroupsController < ApplicationController
     if group.save
       redirect_to groups_path, notice: "グループを作成しました"
     else
-      redirect_to new_group_path
+      redirect_to group_path, alert: "グループを作成できません"
     end
   end
 

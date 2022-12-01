@@ -1,15 +1,62 @@
-.helps-wrapper {
-  color: #3b4675;
-  width: 650px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 20px 30px;
+ /* --------------------------------
+ * プライバシーポリシー
+ * グループ削除最終確認
+ * アカウント削除最終確認
+ * -------------------------------- */
+
+.helps {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: 20px;
+  background-color: #eee;
+  line-height: 2.5;
+
+  h2 {
+    font-size: 2rem;
+    letter-spacing: 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 15px;
+  }
   h3 {
-    margin: 40px 0 10px;
-    border-bottom: 1px solid #3b4675;
+    font-size: 1.6rem;
+    letter-spacing: 0;
+    margin-top: 15px;
   }
   p {
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    span {
+      font-weight: bold;
+      color: #c00;
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+
+    .button {
+      font-size: 1.6rem;
+      padding: 5px 20px;
+      margin: 0 8px;
+      color: #eee;
+      background-color: #c00;
+      border-radius: 3px;
+
+      &:hover {
+        box-shadow: 0 0 10px #c00;
+        color: #fff;
+        transition: 0.2s;
+      }
+
+      &.cancel {
+        background-color: transparent;
+        border: 1px solid seagreen;
+        color: seagreen;
+        &:hover {
+          box-shadow: 0 0 10px seagreen;
+          transition: 0.2s;
+        }
+      }
+    }
   }
 }

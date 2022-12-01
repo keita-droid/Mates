@@ -1,0 +1,2 @@
+module Helps::ManualsHelper
+end

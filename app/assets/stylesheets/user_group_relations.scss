@@ -1,3 +1,19 @@
 // Place all the styles related to the user_group_relations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+/* --------------------------------
+ * _form.html.erb
+ * -------------------------------- */
+ .field.for-invite {
+  margin: 40px 0 70px;
+  label {
+    padding-bottom: 10px;
+    display: block;
+  }
+  .select {
+    font-size: 1.8rem;
+    width: 100%;
+  }
+ }

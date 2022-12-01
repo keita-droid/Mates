@@ -3,27 +3,27 @@ class RequestsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @requests = @group.requests.includes(:user)
-  end
 
-  def new
-    @group = Group.find(params[:group_id])
-    @request = Request.new
+    unless current_user.in_this_group?(@group)
+      redirect_to root_path
+    end
   end
 
   def create
     @group = Group.find(params[:group_id])
     request = Request.new(request_params)
     if request.save
-      render :create
+      redirect_to group_path(@group), notice: "送信しました！メンバーからの承認をお待ちください"
     else
       redirect_to group_path(@group)
     end
   end
 
   def destroy
+    group = Group.find(params[:group_id])
     request = Request.find(params[:id])
     request.destroy
-    redirect_to root_path, notice: "参加リクエストを取り消しました"
+    redirect_to group_path(group), notice: "参加リクエストを取り消しました"
   end
 
 
