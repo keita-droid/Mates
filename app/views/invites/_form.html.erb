@@ -3,7 +3,7 @@
 </div>
 <div class="input-box modal">
   <h3>INVITE</h3>
-  <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+  <%= form_with url:{ controller: 'invites', action: 'create', user_id: user.id}, local: true do |f| %>
     <div class="field for-invite">
       <%= f.label :group_id, "招待するグループ：" %>
       <%= f.collection_select :group_id, groups, :id, :name, {prompt: "選択してください"}, class: "select", required: true %>

@@ -1,0 +1,34 @@
+<div class="info">
+  <div class="profile-wrap">
+    <div class="profile">
+      <h2 class="name"><%= link_to @user.name, user_path(@user) %></h2>
+      <p class="description"><%= @user.status %></p>
+      <p class="description"><%= @user.description %></p>
+    </div>
+  </div>
+  <button class="action button">
+    <%= link_to '編集', edit_user_path(@user) %><br/>
+  </button>
+</div>
+
+<div class="request-users">
+  <h3 class="title">招待されているグループ</h3>
+  <p><%= @invites.count %>件</p>
+  <ul>
+    <% @invites.each do |invite| %>
+      <li class="request-user">
+        <%= link_to group_path(invite.group), class: "user" do %>
+          <p class="name"><%= invite.group.name %></p>
+        <% end %>
+        <div class="buttons">
+          <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+            <%= f.hidden_field :user_id, value: invite.user_id %>
+            <%= f.hidden_field :group_id, value: invite.group_id %>
+            <%= f.submit "承認", class: "button", data: { confirm: "【確認】#{invite.group.name}からの招待を承認します" } %>
+          <% end %>
+          <%= link_to '辞退', user_invite_path(@user.id, invite.id), class: "button reject", method: :delete, data: { confirm: "【確認】#{invite.group.name}からの招待を辞退します" } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

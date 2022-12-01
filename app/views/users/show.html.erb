@@ -39,6 +39,11 @@
   <% end %>
 </div>
 <!-- user info End -->
+<!-- invites -->
+<% if current_user == @user && @user.invites.exists? %>
+  <%= link_to '＼グループへの招待が届いています！／', user_invites_path(@user), class: "requests" %>
+<% end %>
+<!-- invites End -->
 <!-- user contents -->
 <div class="user-contents">
   <!-- main area -->
@@ -147,7 +152,7 @@
 <!-- invite form -->
 <% unless current_user == @user %>
   <div class="post-box" id="inviteBox">
-    <%= render partial: "user_group_relations/form", locals: {user: @user, groups: @groups_for_invite} %>
+    <%= render partial: "invites/form", locals: {user: @user, groups: @groups_for_invite} %>
   </div>
 <% end %>
 <!-- invite form End -->
