@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :user_group_relations, dependent: :destroy
   has_many :requests, dependent: :destroy
+  has_many :invites, dependent: :destroy
   has_many :groups, through: :user_group_relations
   has_many :requested_groups, through: :requests, source: :group
   has_many :posts, dependent: :destroy
