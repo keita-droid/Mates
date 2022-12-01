@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_04_032026) do
+ActiveRecord::Schema.define(version: 2022_12_01_051217) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2022_03_04_032026) do
     t.boolean "public", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "invites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_invites_on_group_id"
+    t.index ["user_id"], name: "index_invites_on_user_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,6 +102,8 @@ ActiveRecord::Schema.define(version: 2022_03_04_032026) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "invites", "groups"
+  add_foreign_key "invites", "users"
   add_foreign_key "posts", "genres"
   add_foreign_key "posts", "users"
   add_foreign_key "requests", "groups"
