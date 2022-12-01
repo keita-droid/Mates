@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :invites, only: %i[create destroy]
+    resources :invites, only: %i[create destroy index]
   end
   get '/users/:id/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
 
