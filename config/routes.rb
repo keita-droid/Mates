@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   get '/users/:id/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
 
-  resources :user_group_relations, only: %i[new create destroy]
+  resources :user_group_relations, only: %i[create destroy]
   resources :posts, only: %i[create update destroy]
 
   namespace :helps do
