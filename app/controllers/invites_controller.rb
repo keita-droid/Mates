@@ -22,15 +22,27 @@ class InvitesController < ApplicationController
 
   def destroy
     user = User.find(invite_params[:user_id])
-    invite = Invite.find(params[:id])
-    invite.destroy
-    redirect_to user_path(user), notice: "招待を辞退しました"
+    invite = Invite.find_by(invite_params)
+    group = invite.group
+
+    if current_user == user
+      # ユーザーが招待を辞退する場合
+      invite.destroy
+      return redirect_to user_path(user), notice: "招待を辞退しました"
+    elsif current_user.in_this_group?(group)
+      # グループメンバーが招待を取り消す場合
+      invite.destroy
+      return redirect_to invites_group_path(group), notice: "招待を取り下げました"
+    else
+      redirect_to root_path, alert: "エラーが発生しました"
+    end
+
   end
 
 
   private
 
   def invite_params
-    params.permit(:group_id, :user_id)
+    params.permit(:id, :group_id, :user_id)
   end
 end

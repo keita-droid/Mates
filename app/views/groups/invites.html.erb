@@ -16,23 +16,18 @@
   <ul>
     <% @invites.each do |invite| %>
       <li class="request-user">
-        <%= link_to user_path(invite), class: "user" do %>
+        <%= link_to user_path(invite.user), class: "user" do %>
           <div class="image">
-            <% if invite.image.attached? %>
-              <div style="background-image:url(<%= rails_blob_path(invite.image) %>)"></div>
+            <% if invite.user.image.attached? %>
+              <div style="background-image:url(<%= rails_blob_path(invite.user.image) %>)"></div>
             <% else %>
               <div class="no-image"></div>
             <% end %>
           </div>
-          <p class="name"><%= invite.name %></p>
+          <p class="name"><%= invite.user.name %></p>
         <% end %>
         <div class="buttons">
-          <%#= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
-            <%#= f.hidden_field :user_id, value: request.user_id %>
-            <%#= f.hidden_field :group_id, value: request.group_id %>
-            <%#= f.submit "承認", class: "button", data: { confirm: '【確認】リクエストを承認します' } %>
-          <%# end %>
-          <%#= link_to '拒否', group_request_path(request.group.id, request.id), class: "button reject", method: :delete, data: { confirm: '【確認】リクエストを拒否します' } %>
+          <%= link_to 'キャンセル', user_invite_path(invite.user.id, invite.id), class: "button reject", method: :delete, data: { confirm: '【確認】招待を取り消します' } %>
         </div>
       </li>
     <% end %>

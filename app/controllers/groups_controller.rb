@@ -60,7 +60,7 @@ class GroupsController < ApplicationController
   def invites
     @group = Group.find(params[:id])
     if current_user.in_this_group?(@group)
-      @invites = @group.invited_users
+      @invites = @group.invites.includes(:user)
     else
       redirect_to root_path, alert: "不正なリクエストが送信されました"
     end
