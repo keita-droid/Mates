@@ -12,29 +12,33 @@
 
 <div class="request-users">
   <h3 class="title">参加リクエスト</h3>
-  <p><%= @requests.count %>件</p>
-  <ul>
-    <% @requests.each do |request| %>
-      <li class="request-user">
-        <%= link_to user_path(request.user), class: "user" do %>
-          <div class="image">
-            <% if request.user.image.attached? %>
-              <div style="background-image:url(<%= rails_blob_path(request.user.image) %>)"></div>
-            <% else %>
-              <div class="no-image"></div>
-            <% end %>
-          </div>
-          <p class="name"><%= request.user.name %></p>
-        <% end %>
-        <div class="buttons">
-          <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
-            <%= f.hidden_field :user_id, value: request.user_id %>
-            <%= f.hidden_field :group_id, value: request.group_id %>
-            <%= f.submit "承認", class: "button", data: { confirm: '【確認】リクエストを承認します' } %>
+  <% if @group.public? %>
+    <p><%= @requests.count %>件</p>
+    <ul>
+      <% @requests.each do |request| %>
+        <li class="request-user">
+          <%= link_to user_path(request.user), class: "user" do %>
+            <div class="image">
+              <% if request.user.image.attached? %>
+                <div style="background-image:url(<%= rails_blob_path(request.user.image) %>)"></div>
+              <% else %>
+                <div class="no-image"></div>
+              <% end %>
+            </div>
+            <p class="name"><%= request.user.name %></p>
           <% end %>
-          <%= link_to '拒否', group_request_path(request.group.id, request.id), class: "button reject", method: :delete, data: { confirm: '【確認】リクエストを拒否します' } %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+          <div class="buttons">
+            <%= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+              <%= f.hidden_field :user_id, value: request.user_id %>
+              <%= f.hidden_field :group_id, value: request.group_id %>
+              <%= f.submit "承認", class: "button", data: { confirm: '【確認】リクエストを承認します' } %>
+            <% end %>
+            <%= link_to '拒否', group_request_path(request.group.id, request.id), class: "button reject", method: :delete, data: { confirm: '【確認】リクエストを拒否します' } %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>ユーザーからの参加リクエストを受け取るには、<br>グループの「<%= link_to '公開設定', edit_group_path(@group), style: "text-decoration: underline;" %>」を変更してください。</p>
+  <% end %>
 </div>
