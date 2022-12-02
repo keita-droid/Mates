@@ -1,0 +1,40 @@
+<div class="info">
+  <div class="profile-wrap">
+    <div class="profile">
+      <h2 class="name"><%= link_to @group.name, group_path(@group) %></h2>
+      <p class="description"><%= @group.description %></p>
+    </div>
+  </div>
+  <button class="action button">
+    <%= link_to '編集', edit_group_path(@group) %><br/>
+  </button>
+</div>
+
+<div class="request-users">
+  <h3 class="title">招待済みのユーザー</h3>
+  <p><%= @invites.count %>件</p>
+  <ul>
+    <% @invites.each do |invite| %>
+      <li class="request-user">
+        <%= link_to user_path(invite), class: "user" do %>
+          <div class="image">
+            <% if invite.image.attached? %>
+              <div style="background-image:url(<%= rails_blob_path(invite.image) %>)"></div>
+            <% else %>
+              <div class="no-image"></div>
+            <% end %>
+          </div>
+          <p class="name"><%= invite.name %></p>
+        <% end %>
+        <div class="buttons">
+          <%#= form_with url:{ controller: 'user_group_relations', action: 'create'}, local: true do |f| %>
+            <%#= f.hidden_field :user_id, value: request.user_id %>
+            <%#= f.hidden_field :group_id, value: request.group_id %>
+            <%#= f.submit "承認", class: "button", data: { confirm: '【確認】リクエストを承認します' } %>
+          <%# end %>
+          <%#= link_to '拒否', group_request_path(request.group.id, request.id), class: "button reject", method: :delete, data: { confirm: '【確認】リクエストを拒否します' } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     member do
       get 'delete'
     end
+    member do
+      get 'invites'
+    end
     resources :requests, only: %i[create destroy index]
   end
 
